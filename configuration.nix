@@ -35,6 +35,7 @@
     firefox
     networkmanagerapplet
     git
+    vim
   ];
 
   # List services that you want to enable:
@@ -57,6 +58,7 @@
   services.xserver.synaptics.enable = true;
   services.xserver.synaptics.twoFingerScroll = true;
   services.xserver.synaptics.tapButtons = true;
+  services.xserver.displayManager.sessionCommands = "${pkgs.networkmanagerapplet}/bin/nm-applet &";
   services.xserver.inputClassSections = [
   ''
     Identifier      "TypeMatrix"
@@ -75,7 +77,7 @@
     isNormalUser = true;
     uid = 1000;
     createHome = true;
-    extraGroups = [ "networkmanager" "sudo" ];
+    extraGroups = [ "networkmanager" "wheel" ];
     initialPassword = "changeMe";
   };
 
