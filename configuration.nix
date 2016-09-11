@@ -13,7 +13,8 @@
 			./network.nix
 			./gui.nix
 			./users.nix
-			./packages.nix
+			./user-packages.nix
+			./system-packages.nix
 		];
 
 	boot.loader.gummiboot.enable = true;
