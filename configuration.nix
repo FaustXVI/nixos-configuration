@@ -84,6 +84,7 @@
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.03";
-
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.dates = "13:00";
 
 }
