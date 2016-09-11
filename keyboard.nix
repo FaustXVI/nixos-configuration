@@ -15,13 +15,6 @@
 					Option          "XkbLayout"     "fr"
 					Option          "XkbVariant"    "bepo"
 					''
-					''
-					Identifier      "ErgoDox"
-                                        MatchUSBID      "feed:1307"
-					Driver          "evdev"
-					Option          "XkbLayout"     "fr"
-					Option          "XkbVariant"    "bepo"
-					''
 			];
 		};
 	};
