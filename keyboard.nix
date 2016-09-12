@@ -4,6 +4,7 @@
 	services = {
 		xserver =  {
 			layout = "fr";
+			xkbVariant = "oss";
 			inputClassSections = [
 					''
 					Identifier      "TypeMatrix"
@@ -12,6 +13,14 @@
 					MatchProduct    "USB Keyboard"
 					Driver          "evdev"
 					Option          "XbkModel"      "tm2030USB"
+					Option          "XkbLayout"     "fr"
+					Option          "XkbVariant"    "bepo"
+					''
+					''
+					Identifier      "Ergodox"
+					MatchIsKeyboard "on"
+					MatchUSBID	"feed:1307"
+					Driver          "evdev"
 					Option          "XkbLayout"     "fr"
 					Option          "XkbVariant"    "bepo"
 					''
