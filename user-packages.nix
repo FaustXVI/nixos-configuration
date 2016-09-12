@@ -7,4 +7,13 @@
 				emacs
 		];
 	};
+
+	nixpkgs = {
+		config = {
+			firefox = {
+				enableAdobeFlash = true;
+			};
+		};
+	};
+
 }
