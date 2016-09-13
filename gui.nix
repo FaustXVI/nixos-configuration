@@ -1,6 +1,12 @@
 { config, pkgs, ... }:
 
 {
+	environment = {
+		systemPackages = with pkgs; [
+				dmenu
+				i3status
+		];
+	};
 	services = {
 		xserver = {
 			enable = true;
@@ -10,7 +16,7 @@
 				tapButtons = true;
 			};
 			windowManager = {
-				awesome = {
+				i3 = {
 					enable = true;
 				};
 			};
