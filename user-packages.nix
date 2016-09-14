@@ -6,6 +6,7 @@
 				firefox
 				emacs
 				terminator
+				xpdf
 		];
 	};
 
