@@ -27,4 +27,5 @@
 			];
 		};
 	};
+	sound.enableMediaKeys = true;
 }
