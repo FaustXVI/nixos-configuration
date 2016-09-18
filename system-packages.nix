@@ -7,6 +7,8 @@
 				git
 				vim
 				usbutils
+				tree
+				gnupg
 		];
 	};
 }
