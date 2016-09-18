@@ -12,6 +12,7 @@
 				usbutils
 				tree
 				gnupg
+				file
 		];
 	};
 }
