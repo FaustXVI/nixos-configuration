@@ -13,6 +13,9 @@
 				tree
 				gnupg
 				file
+				gnumake
+				automake
+				gcc
 		];
 	};
 }
