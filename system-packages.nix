@@ -16,6 +16,12 @@
 				gnumake
 				automake
 				gcc
+				bashCompletion
 		];
+	};
+	programs = {
+		bash = {
+			enableCompletion = true;
+		};
 	};
 }
