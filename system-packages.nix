@@ -23,5 +23,8 @@
 		bash = {
 			enableCompletion = true;
 		};
+		ssh = {
+			startAgent = false;
+		};
 	};
 }

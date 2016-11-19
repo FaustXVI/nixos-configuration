@@ -17,7 +17,7 @@
 			./system-packages.nix
 		];
 
-	boot.loader.gummiboot.enable = true;
+	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
 
 	i18n = {
@@ -29,7 +29,7 @@
 	time.timeZone = "Europe/Paris";
 
 	system = {
-		stateVersion = "16.03";	
+		stateVersion = "16.09";	
 		autoUpgrade = {
 			enable = true;
 			dates = "13:00";
