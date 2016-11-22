@@ -7,6 +7,8 @@
     networkmanagerapplet
   ];
 
+  networking.extraHosts = "127.0.0.1 nixos";
+
   services.openssh.enable = true;
 
 }
