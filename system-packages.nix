@@ -21,6 +21,8 @@
 				aspellDicts.fr
 				direnv
 				terminator
+				zip
+				unzip
 		];
 	};
 	programs = {
