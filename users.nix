@@ -7,7 +7,7 @@
 				isNormalUser = true;
 				uid = 1000;
 				createHome = true;
-				extraGroups = [ "networkmanager" "wheel" ];
+				extraGroups = [ "networkmanager" "wheel" "docker"];
 				initialPassword = "changeMe";
 			};
 		};

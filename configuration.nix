@@ -15,6 +15,7 @@
 			./users.nix
 			./user-packages.nix
 			./system-packages.nix
+			./virtualisation.nix
 		];
 
 	boot.loader.systemd-boot.enable = true;
