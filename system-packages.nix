@@ -20,6 +20,7 @@
 				aspellDicts.en
 				aspellDicts.fr
 				direnv
+				terminator
 		];
 	};
 	programs = {

@@ -5,7 +5,6 @@
 		systemPackages = with pkgs; [
 				firefox
 				emacs
-				terminator
 				xpdf
 		];
 	};
