@@ -16,6 +16,9 @@
 				gnumake
 				automake
 				gcc
+				aspell
+				aspellDicts.en
+				aspellDicts.fr
 		];
 	};
 	programs = {
