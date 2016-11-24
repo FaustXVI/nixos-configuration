@@ -26,6 +26,9 @@
 		];
 	};
 	programs = {
+		bash = {
+			enableCompletion = true;
+		};
 		ssh = {
 			startAgent = false;
 		};
