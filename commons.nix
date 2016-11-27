@@ -18,19 +18,6 @@
 			./virtualisation.nix
 		];
 
-
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sdb"; # or "nodev" for efi only
-
-  boot.loader.grub.extraEntries = ''
-menuentry "Windows 7" {
-  insmod ntfs
-  search --no-floppy --fs-uuid --set EE62F05562F023CD
-  chainloader +1
-}
-  '';
-
 	i18n = {
 		consoleFont = "Lat2-Terminus16";
 		consoleKeyMap = "fr";

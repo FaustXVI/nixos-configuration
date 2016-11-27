@@ -23,6 +23,7 @@
 				terminator
 				zip
 				unzip
+				pythonPackages.udiskie
 		];
 	};
 	programs = {
