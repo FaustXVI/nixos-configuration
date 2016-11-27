@@ -34,7 +34,17 @@
 			monitorSection = ''
 				Modeline "2560x1080_40.00"  147.25  2560 2680 2944 3328  1080 1083 1093 1108 -hsync +vsync
 				Option "PreferredMode" "2560x1080_40.00"
+				Option "RightOf" "samsung"
+EndSection
+Section "Monitor"
+	Identifier "samsung"
 				'';
+			deviceSection = ''
+  				  Option "monitor-DVI-I-1" "lg-widescreen"
+				  Option "monitor-DVI-I-2" "samsung"
+'';
+			#xrandrHeads = [ "DVI-I-1" "DVI-I-2" ];
+			exportConfiguration = true;
 		};
 	};
 
