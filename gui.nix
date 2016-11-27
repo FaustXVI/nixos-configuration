@@ -22,7 +22,10 @@
 				};
 			};
 			displayManager = {
-				sessionCommands = "${pkgs.networkmanagerapplet}/bin/nm-applet &";
+				sessionCommands = ''
+					${pkgs.networkmanagerapplet}/bin/nm-applet &
+					${pkgs.pythonPackages.udiskie}/bin/udiskie -a -t -n -F &
+				'';
 			};
 		};
 	};
