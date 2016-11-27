@@ -18,9 +18,6 @@
 			./virtualisation.nix
 		];
 
-	boot.loader.systemd-boot.enable = true;
-	boot.loader.efi.canTouchEfiVariables = true;
-
 	i18n = {
 		consoleFont = "Lat2-Terminus16";
 		consoleKeyMap = "fr";
