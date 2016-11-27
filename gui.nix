@@ -11,11 +11,6 @@
 	services = {
 		xserver = {
 			enable = true;
-			monitorSection = ''
-				Modeline "2560x1080_40.00"  147.25  2560 2680 2944 3328  1080 1083 1093 1108 -hsync +vsync
-				Option "PreferredMode" "2560x1080_40.00"
-			'';
-			#xrandrHeads = [ "DVI-I-2" "DVI-I-1" ];
 			synaptics = {
 				enable = true;
 				twoFingerScroll = true;
