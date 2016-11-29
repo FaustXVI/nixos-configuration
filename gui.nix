@@ -6,6 +6,7 @@
 				dmenu
 				i3status
 				i3lock
+				gnome3.defaultIconTheme
 		];
 	};
 	services = {
