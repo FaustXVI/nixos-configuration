@@ -27,6 +27,9 @@
 					${pkgs.networkmanagerapplet}/bin/nm-applet &
 					${pkgs.pythonPackages.udiskie}/bin/udiskie -a -t -n -F &
 				'';
+				slim = {
+					defaultUser = "xadet";
+				};
 			};
 		};
 	};
