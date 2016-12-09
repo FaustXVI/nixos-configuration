@@ -26,6 +26,8 @@
 				sessionCommands = ''
 					${pkgs.networkmanagerapplet}/bin/nm-applet &
 					${pkgs.pythonPackages.udiskie}/bin/udiskie -a -t -n -F &
+					gpg-connect-agent /bye
+					export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 				'';
 				slim = {
 					defaultUser = "xadet";
