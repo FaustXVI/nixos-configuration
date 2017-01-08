@@ -31,10 +31,15 @@
 
 	services = {
 		xserver = {
-			enable = true;
 			videoDrivers = [ "nvidia" ];
+			displayManager = {
+				sessionCommands = ''
+					xrandr --output DP-4 --right-of DP-3
+				'';
+			};
 		};
 	};
+
 
 
 }
