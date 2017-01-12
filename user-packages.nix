@@ -7,6 +7,7 @@
 				emacs
 				xpdf
 				vlc
+				slack
 		];
 	};
 
