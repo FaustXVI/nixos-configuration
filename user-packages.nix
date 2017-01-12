@@ -14,6 +14,7 @@
 	nixpkgs = {
 		config = {
 			firefox = {
+                enableGoogleTalkPlugin = true;
 				enableAdobeFlash = true;
 			};
 		};
