@@ -4,7 +4,7 @@
 	services = {
 		xserver =  {
 			layout = "fr";
-			xkbVariant = "oss";
+			xkbVariant = "bepo";
 			inputClassSections = [
 					''
 					Identifier      "TypeMatrix"

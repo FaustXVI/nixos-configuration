@@ -31,7 +31,7 @@
 			enableCompletion = true;
 		};
 		ssh = {
-			startAgent = false;
+			startAgent = true;
 		};
 	};
 }
