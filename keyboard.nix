@@ -27,5 +27,5 @@
 			];
 		};
 	};
-	sound.enableMediaKeys = true;
+	sound.mediaKeys.enable = true;
 }
