@@ -24,6 +24,9 @@
 				zip
 				unzip
 				pythonPackages.udiskie
+				apulse
+				pavucontrol
+				pasystray
 		];
 	};
 	programs = {
