@@ -3,7 +3,7 @@
 {
 	environment = {
 		systemPackages = with pkgs; [
-				firefox
+				firefox-esr
 				emacs
 				xpdf
 				vlc
