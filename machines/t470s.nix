@@ -34,5 +34,10 @@
 			};
 		};
 	};
+	hardware = {
+		bluetooth = {
+			enable = true;
+		};
+	};
 
 }
