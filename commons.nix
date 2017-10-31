@@ -27,7 +27,7 @@
 	time.timeZone = "Europe/Paris";
 
 	system = {
-		stateVersion = "17.03";
+		stateVersion = "17.09";
 		autoUpgrade = {
 			enable = true;
 			dates = "13:00";
@@ -45,6 +45,14 @@
 			enable = true;
 			support32Bit = true;
 			package = pkgs.pulseaudioFull;
+		};
+	};
+	programs = {
+		gnupg = {
+			agent = {
+				enable = true;
+				enableSSHSupport = true;
+			};
 		};
 	};
 }
