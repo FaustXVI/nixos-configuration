@@ -27,6 +27,8 @@
 				apulse
 				pavucontrol
 				pasystray
+				autorandr
+				powerline-fonts
 		];
 	};
 	programs = {
