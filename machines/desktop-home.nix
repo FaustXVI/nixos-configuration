@@ -16,26 +16,30 @@
 		loader = {
 			grub = {
 				enable = true;
-				version = 2;
-				device = "/dev/sdb"; # or "nodev" for efi only
-					extraEntries = ''
-					menuentry "Windows 7" {
-						insmod ntfs
-						search --no-floppy --fs-uuid --set EE62F05562F023CD
-						chainloader +1
-					}
-				'';
+				useOSProber = true;
+				device = "nodev";
+				efiSupport = true;
+			};
+			systemd-boot = {
+				enable = true;
+			};
+			efi = {
+				canTouchEfiVariables = true;
 			};
 		};
 	};
 
 	services = {
+		printing = {
+			enable = true;
+			drivers = [ pkgs.gutenprint ];
+		};
 		xserver = {
 			videoDrivers = [ "nvidia" ];
 			displayManager = {
 				sessionCommands = ''
-					xrandr --output HDMI-0 --off --output DP-3 --mode 1920x1080 --output DP-4 --mode 2560x1080 --right-of DP-3 --primary &&
-					xrandr --output DP-1 --mode 1920x1080 --same-as DP-3 &
+					#xrandr --output HDMI-0 --off --output DP-3 --mode 1920x1080 --output DP-4 --mode 2560x1080 --right-of DP-3 --primary &&
+					#xrandr --output DP-1 --mode 1920x1080 --same-as DP-3 &
 					${pkgs.pasystray}/bin/pasystray &
 '';
 			};
