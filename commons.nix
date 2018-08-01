@@ -13,7 +13,6 @@
 			./network.nix
 			./gui.nix
 			./users.nix
-			./user-packages.nix
 			./system-packages.nix
 			./virtualisation.nix
 		];
