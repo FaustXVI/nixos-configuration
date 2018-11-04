@@ -25,11 +25,12 @@
 			displayManager = {
 				sessionCommands = ''
 					${pkgs.networkmanagerapplet}/bin/nm-applet &
-					${pkgs.pythonPackages.udiskie}/bin/udiskie -a -t -n -F &
+					${pkgs.udiskie}/bin/udiskie -a -t -n -F &
 					gpg-connect-agent /bye
 					export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 				'';
 				slim = {
+					enable = true;
 					defaultUser = "xadet";
 				};
 			};

@@ -23,7 +23,7 @@
 				terminator
 				zip
 				unzip
-				pythonPackages.udiskie
+				udiskie
 				apulse
 				pavucontrol
 				pasystray

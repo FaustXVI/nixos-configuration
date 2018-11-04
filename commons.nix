@@ -26,7 +26,7 @@
 	time.timeZone = "Europe/Paris";
 
 	system = {
-		stateVersion = "18.03";
+		stateVersion = "18.09";
 		autoUpgrade = {
 			enable = true;
 			dates = "13:00";
