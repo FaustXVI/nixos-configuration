@@ -32,7 +32,7 @@
 	services = {
 		printing = {
 			enable = true;
-			drivers = [ pkgs.gutenprint ];
+			drivers = [ pkgs.hplip ];
 		};
 		xserver = {
 			videoDrivers = [ "nvidia" ];
