@@ -40,6 +40,9 @@
 	};
 
 	hardware = {
+		u2f = {
+			enable = true;
+		};
 		pulseaudio = {
 			enable = true;
 			support32Bit = true;
