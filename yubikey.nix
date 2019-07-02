@@ -7,10 +7,22 @@
 		};
 	};
 	services = {
+        udev = {
+            packages = with pkgs; [ yubikey-personalization ];
+        };
 		pcscd = {
 			enable = true;
 		};
 	};
+    security = {
+      pam = {
+        u2f = {
+          enable = true;
+          control = "required";
+          cue = true;
+        };
+      };
+    };
 	programs = {
 		ssh.startAgent = false;
 		gnupg = {
