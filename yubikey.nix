@@ -13,7 +13,7 @@
       serviceConfig = {
         User = "xadet";
         Type = "forking";
-        ExecStart = "${pkgs.i3lock}/bin/i3lock -n";
+        ExecStart = "${pkgs.i3lock}/bin/i3lock";
       };
       wantedBy = [ "default.target" ];
     };
