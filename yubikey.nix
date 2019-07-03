@@ -6,11 +6,22 @@
 			enable = true;
 		};
 	};
+    systemd.services.i3lock = {
+      enable = true;
+      description = "i3lock";
+      environment= { DISPLAY = ":0"; };
+      serviceConfig = {
+        User = "xadet";
+        Type = "forking";
+        ExecStart = "${pkgs.i3lock}/bin/i3lock -n";
+      };
+      wantedBy = [ "default.target" ];
+    };
 	services = {
         udev = {
             packages = with pkgs; [ yubikey-personalization ];
             extraRules = ''
-              ACTION=="remove", ENV{KEY}=="?*", ENV{ID_BUS}=="usb", ENV{ID_MODEL_ID}=="0407", ENV{ID_VENDOR_ID}=="1050", ENV{DISPLAY}=":0.0", ENV{XAUTHORITY}="/home/xadet/.Xauthority", RUN+="${pkgs.bash}/bin/bash -c '${pkgs.i3lock}/bin/i3lock'"
+              ACTION=="remove", ENV{KEY}=="?*", ENV{ID_BUS}=="usb", ENV{ID_MODEL_ID}=="0407", ENV{ID_VENDOR_ID}=="1050", ENV{DISPLAY}=":0.0", ENV{XAUTHORITY}="/home/xadet/.Xauthority", RUN+="${pkgs.bash}/bin/bash -c 'systemctl --no-block start i3lock'"
       '';
         };
 		pcscd = {
