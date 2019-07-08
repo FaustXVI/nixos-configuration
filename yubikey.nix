@@ -36,6 +36,11 @@
           cue = true;
           authFile = ./u2f_keys;
         };
+        services = {
+          sshd = {
+            u2fAuth = false;
+          };
+        };
       };
     };
 	programs = {
