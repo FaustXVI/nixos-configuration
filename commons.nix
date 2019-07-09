@@ -47,4 +47,7 @@
 			package = pkgs.pulseaudioFull;
 		};
 	};
+    boot.kernel.sysctl = {
+      "kernel.sysrq" = 0;
+    };
 }
