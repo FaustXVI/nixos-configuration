@@ -9,6 +9,11 @@
 
   networking.extraHosts = "127.0.0.1 nixos";
 
-  services.openssh.enable = true;
-
+  services.openssh = {
+    enable = true;
+    gatewayPorts = "yes";
+    extraConfig = ''
+StreamLocalBindUnlink yes
+      '';
+  };
 }
