@@ -30,6 +30,7 @@
 	};
     security = {
       pam = {
+        enableSSHAgentAuth = true;
         u2f = {
           enable = true;
           control = "required";
