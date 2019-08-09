@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos"
+  ];
 	environment = {
 		variables = {
 			EDITOR = pkgs.lib.mkOverride 0 "vim";
@@ -34,6 +37,7 @@
 				yubikey-personalization
 				yubikey-personalization-gui
 				yubioath-desktop
+                home-manager
 		];
 	};
 	programs = {
