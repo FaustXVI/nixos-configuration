@@ -18,4 +18,6 @@ clone omf-config omf
 chown --reference=/mnt/home/xadet -R /mnt/home/xadet
 
 mount -o bind,ro /etc/resolv.conf $INSTALL_ROOT/etc/resolv.conf
-nixos-enter --root $INSTALL_ROOT -c 'sudo -u xadet "home-manager switch"'
+nixos-enter --root $INSTALL_ROOT -c 'sudo -u xadet "nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager"'
+nixos-enter --root $INSTALL_ROOT -c 'sudo -u xadet "nix-channel --update"'
+nixos-enter --root $INSTALL_ROOT -c 'sudo -u xadet "nix-shell \'<home-manager>\' -A install"'
