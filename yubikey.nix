@@ -13,7 +13,7 @@
       serviceConfig = {
         User = "xadet";
         Type = "forking";
-        ExecStart = "${pkgs.i3lock}/bin/i3lock -t -i /home/xadet/.background-image";
+        ExecStart = "${pkgs.i3lock}/bin/i3lock -i /home/xadet/.background-image";
       };
       wantedBy = [ "default.target" ];
     };
