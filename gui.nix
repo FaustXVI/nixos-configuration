@@ -22,6 +22,11 @@
 					enable = true;
 				};
 			};
+			desktopManager = {
+				wallpaper = {
+					mode = "center";
+				};
+			};
 			displayManager = {
 				sessionCommands = ''
 					${pkgs.networkmanagerapplet}/bin/nm-applet &
