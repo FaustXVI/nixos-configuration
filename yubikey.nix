@@ -19,13 +19,13 @@
     };
 	services = {
         udev = {
-            packages = with pkgs; [ yubikey-personalization ];
+            packages = with pkgs; [ yubikey-personalization libyubikey yubikey-personalization-gui ];
             extraRules = ''
               ACTION=="remove", ENV{KEY}=="?*", ENV{ID_BUS}=="usb", ENV{ID_MODEL_ID}=="0407", ENV{ID_VENDOR_ID}=="1050", ENV{DISPLAY}=":0.0", ENV{XAUTHORITY}="/home/xadet/.Xauthority", RUN+="${pkgs.bash}/bin/bash -c 'systemctl --no-block start i3lock'"
       '';
         };
 		pcscd = {
-			enable = true;
+			enable = false;
 		};
 	};
     security = {
