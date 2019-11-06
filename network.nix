@@ -2,6 +2,7 @@
 
 {
   networking.networkmanager.enable = true;
+  networking.firewall.allowedTCPPorts = [];
 
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
