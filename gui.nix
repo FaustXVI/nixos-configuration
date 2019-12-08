@@ -6,7 +6,9 @@
 				dmenu
 				i3status
 				i3lock
+                libnotify
 				gnome3.defaultIconTheme
+                dunst
 		];
 	};
 	services = {
