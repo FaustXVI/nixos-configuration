@@ -25,7 +25,7 @@
       '';
         };
 		pcscd = {
-			enable = false;
+			enable = true;
 		};
 	};
     security = {
