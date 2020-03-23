@@ -6,10 +6,10 @@ GITHUB_HTTP="http://github.com/FaustXVI"
 GITHUB_SSH="git@github.com:FaustXVI"
 
 clone() {
-git clone $GITHUB_HTTP/$1 $CONFIG_PATH/$2
-cd $CONFIG_PATH/$2
-git remote set-url origin $GITHUB_SSH/$1.git
-cd -
+    git clone $GITHUB_HTTP/$1 $CONFIG_PATH/$2
+    cd $CONFIG_PATH/$2
+    git remote set-url origin $GITHUB_SSH/$1.git
+    cd -
 }
 
 mkdir -p $CONFIG_PATH
