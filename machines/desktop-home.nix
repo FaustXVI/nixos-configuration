@@ -9,17 +9,12 @@
 		[ # Include the results of the hardware scan.
 			../commons.nix
 			../gaming.nix
+			../luks.nix
 		];
 
 
 	boot = {
 		loader = {
-			grub = {
-				enable = true;
-				useOSProber = true;
-				device = "nodev";
-				efiSupport = true;
-			};
 			systemd-boot = {
 				enable = true;
 			};
