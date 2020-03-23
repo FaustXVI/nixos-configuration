@@ -5,6 +5,12 @@
 
 When installing nixos:
 
+For encryption. Enter the nix-shell:
+
+    nix-shell https://github.com/FaustXVI/nixos-yubikey-luks/archive/master.tar.gz
+
+Use the `encrypt.sh /path/to/partition nixos-cyphered /path/to/boot`
+
 Don't forget you can access the nix installation manual by pressing ALT+F8 
 
 - follow the [nix installation manual](https://nixos.org/nixos/manual/index.html#sec-installation) until *step 10*
