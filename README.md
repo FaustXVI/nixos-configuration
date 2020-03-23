@@ -9,7 +9,7 @@ For encryption. Enter the nix-shell:
 
     nix-shell https://github.com/FaustXVI/nixos-yubikey-luks/archive/master.tar.gz
 
-Use the `encrypt.sh /path/to/partition nixos-cyphered /path/to/boot`
+Use the `encrypt.sh /path/to/partition nixos /path/to/boot`
 
 Don't forget you can access the nix installation manual by pressing ALT+F8 
 
