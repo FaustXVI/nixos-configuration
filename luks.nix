@@ -2,7 +2,7 @@
 
 {
   boot.initrd.kernelModules = ["vfat" "nls_cp437" "nls_iso8859-1" "usbhid" "uas" "usbcore" "usb_storage"];
-  boot.initrd.preDeviceCommands = ''
+  boot.initrd.preLVMCommands = ''
     echo "Testing typing"
     read -r test
     echo $test
