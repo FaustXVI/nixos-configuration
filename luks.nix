@@ -17,6 +17,8 @@
             fi
     echo "salt : $salt\nit : $iterations\nchal: $challenge\nres: $response"
     echo "k: $k_luks"
+     echo -n "$k_luks" | hextorb | cryptsetup luksOpen /dev/nvme1n1p1 nixos-cyphered --key-file=-
+     echo "$?"
     '';
   boot.initrd.luks = {
     # Update if necessary
