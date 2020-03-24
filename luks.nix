@@ -2,10 +2,12 @@
 
 {
   boot.initrd.kernelModules = ["vfat" "nls_cp437" "nls_iso8859-1" "usbhid" "uas" "usbcore" "usb_storage"];
-  boot.initrd.preLVMCommands = ''
-    echo "Testing typing"
-    read -r test
-    echo $test
+  boot.initrd.preFailCommands = ''
+            salt="$(cat /crypt-storage/crypt-storage/default | sed -n 1p | tr -d '\n')"
+        iterations="$(cat /crypt-storage/crypt-storage/default | sed -n 2p | tr -d '\n')"
+        challenge="$(echo -n $salt | openssl-wrap dgst -binary -sha512 | rbtohex)"
+        response="$(ykchalresp -2 -x $challenge 2>/dev/null)"
+    echo "salt : $salt\nit : $iterations\nchal: $challenge\nres: $response"
     '';
   boot.initrd.luks = {
     # Update if necessary
