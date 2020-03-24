@@ -9,12 +9,9 @@
 		[ # Include the results of the hardware scan.
 			./hardware-configuration.nix
 			./keyboard.nix
-			./acpi.nix
 			./network.nix
 			./gui.nix
 			./users.nix
-			./system-packages.nix
-			./virtualisation.nix
             ./yubikey.nix
 		];
 
@@ -27,7 +24,7 @@
 	time.timeZone = "Europe/Paris";
 
 	system = {
-		stateVersion = "19.03";
+		stateVersion = "19.09";
 		autoUpgrade = {
 			enable = true;
 			dates = "13:00";
