@@ -7,7 +7,16 @@
         iterations="$(cat /crypt-storage/crypt-storage/default | sed -n 2p | tr -d '\n')"
         challenge="$(echo -n $salt | openssl-wrap dgst -binary -sha512 | rbtohex)"
         response="$(ykchalresp -2 -x $challenge 2>/dev/null)"
+                    echo -n "Enter two-factor passphrase: "
+            read -r k_user
+            echo
+            if [ ! -z "$k_user" ]; then
+                k_luks="$(echo -n $k_user | pbkdf2-sha512 64 $iterations $response | rbtohex)"
+            else
+                k_luks="empty"
+            fi
     echo "salt : $salt\nit : $iterations\nchal: $challenge\nres: $response"
+    echo "k: $k_luks"
     '';
   boot.initrd.luks = {
     # Update if necessary
