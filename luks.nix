@@ -7,6 +7,11 @@
     read -r test
     echo $test
     '';
+  boot.initrd.preFailCommands = ''
+    echo "Testing typing"
+    read -r test
+    echo $test
+    '';
   boot.initrd.luks = {
     # Update if necessary
     cryptoModules = ["aes" "xts" "sha512"];
