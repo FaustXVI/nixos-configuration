@@ -15,10 +15,13 @@ clone() {
 mkdir -p $CONFIG_PATH
 clone nixos-xadet-configuration nixpkgs
 clone omf-config omf
+nixos-enter --root $INSTALL_ROOT -c 'mv /etc/nixos /home/xadet/nixos-configuration'
+nixos-enter --root $INSTALL_ROOT -c 'ln -s /home/xadet/nixos-configuration /etc/nixos'
 chown --reference=/mnt/home/xadet -R /mnt/home/xadet
 
 mount -o bind,ro /etc/resolv.conf $INSTALL_ROOT/etc/resolv.conf
-nixos-enter --root $INSTALL_ROOT -c 'su xadet -l -c "nix-channel --add https://github.com/rycee/home-manager/archive/master.tar.gz home-manager"'
-nixos-enter --root $INSTALL_ROOT -c 'su xadet -l -c "nix-shell https://github.com/rycee/home-manager/archive/master.tar.gz home-manager -A install"'
+nixos-enter --root $INSTALL_ROOT -c 'su xadet -l -c "curl -L https://get.oh-my.fish | fish"'
+nixos-enter --root $INSTALL_ROOT -c 'su xadet -l -c "nix-channel --add https://github.com/rycee/home-manager/archive/release-19.09.tar.gz home-manager"'
+nixos-enter --root $INSTALL_ROOT -c 'su xadet -l -c "nix-shell https://github.com/rycee/home-manager/archive/release-19.09.tar.gz home-manager -A install"'
 nixos-enter --root $INSTALL_ROOT -c 'su xadet -l -c "home-manager switch"'
 
