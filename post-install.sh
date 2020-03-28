@@ -12,6 +12,10 @@ clone() {
     cd -
 }
 
+cd /etc/nixos
+git remote set-url origin $GITHUB_SSH/nixos-configuration.git
+cd -
+
 mkdir -p $CONFIG_PATH
 clone nixos-xadet-configuration nixpkgs
 clone omf-config omf
