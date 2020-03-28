@@ -34,6 +34,7 @@
       yubikey-personalization
       yubikey-personalization-gui
       yubioath-desktop
+      home-manager
     ];
   };
   fonts = {
