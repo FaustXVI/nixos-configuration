@@ -38,8 +38,7 @@
       videoDrivers = [ "nvidia" ];
       displayManager = {
         sessionCommands = ''
-                    #xrandr --output HDMI-0 --off --output DP-3 --mode 1920x1080 --output DP-4 --mode 2560x1080 --right-of DP-3 --primary &&
-                    #xrandr --output DP-1 --mode 1920x1080 --same-as DP-3 &
+                    xrandr --output HDMI-0 --off --output DP-5 --mode 1920x1080 --output DP-2 --mode 2560x1080 --left-of DP-5 --primary &
                     ${pkgs.pasystray}/bin/pasystray &
         '';
       };
