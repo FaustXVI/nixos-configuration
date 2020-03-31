@@ -22,4 +22,8 @@
 			};
 		};
 	};
+    home-manager.users.xadet = import ./home-manager;
+    home-manager.users.root = { pkgs, ... }: {
+      xdg.configFile."nixpkgs/config.nix".source = ./home-manager/config.nix ;
+    };
 }
