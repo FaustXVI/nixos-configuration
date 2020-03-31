@@ -10,6 +10,7 @@
     ../commons.nix
     ../gaming.nix
     ../luks.nix
+    ../nas.nix
   ];
 
 
@@ -19,6 +20,7 @@
         enable = true;
         device = "nodev";
         useOSProber = true;
+        efiSupport = true;
       };
       systemd-boot = {
         enable = true;
@@ -35,6 +37,7 @@
       drivers = [ pkgs.hplip ];
     };
     xserver = {
+      dpi = 96;
       videoDrivers = [ "nvidia" ];
       displayManager = {
         sessionCommands = ''
