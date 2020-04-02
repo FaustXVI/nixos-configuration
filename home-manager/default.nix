@@ -1,5 +1,8 @@
 { pkgs, ...}:
-with pkgs; {
+with pkgs;
+let
+  teams = import ./teams.nix { inherit stdenv dpkg fetchurl  alsaLib cups fontconfig  libsecret nspr nss wrapGAppsHook xorg  autoPatchelfHook libgnome_keyring3 makeWrapper steam-run; };
+in {
   imports = [
     ./git.nix
     ./bash.nix
@@ -45,6 +48,7 @@ with pkgs; {
     any-nix-shell
     telnet
     busybox
+    teams
   ];
   xdg.configFile."nixpkgs/config.nix".source = ./config.nix ;
   home.file.".nix-channels".source = ./nix-channels;
