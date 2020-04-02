@@ -1,5 +1,5 @@
-{ pkgs, ...}:
-with pkgs;
+{ ...}:
+with import <nixos-unstable> {};
 let
   teams = import ./teams.nix { inherit stdenv dpkg fetchurl  alsaLib cups fontconfig  libsecret nspr nss wrapGAppsHook xorg  autoPatchelfHook libgnome_keyring3 makeWrapper steam-run; };
 in {
