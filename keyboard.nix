@@ -3,6 +3,7 @@
 {
 	services = {
 		xserver =  {
+            autoRepeatDelay = 200;
 			layout = "fr";
 			xkbVariant = "oss";
 			inputClassSections = [
