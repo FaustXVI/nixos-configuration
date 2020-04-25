@@ -24,7 +24,6 @@
         tapButtons = true;
       };
       windowManager = {
-        default = "i3";
         i3 = {
           enable = true;
         };
@@ -35,6 +34,7 @@
         };
       };
       displayManager = {
+        defaultSession = "none+i3";
         sessionCommands = ''
                     ${pkgs.networkmanagerapplet}/bin/nm-applet &
                     ${pkgs.udiskie}/bin/udiskie -a -t -n -F &

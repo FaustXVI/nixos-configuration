@@ -66,5 +66,10 @@
     ssh = {
       startAgent = false;
     };
+    gnupg = {
+      agent = {
+        enable = true;
+      };
+    };
   };
 }

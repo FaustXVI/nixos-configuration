@@ -5,50 +5,53 @@
 { config, pkgs, ... }:
 
 {
-	imports =
-		[ # Include the results of the hardware scan.
-        <home-manager/nixos>
-			./hardware-configuration.nix
-			./keyboard.nix
-			./acpi.nix
-			./network.nix
-			./gui.nix
-			./users.nix
-			./system-packages.nix
-			./virtualisation.nix
-            ./yubikey.nix
-		];
+  imports =
+    [ # Include the results of the hardware scan.
+    <home-manager/nixos>
+    ./hardware-configuration.nix
+    ./keyboard.nix
+    ./acpi.nix
+    ./network.nix
+    ./gui.nix
+    ./users.nix
+    ./system-packages.nix
+    ./virtualisation.nix
+    ./yubikey.nix
+  ];
 
-	i18n = {
-		consoleFont = "Lat2-Terminus16";
-		consoleKeyMap = "fr";
-		defaultLocale = "en_US.UTF-8";
-	};
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+  };
 
-	time.timeZone = "Europe/Paris";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "fr";
+  };
 
-	system = {
-		stateVersion = "19.09";
-		autoUpgrade = {
-			enable = true;
-			dates = "13:00";
-		};
-	};
+  time.timeZone = "Europe/Paris";
 
-	nixpkgs = {
-		config = {
-			allowUnfree = true;
-		};
-	};
-
-	hardware = {
-		pulseaudio = {
-			enable = true;
-			support32Bit = true;
-			package = pkgs.pulseaudioFull;
-		};
-	};
-    boot.kernel.sysctl = {
-      "kernel.sysrq" = 0;
+  system = {
+    stateVersion = "20.03";
+    autoUpgrade = {
+      enable = true;
+      dates = "13:00";
     };
-}
+  };
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+  hardware = {
+    pulseaudio = {
+      enable = true;
+      support32Bit = true;
+      package = pkgs.pulseaudioFull;
+    };
+  };
+  boot.kernel.sysctl = {
+    "kernel.sysrq" = 0;
+    };
+    }
