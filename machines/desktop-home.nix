@@ -11,6 +11,7 @@
     ../gaming.nix
     ../luks.nix
     ../nas.nix
+    ../home-printer.nix
   ];
 
 
@@ -32,10 +33,6 @@
   };
 
   services = {
-    printing = {
-      enable = true;
-      drivers = [ pkgs.hplip ];
-    };
     xserver = {
       dpi = 96;
       videoDrivers = [ "nvidia" ];
@@ -47,9 +44,4 @@
       };
     };
   };
-  hardware.sane = {
-    enable = true;
-    extraBackends = [ pkgs.hplipWithPlugin ];
-  };
-
 }
