@@ -10,7 +10,7 @@
 				isNormalUser = true;
 				uid = 1000;
 				createHome = true;
-				extraGroups = [ "networkmanager" "wheel" "docker" "dialout" "lp"];
+				extraGroups = [ "networkmanager" "wheel" "docker" "dialout" "lp" "scanner"];
 				initialPassword = "changeMe";
                 openssh = {
                   authorizedKeys = {
