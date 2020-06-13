@@ -48,7 +48,7 @@ in {
     any-nix-shell
     telnet
     busybox
-    teams
+#    teams
   ];
   xdg.configFile."nixpkgs/config.nix".source = ./config.nix ;
   home.file.".nix-channels".source = ./nix-channels;
