@@ -1,7 +1,7 @@
 { ...}:
 with import <nixos-unstable> {};
 let
-  teams = import ./teams.nix { inherit stdenv dpkg fetchurl  alsaLib cups fontconfig  libsecret nspr nss wrapGAppsHook xorg  autoPatchelfHook libgnome_keyring3 makeWrapper steam-run; };
+  teams = import ./teams.nix { inherit stdenv dpkg fetchurl  alsaLib cups fontconfig  libsecret nspr nss wrapGAppsHook xorg  autoPatchelfHook libgnome_keyring3 libuuid makeWrapper steam-run; };
 in {
   imports = [
     ./git.nix
@@ -48,7 +48,7 @@ in {
     any-nix-shell
     telnet
     busybox
-#    teams
+    teams
   ];
   xdg.configFile."nixpkgs/config.nix".source = ./config.nix ;
   home.file.".nix-channels".source = ./nix-channels;

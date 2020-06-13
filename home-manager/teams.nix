@@ -1,4 +1,4 @@
-{ stdenv, dpkg, fetchurl , alsaLib, cups, fontconfig , libsecret, nspr, nss, wrapGAppsHook, xorg , autoPatchelfHook, libgnome_keyring3, makeWrapper, steam-run }:
+{ stdenv, dpkg, fetchurl , alsaLib, cups, fontconfig , libsecret, nspr, nss, wrapGAppsHook, xorg , autoPatchelfHook, libgnome_keyring3, libuuid, makeWrapper, steam-run }:
 
 let
 
@@ -32,6 +32,7 @@ cups
 fontconfig
 libsecret
 nss
+libuuid
 xorg.libxkbfile
 xorg.libX11
 xorg.libXtst
