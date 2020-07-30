@@ -27,6 +27,9 @@
                 excludesfile = "~/.gitignore_global";
                 pager = "cat";
               };
+              init = {
+                defaultBranch = "main";
+              };
             };
         };
     };
