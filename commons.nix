@@ -51,7 +51,10 @@
       package = pkgs.pulseaudioFull;
     };
   };
-  boot.kernel.sysctl = {
-    "kernel.sysrq" = 0;
+  boot = {
+    supportedFilesystems = [ "ntfs" ];
+    kernel.sysctl = {
+      "kernel.sysrq" = 0;
     };
-    }
+  };
+}
