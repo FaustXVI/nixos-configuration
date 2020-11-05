@@ -1,7 +1,8 @@
 { ...}:
 with import <nixos-unstable> {};
 let
-  teams = import ./teams.nix { inherit stdenv dpkg fetchurl  alsaLib cups fontconfig  libsecret nspr nss wrapGAppsHook xorg  autoPatchelfHook libgnome_keyring3 libuuid makeWrapper steam-run; };
+  stable = import <nixos> {};
+  teams = with stable; import ./teams.nix { inherit stdenv dpkg fetchurl  alsaLib cups fontconfig  libsecret nspr nss wrapGAppsHook xorg  autoPatchelfHook libgnome_keyring3 libuuid makeWrapper steam-run; };
 in {
   imports = [
     ./git.nix

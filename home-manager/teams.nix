@@ -4,9 +4,8 @@ let
 
   # Please keep the version x.y.0.z and do not update to x.y.76.z because the
   # source of the latter disappears much faster.
-  version = "1.3.00.5153";
+  version = "1.3.00.25560";
 
-  src = ./teams_1.3.00.5153_amd64.deb;
 in stdenv.mkDerivation {
   name = "teamsforlinux-${version}";
 
@@ -14,7 +13,7 @@ in stdenv.mkDerivation {
 
   src = fetchurl {
     url = "https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_${version}_amd64.deb";
-    sha256 = "13c7fmij0gcg6mrjjj2mhs21q7fzdssscwhihzyrmbmj64cd0a69";
+    sha256 = "0kpcd9q6v2qh0dzddykisdbi3djbxj2rl70wchlzrb6bx95hkzmc";
   };
 
   nativeBuildInputs = [
