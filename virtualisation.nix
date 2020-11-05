@@ -11,11 +11,6 @@
       enable = true;
     };
   };
-  environment = {
-    systemPackages = with pkgs; [
-      virtualbox
-    ];
-  };
 
   users.extraGroups.vboxusers.members = [ "xadet" ];
 }
