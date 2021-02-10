@@ -1,11 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-	hardware = {
-		u2f = {
-			enable = true;
-		};
-	};
     systemd.services.i3lock = {
       enable = true;
       description = "i3lock";

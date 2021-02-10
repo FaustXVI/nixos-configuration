@@ -1,30 +1,34 @@
-{ stdenv, dpkg, fetchurl , alsaLib, cups, fontconfig , libsecret, nspr, nss, wrapGAppsHook, xorg , autoPatchelfHook, libgnome_keyring3, libuuid, makeWrapper, steam-run }:
+{
+#  stdenv, dpkg, fetchurl , alsaLib, cups, fontconfig , libsecret, nspr, nss, xorg , autoPatchelfHook, libgnome_keyring3, libuuid, makeWrapper, steam-run, cairo, gtk3 
+}:
 
 let
 
   # Please keep the version x.y.0.z and do not update to x.y.76.z because the
   # source of the latter disappears much faster.
-  version = "1.3.00.25560";
+  version = "1.3.00.30857";
+  old = import (fetchTarball https://github.com/NixOS/nixpkgs/archive/20.03.tar.gz) {};
 
-in stdenv.mkDerivation {
+in old.stdenv.mkDerivation {
   name = "teamsforlinux-${version}";
 
   system = "x86_64-linux";
 
-  src = fetchurl {
+  src = old.fetchurl {
     url = "https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_${version}_amd64.deb";
-    sha256 = "0kpcd9q6v2qh0dzddykisdbi3djbxj2rl70wchlzrb6bx95hkzmc";
+    sha256 = "06r48h1fr2si2g5ng8hsnbcmr70iapnafj21v5bzrzzrigzb2n2h";
   };
 
-  nativeBuildInputs = [
+  nativeBuildInputs = with old; [
     autoPatchelfHook
-    wrapGAppsHook
     makeWrapper
     steam-run
     dpkg
   ];
 
-  buildInputs = [ 
+  buildInputs = with old; [ 
+cairo
+gtk3
 libgnome_keyring3
 alsaLib
 cups
@@ -47,10 +51,10 @@ xorg.libxcb
       mv usr/* .
       rm -r usr
       mv $out/bin/teams $out/bin/.teams-unwrapped
-      makeWrapper ${steam-run}/bin/steam-run $out/bin/teams --add-flags $out/bin/.teams-unwrapped
+      makeWrapper ${old.steam-run}/bin/steam-run $out/bin/teams --add-flags $out/bin/.teams-unwrapped
   '';
 
-  meta = with stdenv.lib; {
+  meta = with old.stdenv.lib; {
     description = "Linux client for teams";
     license = licenses.unfree;
     platforms = [ "x86_64-linux" ];

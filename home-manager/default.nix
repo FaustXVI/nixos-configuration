@@ -2,7 +2,9 @@
 with import <nixos-unstable> {};
 let
   stable = import <nixos> {};
-  teams = with stable; import ./teams.nix { inherit stdenv dpkg fetchurl  alsaLib cups fontconfig  libsecret nspr nss wrapGAppsHook xorg  autoPatchelfHook libgnome_keyring3 libuuid makeWrapper steam-run; };
+  teams = with stable; import ./teams.nix { 
+ #   inherit stdenv dpkg fetchurl  alsaLib cups fontconfig  libsecret nspr nss xorg  autoPatchelfHook libgnome_keyring3 libuuid makeWrapper steam-run cairo gtk3; 
+  };
 in {
   imports = [
     ./git.nix

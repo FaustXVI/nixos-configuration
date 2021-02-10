@@ -51,7 +51,6 @@
       proggyfonts
     ];
     fontconfig = {
-      penultimate.enable = false;
       defaultFonts = {
         monospace = [ "Fira Code" ];
         sansSerif = [ "Noto Sans" ];
@@ -71,6 +70,12 @@
         enable = true;
         enableSSHSupport = true;
       };
+    };
+  };
+  services = {
+    clamav = {
+      daemon. enable = true;
+      updater.enable = true;
     };
   };
 }
