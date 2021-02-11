@@ -5,41 +5,47 @@
 { config, pkgs, ... }:
 
 {
-	imports =
-		[ # Include the results of the hardware scan.
-			../commons.nix
-			../gaming.nix
-			../luks.nix
-		];
+  imports =
+    [ # Include the results of the hardware scan.
+    ../commons.nix
+    ../gaming.nix
+    ../luks.nix
+  ];
 
-	boot = {
-		loader = {
-			systemd-boot = {
-				enable = true;
-			};
-			efi = {
-				canTouchEfiVariables = true; 
-			};
-		};
-	};
-	services = {
-		printing = {
-			enable = true;
-			drivers = [ pkgs.gutenprint ];
-		};
-		xserver = {
-			dpi = 150;
-			displayManager = {
-				sessionCommands = ''
-					${pkgs.pasystray}/bin/pasystray &
-'';
-			};
-		};
-	};
-	hardware = {
-		bluetooth = {
-			enable = true;
-		};
-	};
+  boot = {
+    loader = {
+      grub = {
+        enable = true;
+        device = "nodev";
+        useOSProber = true;
+        efiSupport = true;
+      };
+      systemd-boot = {
+        enable = true;
+      };
+      efi = {
+        canTouchEfiVariables = true; 
+      };
+    };
+  };
+  services = {
+    printing = {
+      enable = true;
+      drivers = [ pkgs.gutenprint ];
+    };
+    xserver = {
+      dpi = 150;
+      displayManager = {
+        sessionCommands = ''
+                    ${pkgs.pasystray}/bin/pasystray &
+        '';
+      };
+    };
+  };
+  hardware = {
+    bluetooth = {
+      enable = true;
+    };
+  };
 
 }
