@@ -3,8 +3,6 @@
 {
   boot.initrd.kernelModules = ["vfat" "nls_cp437" "nls_iso8859-1" "usbhid" "uas" "usbcore" "usb_storage"];
   boot.initrd.luks = {
-    # Update if necessary
-    cryptoModules = ["aes" "xts" "sha512"];
 
     # Support for Yubikey PBA
     yubikeySupport = true;
