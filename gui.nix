@@ -30,7 +30,7 @@
       };
       desktopManager = {
         wallpaper = {
-          mode = "center";
+          mode = "max";
         };
       };
       displayManager = {
