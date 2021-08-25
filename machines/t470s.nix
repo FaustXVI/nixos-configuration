@@ -47,5 +47,5 @@
       enable = true;
     };
   };
-
+    programs.light.enable = true;
 }

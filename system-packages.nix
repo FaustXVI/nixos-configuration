@@ -29,13 +29,13 @@
       pasystray
       autorandr
       powerline-fonts
-      xorg.xbacklight
       yubico-piv-tool
       yubikey-personalization
       yubikey-personalization-gui
       yubioath-desktop
       home-manager
       htop
+#      acpilight
     ];
   };
   fonts = {
