@@ -51,16 +51,13 @@ in {
     any-nix-shell
     telnet
     busybox
-#    teams
+    teams
   ];
   xdg.configFile."nixpkgs/config.nix".source = ./config.nix ;
   home.file.".nix-channels".source = ./nix-channels;
   programs = {
     fish = {
       enable = true;
-      promptInit =''
-        any-nix-shell fish --info-right | source
-      '';
     };
     home-manager = {
       enable = true;
