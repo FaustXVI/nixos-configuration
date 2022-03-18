@@ -49,7 +49,7 @@ in {
     nix-prefetch-git
     nix-prefetch-scripts
     any-nix-shell
-    telnet
+    inetutils
     busybox
     teams
   ];

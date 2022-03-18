@@ -50,6 +50,7 @@
       mplus-outline-fonts
       dina-font
       proggyfonts
+      virt-manager
     ];
     fontconfig = {
       defaultFonts = {
@@ -71,6 +72,9 @@
         enable = true;
         enableSSHSupport = true;
       };
+    };
+    dconf = {
+      enable = true;
     };
   };
   services = {
