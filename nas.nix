@@ -2,11 +2,8 @@
 
 let
   password = import ./nas-password.nix;
-in
-{
-
-  fileSystems."/home/xadet/nas" = {
-    device = "//192.168.1.99/homes/xadet";
+  nasFolder = nasPath: {
+    device = "//192.168.1.99"+nasPath;
     fsType = "cifs";
     options = [
       "uid=1000"
@@ -20,5 +17,11 @@ in
       "x-systemd.mount-timeout=5s"
     ];
   };
+in
+{
 
+  fileSystems."/home/xadet/nas" = nasFolder "/homes/xadet";
+  fileSystems."/home/xadet/nas/Pictures" = nasFolder "/Pics";
+  fileSystems."/home/xadet/nas/SharedWithMerve" = nasFolder "/PartageMeXa";
+  fileSystems."/home/xadet/nas/SharedWithDetant" = nasFolder "/PartageDetant";
 }
