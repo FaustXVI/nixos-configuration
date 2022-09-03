@@ -33,6 +33,14 @@ KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:
 					Option          "XkbLayout"     "fr"
 					Option          "XkbVariant"    "bepo"
 					''
+					''
+					Identifier      "Ergodox EZ"
+					MatchIsKeyboard "on"
+					MatchProduct    "ErgoDox EZ"
+					Driver          "evdev"
+					Option          "XkbLayout"     "fr"
+					Option          "XkbVariant"    "bepo"
+					''
 			];
 		};
 	};
