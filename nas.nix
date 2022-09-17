@@ -21,7 +21,7 @@ in
 {
 
   fileSystems."/home/xadet/nas" = nasFolder "/homes/xadet";
-  fileSystems."/home/xadet/nas/Pictures" = nasFolder "/Pics";
+  fileSystems."/home/xadet/nas/SharedPictures" = nasFolder "/Pics";
   fileSystems."/home/xadet/nas/SharedWithMerve" = nasFolder "/PartageMeXa";
   fileSystems."/home/xadet/nas/SharedWithDetant" = nasFolder "/PartageDetant";
 }
