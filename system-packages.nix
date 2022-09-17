@@ -35,7 +35,6 @@
       yubioath-desktop
       home-manager
       htop
-#      acpilight
     ];
   };
   fonts = {
@@ -47,7 +46,6 @@
       liberation_ttf
       fira-code
       fira-code-symbols
-      mplus-outline-fonts
       dina-font
       proggyfonts
       virt-manager

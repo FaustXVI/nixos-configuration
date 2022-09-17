@@ -7,7 +7,7 @@
       i3status
       i3lock
       libnotify
-      gnome3.defaultIconTheme
+      gnome3.adwaita-icon-theme
       dunst
     ];
     shellInit = ''
