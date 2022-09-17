@@ -50,7 +50,6 @@ in {
     nix-prefetch-scripts
     any-nix-shell
     inetutils
-    busybox
     teams
   ];
   xdg.configFile."nixpkgs/config.nix".source = ./config.nix ;
