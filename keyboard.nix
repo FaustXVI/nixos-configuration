@@ -3,6 +3,7 @@
 {
 	services = {
         udev = {
+          # extra rules so that I can flash my ergodox
             extraRules = ''
 ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", ENV{ID_MM_DEVICE_IGNORE}="1"
 ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", ENV{MTP_NO_PROBE}="1"

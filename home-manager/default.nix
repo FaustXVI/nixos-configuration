@@ -1,11 +1,6 @@
 { ...}:
 with import <nixos-unstable> {};
-let
-  stable = import <nixos> {};
-  teams = with stable; import ./teams.nix { 
- #   inherit stdenv dpkg fetchurl  alsaLib cups fontconfig  libsecret nspr nss xorg  autoPatchelfHook libgnome_keyring3 libuuid makeWrapper steam-run cairo gtk3; 
-  };
-in {
+{
   imports = [
     ./git.nix
     ./bash.nix
@@ -50,7 +45,6 @@ in {
     nix-prefetch-scripts
     any-nix-shell
     inetutils
-    teams
   ];
   xdg.configFile."nixpkgs/config.nix".source = ./config.nix ;
   home.file.".nix-channels".source = ./nix-channels;

@@ -33,7 +33,6 @@
       displayManager = {
         sessionCommands = ''
                     xrandr --output DP-3 --mode 1920x1080 --output HDMI-0 --mode 2560x1080 --left-of DP-3 --primary &
-                    ${pkgs.pasystray}/bin/pasystray &
         '';
       };
     };

@@ -29,11 +29,6 @@
     };
     xserver = {
       dpi = 150;
-      displayManager = {
-        sessionCommands = ''
-                    ${pkgs.pasystray}/bin/pasystray &
-        '';
-      };
     };
   };
   hardware = {

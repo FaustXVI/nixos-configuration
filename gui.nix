@@ -38,6 +38,7 @@
         sessionCommands = ''
                     ${pkgs.networkmanagerapplet}/bin/nm-applet &
                     ${pkgs.udiskie}/bin/udiskie -a -t -n -F &
+                    ${pkgs.pasystray}/bin/pasystray &
         '';
         lightdm = {
           enable = true;
