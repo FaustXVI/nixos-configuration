@@ -45,6 +45,7 @@ with import <nixos-unstable> {};
     nix-prefetch-scripts
     any-nix-shell
     inetutils
+    oh-my-fish
   ];
   xdg.configFile."nixpkgs/config.nix".source = ./config.nix ;
   home.file.".nix-channels".source = ./nix-channels;
