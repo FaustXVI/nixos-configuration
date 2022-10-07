@@ -44,7 +44,7 @@ with import <nixos-unstable> {};
     nix-prefetch-git
     nix-prefetch-scripts
     any-nix-shell
-    inetutils
+    #inetutils
     oh-my-fish
   ];
   xdg.configFile."nixpkgs/config.nix".source = ./config.nix ;
