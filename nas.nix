@@ -6,8 +6,7 @@ let
     device = "//192.168.1.99"+nasPath;
     fsType = "cifs";
     options = [
-      "uid=1000"
-      "gid=100"
+      "uid=${toString config.users.users.xadet.uid}"
       "user=xadet"
       "password=${password}"
       "x-systemd.automount"
@@ -21,7 +20,7 @@ in
 {
 
   fileSystems."/home/xadet/nas" = nasFolder "/homes/xadet";
-  fileSystems."/home/xadet/nasSharedPictures" = nasFolder "/Pics";
-  fileSystems."/home/xadet/nasSharedWithMerve" = nasFolder "/PartageMeXa";
-  fileSystems."/home/xadet/nasSharedWithDetant" = nasFolder "/PartageDetant";
+  fileSystems."/home/xadet/nas/SharedPictures" = nasFolder "/Pics";
+  fileSystems."/home/xadet/nas/SharedWithMerve" = nasFolder "/PartageMeXa";
+  fileSystems."/home/xadet/nas/SharedWithDetant" = nasFolder "/PartageDetant";
 }
