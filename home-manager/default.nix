@@ -40,11 +40,12 @@ with import <nixos-unstable> {};
     fzf
     gitAndTools.hub
     autojump
-    yubioath-desktop
+    #yubioath-desktop
     nix-prefetch-git
     nix-prefetch-scripts
     any-nix-shell
     #inetutils
+    usbutils
     oh-my-fish
   ];
   xdg.configFile."nixpkgs/config.nix".source = ./config.nix ;
