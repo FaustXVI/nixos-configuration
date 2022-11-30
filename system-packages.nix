@@ -35,6 +35,7 @@
       yubioath-desktop
       home-manager
       htop
+      arandr
     ];
   };
   fonts = {
