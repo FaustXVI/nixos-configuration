@@ -19,7 +19,6 @@
       aspell
       aspellDicts.en
       aspellDicts.fr
-      direnv
       terminator
       zip
       unzip
@@ -36,6 +35,7 @@
       home-manager
       htop
       arandr
+      autorandr
     ];
   };
   fonts = {

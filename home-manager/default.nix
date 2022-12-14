@@ -47,12 +47,20 @@ with import <nixos-unstable> {};
     #inetutils
     usbutils
     oh-my-fish
+    bat
+    exa
   ];
   xdg.configFile."nixpkgs/config.nix".source = ./config.nix ;
-  home.file.".nix-channels".source = ./nix-channels;
+  #home.file.".nix-channels".source = ./nix-channels;
   programs = {
     fish = {
       enable = true;
+    };
+    direnv = {
+      enable = true;
+      nix-direnv = {
+        enable = true;
+      };
     };
     home-manager = {
       enable = true;
