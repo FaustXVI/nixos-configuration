@@ -52,6 +52,7 @@ with import <nixos-unstable> {};
   ];
   xdg.configFile."nixpkgs/config.nix".source = ./config.nix ;
   #home.file.".nix-channels".source = ./nix-channels;
+  home.stateVersion = "22.05";
   programs = {
     fish = {
       enable = true;

@@ -26,5 +26,6 @@
     home-manager.users.root = { pkgs, ... }: {
       xdg.configFile."nixpkgs/config.nix".source = ./home-manager/config.nix ;
       home.file.".nix-channels".source = ./home-manager/nix-channels-root ;
+      home.stateVersion="22.05";
     };
 }
