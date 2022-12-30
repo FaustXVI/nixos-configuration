@@ -31,11 +31,12 @@
       yubico-piv-tool
       yubikey-personalization
       yubikey-personalization-gui
-      yubioath-desktop
+#      yubioath-desktop
       home-manager
       htop
       arandr
       autorandr
+      virt-manager
     ];
   };
   fonts = {
