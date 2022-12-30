@@ -21,7 +21,17 @@
         canTouchEfiVariables = true; 
       };
     };
-    kernelParams = [ "acpi_osi=linux" "module_blacklist=hid_sensor_hub" ];
+    kernelParams = [ 
+      "acpi_osi=linux" 
+      "module_blacklist=hid_sensor_hub"
+      "i915.request_timeout_ms=60000"
+      "intel_iommu=off"
+      "i915.reset=0"
+      "i915.enable_psr=0"
+      "i915.enable_fbc=0"
+      "i915.disable_power_well=1"
+      "i915.enable_guc=0"
+    ];
   };
   services = {
     xserver = {
