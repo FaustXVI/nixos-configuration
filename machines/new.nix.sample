@@ -27,4 +27,5 @@
       drivers = [ pkgs.gutenprint ];
     };
   };
+  system.stateVersion = "22.11";
 }

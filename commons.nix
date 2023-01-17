@@ -31,16 +31,9 @@
   time.timeZone = "Europe/Paris";
 
   system = {
-    stateVersion = "21.05";
     autoUpgrade = {
       enable = true;
       dates = "13:00";
-    };
-  };
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
     };
   };
 
