@@ -44,6 +44,17 @@
     };
   };
 
+  nix = {
+    gc = {
+      dates = "weekly";
+      enable = true;
+    };
+    optimise = {
+      dates = "weekly";
+      automatic = true;
+    };
+  };
+
   hardware = {
     pulseaudio = {
       enable = true;
