@@ -2,3 +2,4 @@ hardware-configuration.nix
 configuration.nix
 result
 nas-password.nix
+keys/*.txt

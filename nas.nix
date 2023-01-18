@@ -1,14 +1,12 @@
 { config, lib, pkgs, ... }:
 
 let
-  password = import ./nas-password.nix;
   nasFolder = nasPath: {
     device = "//192.168.1.99"+nasPath;
     fsType = "cifs";
     options = [
       "uid=${toString config.users.users.xadet.uid}"
-      "user=xadet"
-      "password=${password}"
+      "credentials=${config.sops.secrets.nas.path}"
       "x-systemd.automount"
       "noauto"
       "x-systemd.idle-timeout=60"
@@ -18,6 +16,10 @@ let
   };
 in
 {
+  sops.secrets.nas = {
+    format = "binary";
+    sopsFile = ./secrets/nas-credentials.txt;
+  };
 
   fileSystems."/home/xadet/nas" = nasFolder "/homes/xadet";
   fileSystems."/home/xadet/nas/SharedPictures" = nasFolder "/Pics";

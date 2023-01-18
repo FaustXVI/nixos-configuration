@@ -4,10 +4,14 @@
 
 { config, pkgs, ... }:
 
-{
+let
+  sops-nix-version = "master";
+  sops-nix-url = "https://github.com/Mic92/sops-nix/archive/${sops-nix-version}.tar.gz";
+in {
   imports =
     [ # Include the results of the hardware scan.
     <home-manager/nixos>
+    ./sops.nix
     ./hardware-configuration.nix
     ./keyboard.nix
     ./acpi.nix
@@ -40,10 +44,10 @@
   nix = {
     gc = {
       dates = "weekly";
-      enable = true;
+      automatic = true;
     };
     optimise = {
-      dates = "weekly";
+      dates = [ "weekly" ];
       automatic = true;
     };
   };
