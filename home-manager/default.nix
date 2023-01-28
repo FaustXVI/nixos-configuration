@@ -40,7 +40,7 @@ with import <nixos-unstable> {};
     fzf
     gitAndTools.hub
     autojump
-    #yubioath-desktop
+    yubioath-flutter
     nix-prefetch-git
     nix-prefetch-scripts
     any-nix-shell
