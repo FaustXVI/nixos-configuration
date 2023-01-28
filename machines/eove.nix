@@ -4,9 +4,13 @@
   imports =
     [
     ../hardware-configuration.nix
-    ../modules/hardware/laptop.nix
-    ../modules/work.nix
+    ../modules
   ];
+
+  xadetComputer = {
+    type = "laptop";
+    purposes = [ "work" ];
+  };
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;

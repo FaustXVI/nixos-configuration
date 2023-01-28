@@ -1,9 +1,13 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
-{
-  hardware = {
-    bluetooth = {
-      enable = true;
+let
+  mylib = import ../utils.nix { inherit lib config; };
+in {
+  config = mylib.mkIfComputerIs "laptop" {
+    hardware = {
+      bluetooth = {
+        enable = true;
+      };
     };
   };
 }

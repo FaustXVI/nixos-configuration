@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
 
-{
-  programs.light.enable = true;
+let
+  mylib = import ../utils.nix { inherit lib config; };
+in {
+  config = mylib.mkIfComputerIs "laptop" {
+    programs.light.enable = true;
+  };
 }

@@ -4,9 +4,12 @@
   imports =
     [
       ../hardware-configuration.nix
-      ../modules/hardware/laptop.nix
-      ../modules/home.nix
+      ../modules
     ];
 
+    xadetComputer = {
+      type = "laptop";
+      purposes = [ "home" ];
+    };
     system.stateVersion = "21.05";
   }

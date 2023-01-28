@@ -14,15 +14,17 @@ let
       "x-systemd.mount-timeout=5s"
     ];
   };
-in
-{
-  sops.secrets.nas = {
-    format = "binary";
-    sopsFile = ./secrets/nas-credentials.txt;
-  };
+  mylib = import ../utils.nix { inherit lib config; };
+in {
+  config = mylib.mkIfComputerHasPurpose "home" {
+    sops.secrets.nas = {
+      format = "binary";
+      sopsFile = ./secrets/nas-credentials.txt;
+    };
 
-  fileSystems."/home/xadet/nas" = nasFolder "/homes/xadet";
-  fileSystems."/home/xadet/nas/SharedPictures" = nasFolder "/Pics";
-  fileSystems."/home/xadet/nas/SharedWithMerve" = nasFolder "/PartageMeXa";
-  fileSystems."/home/xadet/nas/SharedWithDetant" = nasFolder "/PartageDetant";
+    fileSystems."/home/xadet/nas" = nasFolder "/homes/xadet";
+    fileSystems."/home/xadet/nas/SharedPictures" = nasFolder "/Pics";
+    fileSystems."/home/xadet/nas/SharedWithMerve" = nasFolder "/PartageMeXa";
+    fileSystems."/home/xadet/nas/SharedWithDetant" = nasFolder "/PartageDetant";
+  };
 }

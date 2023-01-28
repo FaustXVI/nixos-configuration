@@ -31,7 +31,6 @@
       yubico-piv-tool
       yubikey-personalization
       yubikey-personalization-gui
-#      yubioath-desktop
       home-manager
       htop
       arandr

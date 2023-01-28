@@ -4,9 +4,12 @@
   imports =
     [
       ../hardware-configuration.nix
-      ../modules/hardware/laptop.nix
-      ../modules/work.nix
+      ../modules
     ];
+  xadetComputer = {
+    type = "desktop";
+    purposes = [ "home" "gaming" "youtube" ];
+  };
 
     services = {
       xserver = {
