@@ -10,6 +10,7 @@
   xadetComputer = {
     type = "laptop";
     purposes = [ "work" ];
+#    yubikeyAutolock = false;
   };
 
   boot = {

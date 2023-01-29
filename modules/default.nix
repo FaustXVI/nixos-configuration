@@ -16,6 +16,10 @@ in {
       purposes = mkOption {
         type = with types; listOf (enum mylib.purposesTypes);
       };
+      yubikeyAutolock = mkOption {
+        type = with types; bool;
+        default = true;
+      };
     };
   };
 }

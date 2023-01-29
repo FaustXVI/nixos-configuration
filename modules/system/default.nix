@@ -1,16 +1,17 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-    <home-manager/nixos>
+    [
     ./sops.nix
-    ./system-packages.nix
     ./users.nix
     ./nix.nix
+    ./fonts.nix
+    ./shells.nix
+    ./crypto.nix
+    ./anti-virus.nix
+    ./programming.nix
+    ./spelling.nix
+    ./cli-tools.nix
   ];
 }

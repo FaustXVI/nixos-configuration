@@ -9,6 +9,10 @@
       libnotify
       gnome3.adwaita-icon-theme
       dunst
+      arandr
+      autorandr
+      udiskie
+      pasystray
     ];
     shellInit = ''
       gpg-connect-agent /bye

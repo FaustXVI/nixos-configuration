@@ -3,16 +3,15 @@
 {
   environment = {
     systemPackages = with pkgs; [
-      virt-manager
+      terminator
     ];
   };
-  virtualisation = {
-    docker = {
-      enable = true;
+  programs = {
+    bash = {
+      enableCompletion = true;
     };
-    libvirtd = {
+    fish = {
       enable = true;
     };
   };
-
 }
