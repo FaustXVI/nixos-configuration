@@ -8,10 +8,6 @@ in {
     spotify
     vlc
     feh
-    simplescreenrecorder
-    gimp
-    rawtherapee
-    shotwell
     dia
   ];
 }

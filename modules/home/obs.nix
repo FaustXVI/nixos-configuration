@@ -16,6 +16,7 @@ in {
         gphoto2
         ffmpeg
         v4l-utils
+        simplescreenrecorder
       ];
     };
 
