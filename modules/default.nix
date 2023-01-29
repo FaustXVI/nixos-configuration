@@ -1,8 +1,6 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, mylib, ... }:
 with lib;
-let
-  mylib = import ./utils.nix { inherit lib config; };
-in {
+{
   imports = [ 
     ./system
     ./hardware
