@@ -7,10 +7,11 @@
     ../modules
   ];
 
+
   xadetComputer = {
     type = "laptop";
     purposes = [ "work" ];
-#    yubikeyAutolock = false;
+    yubikeyAutolock = false;
   };
 
   boot = {

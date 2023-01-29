@@ -7,6 +7,7 @@ in {
     ./system
     ./hardware
     ./home
+    ./work
   ];
   options = {
     xadetComputer = {

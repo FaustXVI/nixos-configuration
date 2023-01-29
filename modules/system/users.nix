@@ -13,7 +13,7 @@
       ];
     };
     users = {
-      mutableUsers = true; # when updating, set this to true, rebuild, then go back to false and rebuild and re change the password via passwd
+      mutableUsers = true;
       extraUsers = {
         xadet = {
           shell = pkgs.fish;
@@ -32,10 +32,6 @@
               };
             };
           };
-          home-manager.users.xadet = import ./home-manager;
-          home-manager.users.root = { pkgs, ... }: {
-            xdg.configFile."nixpkgs/config.nix".source = ./home-manager/config.nix ;
-            home.file.".nix-channels".source = ./home-manager/nix-channels-root ;
-            home.stateVersion="22.05";
-          };
+          home-manager.users.xadet = import ./home-manager {inherit config pkgs; };
+          home-manager.users.root = import ./home-manager/root.nix {inherit config; };
         }

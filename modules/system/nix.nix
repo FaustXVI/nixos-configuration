@@ -12,6 +12,7 @@
     };
   };
 
+  nixpkgs.config.allowUnfree = true;
   nix = {
     gc = {
       dates = "weekly";

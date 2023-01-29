@@ -6,6 +6,7 @@
       aspell
       aspellDicts.en
       aspellDicts.fr
+      libreoffice
     ];
   };
 }

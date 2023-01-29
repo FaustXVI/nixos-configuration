@@ -18,6 +18,7 @@
       dina-font
       proggyfonts
       virt-manager
+      powerline-fonts
     ];
     fontconfig = {
       defaultFonts = {
