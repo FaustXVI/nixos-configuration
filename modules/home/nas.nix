@@ -1,4 +1,4 @@
-{ config, lib, pkgs, mylib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   nasFolder = nasPath: {
@@ -14,6 +14,7 @@ let
       "x-systemd.mount-timeout=5s"
     ];
   };
+  mylib = import ../utils.nix { inherit lib config; };
 in {
   config = mylib.mkIfComputerHasPurpose "home" {
     sops.secrets.nas = {

@@ -1,7 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
-  _module.args.mylib = import ../modules/utils.nix { inherit lib config; };
   imports =
     [
     ../hardware-configuration.nix
