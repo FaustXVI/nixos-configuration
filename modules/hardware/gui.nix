@@ -22,11 +22,6 @@
   services = {
     xserver = {
       enable = true;
-      #synaptics = {
-      #  enable = true;
-      #  twoFingerScroll = true;
-      #  tapButtons = true;
-      #};
       windowManager = {
         i3 = {
           enable = true;

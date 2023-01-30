@@ -12,9 +12,4 @@
       htop
     ];
   };
-#  programs = {
-#    dconf = {
-#      enable = true;
-#    };
-#  };
 }
