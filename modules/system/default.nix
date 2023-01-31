@@ -13,5 +13,6 @@
     ./programming.nix
     ./spelling.nix
     ./cli-tools.nix
+    ./editor.nix
   ];
 }
