@@ -1,6 +1,9 @@
-{ pkgs, ...}:
-{
-  imports = [
+{ pkgs, ...}@args:
+let
+  mylib = import ../../../utils.nix args;
+in {
+  imports = mylib.importsWith args
+  [
     ./bash.nix
     ./fish.nix
     ./terminator.nix

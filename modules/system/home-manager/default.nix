@@ -1,6 +1,8 @@
-{ pkgs, ...}:
-{
-  imports = [
+{ lib, config, ...}@args:
+let
+  mylib = import ../../utils.nix args;
+in {
+  imports = mylib.importsWith args [
     ./dev
     ./shells
     ./gui
@@ -8,11 +10,13 @@
     ./crypto
     ./nix
     ./medias.nix
-  ];
-  home.stateVersion = "22.05";
-  programs = {
-    home-manager = {
-      enable = true;
+    ];
+  config = {
+    home.stateVersion = "22.05";
+    programs = {
+      home-manager = {
+        enable = true;
+      };
     };
   };
 }

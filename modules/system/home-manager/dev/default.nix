@@ -1,12 +1,15 @@
-{ ...}:
+{lib, config, ...}@args:
 let
-  pkgs = import <nixos-unstable> {};
-in {
-  imports = [
+  unstable = import <nixos-unstable> {};
+  mylib = import ../../../utils.nix args;
+in { 
+  imports = mylib.importsWith args [
     ./git.nix
   ];
-  home.packages = with pkgs; [
-    jetbrains.idea-ultimate
-    docker-compose
-  ];
+  config = {
+    home.packages = with unstable; [
+      jetbrains.idea-ultimate
+      docker-compose
+    ];
+  };
 }

@@ -1,3 +1,4 @@
+{...}:
 {
     home.file.".background-image".source = ./background-image;
     xdg.configFile."i3/config".text = ''
