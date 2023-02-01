@@ -1,8 +1,8 @@
-{unstable,...}:
+{pkgs,unstable,...}:
 {
-  home.packages = with unstable; [
-    firefox
-    google-chrome
+  home.packages = with pkgs; [
+    unstable.firefox
+    unstable.google-chrome
     spotify
     vlc
     feh
