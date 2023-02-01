@@ -13,6 +13,7 @@
       autorandr
       udiskie
       pasystray
+      gnome.nautilus
     ];
     shellInit = ''
       gpg-connect-agent /bye
