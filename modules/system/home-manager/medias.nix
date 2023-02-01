@@ -1,8 +1,6 @@
-{...}:
-let
-  pkgs = import <nixos-unstable> {};
-in {
-  home.packages = with pkgs; [
+{unstable,...}:
+{
+  home.packages = with unstable; [
     firefox
     google-chrome
     spotify

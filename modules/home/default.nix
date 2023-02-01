@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ mylib, ... }@args:
 
 {
-  imports =
+  imports = mylib.importsWith args
     [
       ./gaming.nix  
       ./home-printer.nix  

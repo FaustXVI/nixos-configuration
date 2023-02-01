@@ -1,8 +1,5 @@
-{lib, config, ...}@args:
-let
-  unstable = import <nixos-unstable> {};
-  mylib = import ../../../utils.nix args;
-in { 
+{mylib,unstable, ...}@args:
+{ 
   imports = mylib.importsWith args [
     ./git.nix
   ];

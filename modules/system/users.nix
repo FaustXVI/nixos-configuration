@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }@args:
 
 {
 
@@ -32,6 +32,6 @@
               };
             };
           };
-          home-manager.users.xadet = import ./home-manager {inherit config pkgs lib; };
-          home-manager.users.root = import ./home-manager/root.nix {inherit config; };
+          home-manager.users.xadet = import ./home-manager args;
+          home-manager.users.root = import ./home-manager/root.nix args;
         }

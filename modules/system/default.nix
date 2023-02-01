@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ mylib, ... }@args:
 
 {
-  imports =
+  imports = mylib.importsWith args
     [
     ./sops.nix
     ./users.nix

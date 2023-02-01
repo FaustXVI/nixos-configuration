@@ -1,8 +1,6 @@
-{ lib, config, pkgs, ... }:
+{ mylib, pkgs, ... }:
 
-let
-  mylib = import ../utils.nix { inherit lib config; };
-in {
+{
   config = mylib.mkIfComputerHasPurpose "gaming" {
     environment = {
       systemPackages = with pkgs; [

@@ -1,8 +1,6 @@
-{lib, config, ...}@args:
+{lib, config,mylib, ...}@args:
 
-let
-  mylib = import ../../../utils.nix args;
-in {
+{
     programs = {
         git = {
             enable = true;

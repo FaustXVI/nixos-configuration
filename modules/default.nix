@@ -1,9 +1,9 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, ... }@args:
 with lib;
 let
-  mylib = import ./utils.nix { inherit lib config; };
+  mylib = import ./utils.nix args;
 in {
-  imports = [ 
+  imports = mylib.importsWith (args // {inherit mylib;}) [ 
     ./system
     ./hardware
     ./home

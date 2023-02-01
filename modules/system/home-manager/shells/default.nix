@@ -1,7 +1,5 @@
-{ pkgs, ...}@args:
-let
-  mylib = import ../../../utils.nix args;
-in {
+{ pkgs,mylib, ...}@args:
+{
   imports = mylib.importsWith args
   [
     ./bash.nix

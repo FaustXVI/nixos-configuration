@@ -1,8 +1,8 @@
-{ lib, config, ...}@args:
+{mylib,...}@args:
 let
-  mylib = import ../../utils.nix args;
+  unstable = import <nixos-unstable> {};
 in {
-  imports = mylib.importsWith args [
+  imports = mylib.importsWith (args // {inherit unstable;}) [
     ./dev
     ./shells
     ./gui
