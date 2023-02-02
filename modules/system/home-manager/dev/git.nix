@@ -4,8 +4,8 @@
     programs = {
         git = {
             enable = true;
-            userName = if mylib.computerHasPurpose "work" then "Xavier Detant" else "FaustXVI";
-            userEmail = if mylib.computerHasPurpose "work" then "xavier.detant@eove.fr" else "xavier.detant@gmail.com";
+            userName = lib.mkDefault "FaustXVI";
+            userEmail = lib.mkDefault "xavier.detant@gmail.com";
             signing = {
                 signByDefault = true;
                 key = "98AC52834768871837C022716E983A14A5221EE1";
