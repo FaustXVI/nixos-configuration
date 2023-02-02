@@ -7,7 +7,8 @@
   };
 
   console = {
-    useXkbConfig = true;
+    font = "Lat2-Terminus16";
+    keyMap = "fr";
   };
 
   time.timeZone = "Europe/Paris";
