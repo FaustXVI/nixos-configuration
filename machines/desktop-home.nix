@@ -8,7 +8,7 @@
     ];
   xadetComputer = {
     type = "desktop";
-    purposes = [ "home" "gaming" "youtube" ];
+    purposes = [ "home" "gaming" "youtube" "photo" ];
   };
 
     services = {
