@@ -12,7 +12,7 @@ let
   contains = e: c: lib.any (x: x == e) c;
 in rec {
   computerTypes = [ "laptop" "desktop" ];
-  purposesTypes = [ "home" "work" "gaming" "youtube" "photo" ];
+  purposesTypes = with builtins; attrNames (filterAttr (name: type: type == "directory") (readDir ./purposes));
 
   filterAttr = f: attrs: 
   let
