@@ -3,3 +3,4 @@ configuration.nix
 result
 nas-password.nix
 keys/*.txt
+.direnv
