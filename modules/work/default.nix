@@ -1,8 +1,5 @@
 { mylib, ... }@args:
 
 {
-  imports = mylib.importsWith args
-    [
-      ./chat.nix  
-    ];
-  }
+  imports = mylib.importAllWith args ./.;
+}

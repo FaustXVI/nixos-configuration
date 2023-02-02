@@ -1,11 +1,6 @@
 { pkgs,mylib, ...}@args:
 {
-  imports = mylib.importsWith args
-  [
-    ./bash.nix
-    ./fish.nix
-    ./terminator.nix
-  ];
+  imports = mylib.importAllWith args ./.;
   programs = {
     direnv = {
       enable = true;

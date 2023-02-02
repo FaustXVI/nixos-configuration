@@ -32,6 +32,6 @@
               };
             };
           };
-          home-manager.users.xadet = import ./home-manager args;
+          home-manager.users.xadet = import ./home-manager/xadet.nix args;
           home-manager.users.root = import ./home-manager/root.nix args;
         }

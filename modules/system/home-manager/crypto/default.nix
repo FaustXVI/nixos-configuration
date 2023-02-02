@@ -1,7 +1,5 @@
 {mylib,...}@args:
 
 {
-  imports = mylib.importsWith args [
-    ./gpg.nix
-  ];
+  imports = mylib.importAllWith args ./.;
 }

@@ -1,8 +1,6 @@
 {mylib,unstable, ...}@args:
 { 
-  imports = mylib.importsWith args [
-    ./git.nix
-  ];
+  imports = mylib.importAllWith args (builtins.toString ./.);
   config = {
     home.packages = with unstable; [
       jetbrains.idea-ultimate

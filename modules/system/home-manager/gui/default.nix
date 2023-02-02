@@ -1,7 +1,5 @@
 {mylib,...}@args:
 
 {
-  imports = mylib.importsWith args [
-    ./i3.nix
-  ];
+  imports = mylib.importAllWith args ./.;
 }

@@ -3,12 +3,7 @@ with lib;
 let
   mylib = import ./utils.nix args;
 in {
-  imports = mylib.importsWith (args // {inherit mylib;}) [ 
-    ./system
-    ./hardware
-    ./home
-    ./work
-  ];
+  imports = mylib.importAllFilteredWith (n: n != "utils.nix") (args // {inherit mylib;}) ./.;
   options = {
     xadetComputer = {
       type = mkOption {

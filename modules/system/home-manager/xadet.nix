@@ -2,15 +2,7 @@
 let
   unstable = import <nixos-unstable> {};
 in {
-  imports = mylib.importsWith (args // {inherit unstable;}) [
-    ./dev
-    ./shells
-    ./gui
-    ./editors
-    ./crypto
-    ./nix
-    ./medias.nix
-    ];
+  imports = mylib.importAllFilteredWith (n: n != "root.nix" && n != "xadet.nix") (args // {inherit unstable;}) ./.;
   config = {
     home.stateVersion = "22.05";
     programs = {
