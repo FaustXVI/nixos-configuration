@@ -5,7 +5,7 @@
         git = {
             enable = true;
             userName = lib.mkDefault "FaustXVI";
-            userEmail = lib.mkDefault "xavier.detant@gmail.com";
+            userEmail = lib.mkDefault "1016863+FaustXVI@users.noreply.github.com";
             signing = {
                 signByDefault = true;
                 key = "98AC52834768871837C022716E983A14A5221EE1";

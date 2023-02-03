@@ -5,7 +5,6 @@
     home-manager.users.xadet = {
       programs.git = {
             userName = "Xavier Detant";
-            userEmail = "xavier.detant@eove.fr";
       };
     };
   };
