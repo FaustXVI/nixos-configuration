@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   environment = {
     variables = {
-      EDITOR = pkgs.lib.mkOverride 0 "vim";
+      EDITOR = lib.mkForce "vim";
     };
     systemPackages = with pkgs; [
       vim
