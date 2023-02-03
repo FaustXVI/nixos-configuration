@@ -10,12 +10,16 @@
 
   nixpkgs.config.allowUnfree = true;
   nix = {
+    extraOptions = ''
+      min-free = ${toString (10 * 1024 * 1024 * 1024)}
+    '';
     gc = {
-      dates = "weekly";
+      dates = "13:10";
       automatic = true;
+      options = "--delete-older-than 90d";
     };
     optimise = {
-      dates = [ "weekly" ];
+      dates = [ "13:20" ];
       automatic = true;
     };
   };
