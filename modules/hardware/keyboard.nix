@@ -4,7 +4,7 @@
   console = {
 #    useXkbConfig = true; # TODO check if usable at boot time
     font = "Lat2-Terminus16";
-    keyMap = "fr";
+    keyMap = "fr";  # TODO use fr-bepo on desktop
   };
   services = {
     udev = {
@@ -19,7 +19,7 @@
         xserver =  {
           autoRepeatDelay = 200;
           layout = "fr";
-          xkbVariant = "oss";
+          xkbVariant = "oss"; # TODO conflict with console value ?
           inputClassSections = [
             ''
             Identifier      "TypeMatrix"
