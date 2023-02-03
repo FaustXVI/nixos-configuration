@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  console = {
+    font = "Lat2-Terminus16";
+  };
   environment = {
     systemPackages = with pkgs; [
       powerline-fonts

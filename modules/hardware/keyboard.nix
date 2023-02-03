@@ -3,7 +3,6 @@
 {
   console = {
 #    useXkbConfig = true; # TODO check if usable at boot time
-    font = "Lat2-Terminus16";
     keyMap = "fr";  # TODO use fr-bepo on desktop
   };
   services = {
