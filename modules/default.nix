@@ -1,9 +1,10 @@
 { lib, pkgs, config, ... }@args:
 with lib;
 let
+  unstable = import <nixos-unstable> {};
   mylib = import ./utils.nix args;
 in {
-  imports = mylib.importAllFilteredWith (n: n != "utils.nix") (args // {inherit mylib;}) ./.;
+  imports = mylib.importAllFilteredWith (n: n != "utils.nix") (args // {inherit mylib unstable;}) ./.;
   options = {
     xadetComputer = {
       type = mkOption {

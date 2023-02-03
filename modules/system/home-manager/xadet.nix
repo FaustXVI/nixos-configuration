@@ -1,8 +1,6 @@
 {mylib,...}@args:
-let
-  unstable = import <nixos-unstable> {};
-in {
-  imports = mylib.importAllFilteredWith (n: n != "root.nix" && n != "xadet.nix") (args // {inherit unstable;}) ./.;
+{
+  imports = mylib.importAllFilteredWith (n: n != "root.nix" && n != "xadet.nix") args ./.;
   config = {
     home.stateVersion = "22.05";
     programs = {
