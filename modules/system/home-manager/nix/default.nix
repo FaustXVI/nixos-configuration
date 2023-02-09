@@ -1,6 +1,11 @@
 { pkgs, ...}:
 {
   xdg.configFile."nixpkgs/config.nix".source = ./config.nix ;
+  programs = {
+    nix-index = {
+      enable = true;
+    };
+  };
   home.packages = with pkgs; [
     nix-index
     patchelf

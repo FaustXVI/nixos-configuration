@@ -18,6 +18,9 @@
                 branch-clean = "!git branch --merged | grep -v main | xargs -n 1 git branch -d";
                 next = "!git checkout `git rev-list HEAD..demo-end | tail -1`";
               };
+            delta = {
+                enable = true;
+              };
             extraConfig = {
               push = {
                 default = "current";
@@ -27,7 +30,6 @@
               };
               core = {
                 excludesfile = "~/.gitignore_global";
-                pager = "cat";
               };
               init = {
                 defaultBranch = "main";

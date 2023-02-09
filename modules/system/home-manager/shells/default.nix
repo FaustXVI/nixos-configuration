@@ -8,15 +8,55 @@
         enable = true;
       };
     };
+    autojump = {
+      enable = true;
+    };
+    bat = {
+      enable = true;
+      #extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batwatch prettybat batwatch batpipe ];
+    };
+    broot = {
+      enable = true;
+    };
+    btop = {
+      enable = true;
+    };
+    exa = {
+      enable = true;
+      enableAliases = true;
+    };
+    fzf = {
+      enable = true;
+    };
+    navi = {
+      enable = true;
+    };
+    readline = {
+      enable = true;
+    };
+    taskwarrior = {
+      enable = true;
+    };
+    watson = {
+      enable = true;
+    };
+    zoxide = {
+      enable = true;
+    };
   };
-  home.packages = with pkgs; [
-    rlwrap
-    thefuck
-    peco
-    fzf
-    srm
-    autojump
-    bat
-    exa
-  ];
+
+  home = { 
+    shellAliases = {
+      cat = "bat";
+      top = "btop";
+      diff = "delta";
+      ".." = "cd ..";
+      "..." = "cd ../..";
+    };
+    packages = with pkgs; [
+      thefuck
+      peco
+      srm
+    ];
+  };
 }
