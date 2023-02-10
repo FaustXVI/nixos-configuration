@@ -6,9 +6,6 @@
       git
       unstable.jetbrains.idea-ultimate
       docker-compose
-      gnumake
-      automake
-      gcc
     ];
   };
 }
