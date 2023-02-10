@@ -32,6 +32,12 @@
               };
             };
           };
-          home-manager.users.xadet = import ./home-manager/xadet.nix args;
-          home-manager.users.root = import ./home-manager/root.nix args;
+          home-manager= {
+            backupFileExtension = "nixBackup";
+            useGlobalPkgs = true;
+            users = {
+              xadet = import ./home-manager/xadet.nix args;
+              root = import ./home-manager/root.nix args;
+            };
+          };
         }
