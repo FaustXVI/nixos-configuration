@@ -38,6 +38,7 @@ in {
         "perso" = {
           settings = {
             "signon.rememberSignons" = false;
+            "browser.startup.page" = 3;
           };
           search = {
             force = true;

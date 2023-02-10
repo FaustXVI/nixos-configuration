@@ -9,6 +9,7 @@
           isDefault = true;
           settings = {
             "signon.rememberSignons" = false;
+            "browser.startup.page" = 3;
           };
         };
       };
