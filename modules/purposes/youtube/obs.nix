@@ -8,10 +8,19 @@ let
   '';
 in {
   config = mylib.mkIfComputerHasPurpose "youtube" {
+    home-manager.users.xadet = {
+      programs = {
+        obs-studio = {
+          enable = true;
+          plugins = with pkgs.obs-studio-plugins; [
+            obs-gstreamer
+            obs-source-record
+          ];
+        };
+      };
+    };
     environment = {
       systemPackages = with pkgs; [
-        obs-studio
-        obs-studio-plugins.obs-gstreamer
         gphoto2
         ffmpeg
         v4l-utils
