@@ -2,7 +2,7 @@
 
 let
   videoNumber="9";
-  plugScript = builtins.writeScript "plugCamera" ''
+  plugScript = pkgs.writeShellScriptBin "plugCamera" ''
     #!/usr/bin/env bash
     gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video${videoNumber}
   '';
@@ -16,6 +16,7 @@ in {
         ffmpeg
         v4l-utils
         simplescreenrecorder
+        plugScript
       ];
     };
 
