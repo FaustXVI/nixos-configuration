@@ -21,6 +21,7 @@ in {
     };
     environment = {
       systemPackages = with pkgs; [
+        openshot-qt
         gphoto2
         ffmpeg
         v4l-utils
