@@ -14,7 +14,7 @@ in {
       config = {
         inherit modifier;
         assigns = {
-           "1" = [{ class = "^Firefox$"; }];
+           "1" = [{ class = "(?i)firefox"; }];
         };
         fonts = {
             names = [ "pango:monospace" ];
