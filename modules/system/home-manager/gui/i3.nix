@@ -22,7 +22,7 @@ in {
         };
         keybindings = {
                 # start a terminal
-                "${modifier}+Return" = "exec i3-sensible-terminal";
+                "${modifier}+Return" = "exec kitty";
                 # kill focused window
                 "${modifier}+Shift+c" = "kill";
                 # start dmenu
