@@ -26,7 +26,7 @@
                 default = "current";
               };
               pull = {
-                rebase = true;
+                rebase = "merges";
               };
               core = {
                 excludesfile = "~/.gitignore_global";
