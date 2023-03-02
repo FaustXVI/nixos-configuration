@@ -50,8 +50,9 @@
       cat = "bat";
       top = "btop";
       diff = "delta";
-      ".." = "cd ..";
-      "..." = "cd ../..";
+      ".." = "z ..";
+      "..." = "z ../..";
+      cd = "z";
     };
     packages = with pkgs; [
       thefuck
