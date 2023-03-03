@@ -1,8 +1,8 @@
-{ mylib, pkgs, ...}:
+{ mylib, pkgs, config, ...}:
 {
   config = mylib.mkIfComputerHasPurpose "work"{
-    home-manager.users.xadet = {...}:{
-      programs.firefox.profiles = rec {
+    home-manager.users.xadet = {...}: rec {
+      programs.firefox.profiles = {
         "perso".isDefault = false;
         "eove" = {
           id = 1;
@@ -11,7 +11,7 @@
             "signon.rememberSignons" = false;
             "browser.startup.page" = 3;
           };
-          search = "perso".search;
+          search = config.home-manager.users.xadet.programs.firefox.profiles."perso".search;
         };
       };
     };
