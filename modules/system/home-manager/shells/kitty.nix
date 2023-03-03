@@ -1,10 +1,5 @@
 {...}:
-let
-  font = "Fira Code Light 16";
-  black = "#111111";
-  white = "#eeeeee";
-  cursor = "#999999";
-in {
+{
   programs.kitty = {
     enable = true;
     font = {
@@ -13,6 +8,10 @@ in {
     };
     settings = {
       enable_audio_bell = false;
+      scrollback_lines = 20000;
     };
+    extraConfig = ''
+      include themes.conf
+    '';
   };
 }
