@@ -27,6 +27,7 @@ in {
         v4l-utils
         simplescreenrecorder
         plugScript
+        inkscape
       ];
     };
 
