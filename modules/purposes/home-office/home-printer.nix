@@ -1,7 +1,7 @@
 { mylib, pkgs, ... }:
 
 {
-  config = mylib.mkIfComputerHasPurpose "home" {
+  config = mylib.mkIfComputerHasPurpose "home-office" {
     services = {
       printing = {
         enable = true;

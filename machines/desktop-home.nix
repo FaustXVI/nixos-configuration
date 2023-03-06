@@ -18,7 +18,7 @@ in {
     ];
     xadetComputer = {
       type = "desktop";
-      purposes = [ "home" "gaming" "youtube" "photo" ];
+      purposes = [ "home" "gaming" "youtube" "photo" "home-office" ];
     };
 
     services = {
