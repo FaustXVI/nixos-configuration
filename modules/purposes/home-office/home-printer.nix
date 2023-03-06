@@ -3,6 +3,10 @@
 {
   config = mylib.mkIfComputerHasPurpose "home-office" {
     services = {
+      avahi = {
+        enable = true;
+        nssmdns = true;
+      };
       printing = {
         enable = true;
         drivers = [ pkgs.hplip ];
