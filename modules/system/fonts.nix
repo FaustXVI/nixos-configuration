@@ -12,6 +12,7 @@
   fonts = {
     enableDefaultFonts = true;
     fonts = with pkgs; [
+      nerdfonts
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
