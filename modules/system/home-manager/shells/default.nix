@@ -23,7 +23,6 @@
     };
     exa = {
       enable = true;
-      enableAliases = true;
     };
     fzf = {
       enable = true;
@@ -46,13 +45,17 @@
   };
 
   home = { 
-    shellAliases = {
+    shellAliases = let exa = "exa --git --header --icons"; in {
       cat = "bat";
       top = "btop";
       diff = "delta";
       ".." = "z ..";
       "..." = "z ../..";
       cd = "z";
+      ls = "${exa}";
+      ll = "${exa} -l";
+      la = "${exa} -a";
+      lla = "${exa} -la";
     };
     packages = with pkgs; [
       thefuck
