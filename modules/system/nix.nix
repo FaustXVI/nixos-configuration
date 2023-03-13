@@ -10,6 +10,9 @@
 
   nixpkgs.config.allowUnfree = true;
   nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+    };
     extraOptions = ''
       min-free = ${toString (10 * 1024 * 1024 * 1024)}
     '';
