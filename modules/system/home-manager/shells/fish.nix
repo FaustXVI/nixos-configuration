@@ -34,15 +34,15 @@
           };
         }
 
-        {
-          name = "bangbang";
-          src = fetchFromGitHub {
-            owner = "oh-my-fish";
-            repo = "theme-bobthefish";
-            rev = "2dcfcab653ae69ae95ab57217fe64c97ae05d8de";
-            sha256 = "jBbm0wTNZ7jSoGFxRkTz96QHpc5ViAw9RGsRBkCQEIU=";
-          };
-        }
+        #{
+        #  name = "bobthefish";
+        #  src = fetchFromGitHub {
+        #    owner = "oh-my-fish";
+        #    repo = "theme-bobthefish";
+        #    rev = "2dcfcab653ae69ae95ab57217fe64c97ae05d8de";
+        #    sha256 = "jBbm0wTNZ7jSoGFxRkTz96QHpc5ViAw9RGsRBkCQEIU=";
+        #  };
+        #}
       ];
     };
   };
