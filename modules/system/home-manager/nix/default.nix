@@ -13,5 +13,6 @@
     nix-prefetch-git
     nix-prefetch-scripts
     any-nix-shell
+    nixpkgs-fmt
   ];
 }
