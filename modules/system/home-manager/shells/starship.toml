@@ -93,6 +93,7 @@ format = '[ $symbol( $version) ]($style)'
 
 [jobs]
 style = 'bg:context'
+format = '[ $symbol( $number) ]($style)'
 
 [julia]
 symbol = " "

@@ -3,7 +3,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "Fira Code Retina Nerd Font Complete Mono";
+      name = "Fira Code";
       size = 18;
     };
     settings = {
