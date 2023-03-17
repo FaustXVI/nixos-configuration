@@ -44,7 +44,7 @@ truncation_symbol = "…/"
 read_only = " "
 
 [c]
-symbol = " "
+symbol = ""
 style = "bg:context"
 format = '[ $symbol ($version) ]($style)'
 
@@ -54,17 +54,17 @@ format = '[ $symbol ($version) ]($style)'
 style = "bg:context"
 
 [docker_context]
-symbol = " "
+symbol = ""
 style = "bg:context"
 format = '[ $symbol $context ]($style) $path'
 
 [elixir]
-symbol = " "
+symbol = ""
 style = "bg:context"
 format = '[ $symbol ($version) ]($style)'
 
 [elm]
-symbol = " "
+symbol = ""
 style = "bg:context"
 format = '[ $symbol ($version) ]($style)'
 
@@ -77,17 +77,17 @@ format = '[ $symbol $branch]($style)'
 format = '[( $all_status$ahead_behind) ]($style bg:git)'
 
 [golang]
-symbol = " "
+symbol = ""
 style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
 [haskell]
-symbol = " "
+symbol = ""
 style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
 [java]
-symbol = " "
+symbol = ""
 style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
@@ -96,7 +96,7 @@ style = 'bg:context'
 format = '[ $symbol( $number) ]($style)'
 
 [julia]
-symbol = " "
+symbol = ""
 style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
@@ -106,7 +106,7 @@ style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
 [nim]
-symbol = " "
+symbol = ""
 style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
@@ -116,37 +116,37 @@ style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
 [scala]
-symbol = " "
+symbol = ""
 style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
 [aws]
-symbol = "  "
+symbol = " "
 
 [buf]
-symbol = " "
+symbol = ""
 
 [conda]
-symbol = " "
+symbol = ""
 
 [dart]
-symbol = " "
+symbol = ""
 style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
 [hg_branch]
-symbol = " "
+symbol = ""
 
 [lua]
-symbol = " "
+symbol = ""
 style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
 [memory_usage]
-symbol = " "
+symbol = ""
 
 [meson]
-symbol = "喝 "
+symbol = "喝"
 
 [nix_shell]
 symbol = ""
@@ -155,25 +155,25 @@ style = "bg:context"
 impure_msg = ''
 
 [package]
-symbol = " "
+symbol = ""
 
 [python]
-symbol = " "
+symbol = ""
 style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
 [rlang]
-symbol = "ﳒ "
+symbol = "ﳒ"
 style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
 [ruby]
-symbol = " "
+symbol = ""
 style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
 [spack]
-symbol = "🅢 "
+symbol = "🅢"
 
 [cmd_duration]
 format = '[](fg:alert bg:context)[神$duration]($style)[](fg:alert bg:context)'
