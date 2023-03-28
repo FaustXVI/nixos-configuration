@@ -130,6 +130,11 @@ symbol = ""
 style = 'bg:context'
 format = '[ $symbol( $version) ]($style)'
 
+[package]
+symbol = ""
+style = 'bg:context'
+format = '[ $symbol( $version) ]($style)'
+
 [aws]
 symbol = " "
 
@@ -163,9 +168,6 @@ symbol = ""
 format = '[$symbol( $state )]($style)'
 style = "bg:context"
 impure_msg = ''
-
-[package]
-symbol = ""
 
 [python]
 symbol = ""
