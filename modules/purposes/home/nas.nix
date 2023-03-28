@@ -21,9 +21,9 @@ in {
       sopsFile = ./secrets/nas-credentials.txt;
     };
 
-    fileSystems."/home/xadet/nas" = nasFolder "/homes/xadet";
-    fileSystems."/home/xadet/nasSharedPictures" = nasFolder "/Pics";
-    fileSystems."/home/xadet/nasSharedWithMerve" = nasFolder "/PartageMeXa";
-    fileSystems."/home/xadet/nasSharedWithDetant" = nasFolder "/PartageDetant";
+    fileSystems."/home/xadet/nas/documents" = nasFolder "/homes/xadet";
+    fileSystems."/home/xadet/nas/shared/pictures" = nasFolder "/Pics";
+    fileSystems."/home/xadet/nas/shared/withMerve" = nasFolder "/PartageMeXa";
+    fileSystems."/home/xadet/nas/shared/withDetant" = nasFolder "/PartageDetant";
   };
 }
