@@ -9,6 +9,8 @@ ${custom.watson}\
 $directory\
 [](fg:path bg:git)\
 $git_branch\
+$git_commit\
+$git_state\
 $git_status\
 $character
 """
@@ -33,7 +35,7 @@ alert = '#FC6262'
 # Disable the blank line at the start of the prompt
 #add_newline = false
 [character]
-success_symbol = '[](fg:git)'
+success_symbol = '[ ](bg:git)[](fg:git)'
 error_symbol = '[](bg:git fg:alert)[  ](bg:alert)[](fg:alert)'
 
 [directory]
@@ -74,7 +76,15 @@ style = "bg:git"
 format = '[ $symbol $branch]($style)'
 
 [git_status]
-format = '[( $all_status$ahead_behind) ]($style bg:git)'
+format = '[( $all_status$ahead_behind)]($style bg:git)'
+
+[git_commit]
+style = "bg:git"
+format = '[  $hash$tag]($style)'
+
+[git_state]
+style = "bg:git"
+format = '[ \($state( $progress_current/$progress_total)\)]($style)'
 
 [golang]
 symbol = ""
