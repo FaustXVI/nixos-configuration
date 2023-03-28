@@ -10,6 +10,7 @@
       zip
       unzip
       htop
+      psmisc
     ];
   };
 }
