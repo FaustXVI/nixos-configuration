@@ -9,6 +9,7 @@ LOADED_DIR=$(pwd)
 
 declare -A directory_mapping=(
 ["eo-vent-tools"]="EO-TOOLKIT" 
+["flashing"]="EO-TOOLKIT" 
 ["eo150-cpu-software"]="EO-150M" 
 )
 
