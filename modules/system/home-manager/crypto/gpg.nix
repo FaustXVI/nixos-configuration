@@ -1,7 +1,11 @@
 { pkgs, ...}:
 with pkgs; {
-  home.file.".gnupg" = {
-    recursive = true;
-    source = ./gpg-config;
+  programs = {
+    gpg = {
+      enable = true;
+      publicKeys = [
+        { source = ./xadet-public.key; }
+      ];
+    };
   };
 }
