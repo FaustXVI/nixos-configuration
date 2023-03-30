@@ -2,7 +2,7 @@
 
 let
   nasFolder = nasPath: {
-    device = "//192.168.1.99"+nasPath;
+    device = "//192.168.1.99" + nasPath;
     fsType = "cifs";
     options = [
       "uid=${toString config.users.users.xadet.uid}"
@@ -14,7 +14,8 @@ let
       "x-systemd.mount-timeout=5s"
     ];
   };
-in {
+in
+{
   config = mylib.mkIfComputerHasPurpose "home" {
     sops.secrets.nas = {
       format = "binary";

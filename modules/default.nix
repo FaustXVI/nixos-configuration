@@ -1,10 +1,11 @@
 { lib, pkgs, config, ... }@args:
 with lib;
 let
-  unstable = import <nixos-unstable> {};
+  unstable = import <nixos-unstable> { };
   mylib = import ./utils.nix args;
-in {
-  imports = mylib.importAllFilteredWith (n: n != "utils.nix") (args // {inherit mylib unstable;}) ./.;
+in
+{
+  imports = mylib.importAllFilteredWith (n: n != "utils.nix") (args // { inherit mylib unstable; }) ./.;
   config = {
     nixpkgs.config.packageOverrides = pkgs: {
       nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {

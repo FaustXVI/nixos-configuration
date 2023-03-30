@@ -32,9 +32,9 @@
       displayManager = {
         defaultSession = "none+i3";
         sessionCommands = ''
-                    ${pkgs.networkmanagerapplet}/bin/nm-applet &
-                    ${pkgs.udiskie}/bin/udiskie -a -t -n -F &
-                    ${pkgs.pasystray}/bin/pasystray &
+          ${pkgs.networkmanagerapplet}/bin/nm-applet &
+          ${pkgs.udiskie}/bin/udiskie -a -t -n -F &
+          ${pkgs.pasystray}/bin/pasystray &
         '';
         lightdm = {
           enable = true;

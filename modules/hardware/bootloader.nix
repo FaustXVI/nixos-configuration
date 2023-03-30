@@ -7,7 +7,7 @@
         enable = true;
       };
       efi = {
-        canTouchEfiVariables = true; 
+        canTouchEfiVariables = true;
       };
     };
   };

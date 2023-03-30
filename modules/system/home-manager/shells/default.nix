@@ -1,4 +1,4 @@
-{ pkgs,mylib, ...}@args:
+{ pkgs, mylib, ... }@args:
 {
   imports = mylib.importAllWith args ./.;
   programs = {
@@ -41,7 +41,7 @@
     };
   };
 
-  home = { 
+  home = {
     shellAliases = let exa = "exa --git --header --icons"; in {
       cat = "bat";
       top = "btop";

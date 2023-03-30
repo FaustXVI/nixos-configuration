@@ -11,14 +11,14 @@
       ../modules
     ];
 
-    xadetComputer = {
-      type = "laptop";
-      purposes = [ "home" ];
+  xadetComputer = {
+    type = "laptop";
+    purposes = [ "home" ];
+  };
+  services = {
+    xserver = {
+      dpi = 150;
     };
-    services = {
-      xserver = {
-        dpi = 150;
-      };
-    };
-    system.stateVersion = "21.05";
-  }
+  };
+  system.stateVersion = "21.05";
+}

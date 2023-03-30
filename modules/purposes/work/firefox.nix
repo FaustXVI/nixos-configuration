@@ -1,7 +1,7 @@
-{ mylib, pkgs, config, ...}:
+{ mylib, pkgs, config, ... }:
 {
-  config = mylib.mkIfComputerHasPurpose "work"{
-    home-manager.users.xadet = {...}: rec {
+  config = mylib.mkIfComputerHasPurpose "work" {
+    home-manager.users.xadet = { ... }: rec {
       programs.firefox.profiles = {
         "perso".isDefault = false;
         "eove" = {

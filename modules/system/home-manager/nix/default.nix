@@ -1,6 +1,6 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 {
-  xdg.configFile."nixpkgs/config.nix".source = ./config.nix ;
+  xdg.configFile."nixpkgs/config.nix".source = ./config.nix;
   programs = {
     nix-index = {
       enable = true;

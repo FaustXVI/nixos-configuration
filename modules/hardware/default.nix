@@ -1,4 +1,4 @@
-{mylib, ... }@args:
+{ mylib, ... }@args:
 
 {
   imports = mylib.importAllWith args ./.;

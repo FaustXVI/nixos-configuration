@@ -1,8 +1,14 @@
-{pkgs, unstable, lib, ...}@args:
+{ pkgs, unstable, lib, ... }@args:
 let
-    buildFirefoxXpiAddon = lib.makeOverridable ({ stdenv ? pkgs.stdenv
-    , fetchurl ? pkgs.fetchurl, pname, version, addonId, url, sha256, ...
-    }:
+  buildFirefoxXpiAddon = lib.makeOverridable ({ stdenv ? pkgs.stdenv
+                                              , fetchurl ? pkgs.fetchurl
+                                              , pname
+                                              , version
+                                              , addonId
+                                              , url
+                                              , sha256
+                                              , ...
+                                              }:
     stdenv.mkDerivation {
       name = "${pname}-${version}";
 
@@ -17,14 +23,15 @@ let
         install -v -m644 "$src" "$dst/${addonId}.xpi"
       '';
     });
-    adBlockPlus = buildFirefoxXpiAddon rec {
-      pname = "adBlock plus";
-      version = "3.16.1";
-      addonId = "{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4039476/adblock_plus-3.16.1.xpi";
-      sha256 = "IQ8IjTv1kWjoO1zyJYYBnZn4DCb+pfzuwAZemMtT8nI=";
-    };
-in {
+  adBlockPlus = buildFirefoxXpiAddon rec {
+    pname = "adBlock plus";
+    version = "3.16.1";
+    addonId = "{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4039476/adblock_plus-3.16.1.xpi";
+    sha256 = "IQ8IjTv1kWjoO1zyJYYBnZn4DCb+pfzuwAZemMtT8nI=";
+  };
+in
+{
   programs = {
     firefox = {
       enable = true;

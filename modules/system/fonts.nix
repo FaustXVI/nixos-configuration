@@ -28,7 +28,7 @@
       defaultFonts = {
         monospace = [ "Fira Code" ];
         sansSerif = [ "Noto Sans" ];
-        serif     = [ "Noto Serif" ];
+        serif = [ "Noto Serif" ];
       };
     };
   };

@@ -1,4 +1,4 @@
-{mylib,unstable, ...}@args:
-{ 
+{ mylib, unstable, ... }@args:
+{
   imports = mylib.importAllWith args (builtins.toString ./.);
 }
