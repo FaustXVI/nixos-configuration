@@ -36,17 +36,6 @@
     taskwarrior = {
       enable = true;
     };
-    watson = {
-      enable = true;
-      settings = {
-        options = {
-          stop_on_start = true;
-          stop_on_restart = true;
-          log_current = true;
-          report_current = true;
-        };
-      };
-    };
     zoxide = {
       enable = true;
     };
