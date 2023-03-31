@@ -1,0 +1,9 @@
+*.swp
+*~
+nohup.out
+.direnv
+.idea
+*.iml
+.~*
+.personal-hook
+result

@@ -1,6 +1,9 @@
 { lib, config, mylib, ... }@args:
 
-{
+let
+  ignore_global_file = ".gitignore_global";
+in {
+  home.file."${ignore_global_file}".source = ./gitignore_global;
   programs = {
     git = {
       enable = true;
@@ -29,7 +32,7 @@
           rebase = "merges";
         };
         core = {
-          excludesfile = "~/.gitignore_global";
+          excludesfile = "~/${ignore_global_file}";
         };
         init = {
           defaultBranch = "main";
