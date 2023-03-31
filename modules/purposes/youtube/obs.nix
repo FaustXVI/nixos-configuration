@@ -29,6 +29,7 @@ in
         simplescreenrecorder
         plugScript
         inkscape
+        kdenlive
       ];
     };
 
