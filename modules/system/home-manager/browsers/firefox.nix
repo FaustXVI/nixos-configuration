@@ -47,6 +47,7 @@ in
             "signon.rememberSignons" = false;
             "browser.startup.page" = 3;
             "media.eme.enabled" = true;
+            "extensions.formautofill.creditCards.enabled" = false;
           };
           search = {
             force = true;
