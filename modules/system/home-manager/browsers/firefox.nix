@@ -46,6 +46,7 @@ in
           settings = {
             "signon.rememberSignons" = false;
             "browser.startup.page" = 3;
+            "media.eme.enabled" = true;
           };
           search = {
             force = true;
