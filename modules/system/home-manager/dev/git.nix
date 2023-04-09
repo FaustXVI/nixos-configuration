@@ -2,7 +2,8 @@
 
 let
   ignore_global_file = ".gitignore_global";
-in {
+in
+{
   home.file."${ignore_global_file}".source = ./gitignore_global;
   programs = {
     git = {
