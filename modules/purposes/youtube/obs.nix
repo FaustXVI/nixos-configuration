@@ -29,7 +29,7 @@ in
         simplescreenrecorder
         plugScript
         inkscape
-        kdenlive
+        (kdenlive.overrideAttrs (attrs: { qtWrapperArgs = attrs.qtWrapperArgs or [] ++ [ "--prefix GST_PLUGIN_PATH : ${ lib.makeSearchPath "lib/gstreamer-1.0" (with gst_all_1; [  gstreamer gst-libav gst-plugins-base gst-plugins-good gst-plugins-bad ]) }" "--set LADSPA_PATH ${ladspaPlugins}/lib/ladspa:${rnnoise-plugin}/lib/ladspa" ]; } ))
       ];
     };
 
