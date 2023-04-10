@@ -31,6 +31,9 @@ let
     elm = {
       symbol = "";
     };
+    golang = {
+      symbol = "";
+    };
     haskell = {
       symbol = "";
     };
@@ -90,15 +93,6 @@ in
           conda = {
             symbol = "";
           };
-          custom = {
-            watson = {
-              command = "watson status -p";
-              format = "[](bg:path fg:watson)[$symbol($output )]($style)[](fg:path bg:watson)";
-              style = "bg:watson";
-              symbol = "﨟";
-              when = "watson status -p | grep -v \"No project\"";
-            };
-          };
           directory = {
             format = "[$path ]($style)";
             read_only = " ";
@@ -127,11 +121,6 @@ in
           };
           git_status = {
             format = "[( $all_status$ahead_behind)]($style bg:git)";
-          };
-          golang = {
-            format = "[ $symbol( $version) ]($style)";
-            style = "bg:context";
-            symbol = "";
           };
           hg_branch = {
             symbol = "";

@@ -15,6 +15,19 @@
             };
           };
         };
+        starship = {
+          settings = {
+            custom = {
+              watson = {
+                command = "watson status -p";
+                format = "[](bg:path fg:watson)[$symbol($output )]($style)[](fg:path bg:watson)";
+                style = "bg:watson";
+                symbol = "﨟";
+                when = "watson status -p | grep -v \"No project\"";
+              };
+            };
+          };
+        };
       };
     };
     systemd.services.stop-watson = {
