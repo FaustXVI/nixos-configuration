@@ -9,6 +9,11 @@ let
 in
 {
   config = mylib.mkIfComputerHasPurpose "youtube" {
+    programs = {
+      noisetorch = {
+        enable = true;
+      };
+    };
     home-manager.users.xadet = {
       programs = {
         obs-studio = {
