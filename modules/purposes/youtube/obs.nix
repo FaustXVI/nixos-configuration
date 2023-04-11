@@ -21,6 +21,13 @@ in
       };
     };
     environment = {
+      variables = {
+        VST_PATH = "/nix/var/nix/profiles/default/lib/vst:/var/run/current-system/sw/lib/vst";
+        LXVST_PATH = "/nix/var/nix/profiles/default/lib/lxvst:/var/run/current-system/sw/lib/lxvst";
+        LADSPA_PATH = "/nix/var/nix/profiles/default/lib/ladspa:/var/run/current-system/sw/lib/ladspa";
+        LV2_PATH = "/nix/var/nix/profiles/default/lib/lv2:/var/run/current-system/sw/lib/lv2";
+        DSSI_PATH = "/nix/var/nix/profiles/default/lib/dssi:/var/run/current-system/sw/lib/dssi";
+      };
       systemPackages = with pkgs; [
         openshot-qt
         gphoto2
@@ -29,7 +36,9 @@ in
         simplescreenrecorder
         plugScript
         inkscape
-        (kdenlive.overrideAttrs (attrs: { qtWrapperArgs = attrs.qtWrapperArgs or [] ++ [ "--prefix GST_PLUGIN_PATH : ${ lib.makeSearchPath "lib/gstreamer-1.0" (with gst_all_1; [  gstreamer gst-libav gst-plugins-base gst-plugins-good gst-plugins-bad ]) }" "--set LADSPA_PATH ${ladspaPlugins}/lib/ladspa:${rnnoise-plugin}/lib/ladspa" ]; } ))
+        kdenlive
+        ladspaPlugins
+        rnnoise-plugin
       ];
     };
 
