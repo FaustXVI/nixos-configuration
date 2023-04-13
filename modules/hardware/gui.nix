@@ -31,11 +31,13 @@
       };
       displayManager = {
         defaultSession = "none+i3";
-        sessionCommands = ''
-          ${pkgs.networkmanagerapplet}/bin/nm-applet &
-          ${pkgs.udiskie}/bin/udiskie -a -t -n -F &
-          ${pkgs.pasystray}/bin/pasystray &
-        '';
+        #        sessionCommands = ''
+        #          echo toto > /tmp/plop 
+        #          /run/current-system/sw/bin/systemctl --user start noisetorch
+        #          ${pkgs.networkmanagerapplet}/bin/nm-applet &
+        #          ${pkgs.udiskie}/bin/udiskie -a -t -n -F &
+        #          ${pkgs.pasystray}/bin/pasystray &
+        #        '';
         lightdm = {
           enable = true;
         };
