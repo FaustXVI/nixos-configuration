@@ -11,6 +11,7 @@
         ["eo-vent-tools"]="EO-TOOLKIT" 
         ["flashing"]="EO-TOOLKIT" 
         ["eo150-cpu-software"]="EO-150M" 
+        ["eo300-cpu-software"]="EO-300" 
         )
 
         for DIR in "''${!directory_mapping[@]}"
