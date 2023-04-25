@@ -20,7 +20,6 @@
           Type = "forking";
           ExecStart = "${pkgs.i3lock}/bin/i3lock -i ${config.users.users.xadet.home}/.background-image";
         };
-        wantedBy = [ "default.target" ];
       };
       services = {
         pcscd = {
