@@ -9,6 +9,7 @@
 
         declare -A directory_mapping=(
         ["eo-vent-tools"]="EO-TOOLKIT" 
+        ["eo-toolkit"]="EO-TOOLKIT" 
         ["flashing"]="EO-TOOLKIT" 
         ["eo150-cpu-software"]="EO-150M" 
         ["eo300-cpu-software"]="EO-300" 
