@@ -14,7 +14,7 @@
 
   xadetComputer = {
     type = "laptop";
-    purposes = [ "work" "home-office" ];
+    purposes = [ "work" "home-office" "gaming" ];
     #    yubikeyAutolock = false;
   };
 
