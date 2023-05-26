@@ -49,6 +49,7 @@ in
             "media.eme.enabled" = true;
             "extensions.formautofill.creditCards.enabled" = false;
             "accessibility.typeaheadfind" = true;
+            "browser.download.useDownloadDir" = false;
           };
           search = {
             force = true;
