@@ -1,17 +1,20 @@
-{ mylib, pkgs, config, ... }:
-{
+{ mylib, pkgs, config, lib, ... }:
+let
+  perso = config.home-manager.users.xadet.programs.firefox.profiles."perso";
+in {
   config = mylib.mkIfComputerHasPurpose "work" {
-    home-manager.users.xadet = { ... }: rec {
+    home-manager.users.xadet = { ... }: {
       programs.firefox.profiles = {
         "perso".isDefault = false;
         "eove" = {
           id = 1;
           isDefault = true;
-          settings = {
-            "signon.rememberSignons" = false;
-            "browser.startup.page" = 3;
-          };
-          search = config.home-manager.users.xadet.programs.firefox.profiles."perso".search;
+          inherit (perso) settings search;
+        };
+        "fake" = {
+          id = 3;
+          isDefault = false;
+          inherit (perso) settings search;
         };
       };
     };
