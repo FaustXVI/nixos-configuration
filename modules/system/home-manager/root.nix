@@ -1,6 +1,6 @@
 { config, mylib, ... }@args:
 let
-  channelVersion = "22.11";
+  channelVersion = "23.05";
 in
 {
   imports = mylib.importsWith args [ ./shells ];
