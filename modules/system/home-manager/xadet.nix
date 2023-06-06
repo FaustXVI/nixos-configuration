@@ -11,7 +11,7 @@
 
       Install = { WantedBy = [ "graphical-session.target" ]; };
       Service = {
-        ExecStart = ["/run/current-system/sw/bin/sleep 0.5"  "${pkgs.noisetorch}/bin/noisetorch -i -t 40"];
+        ExecStart = [ "/run/current-system/sw/bin/sleep 0.5" "${pkgs.noisetorch}/bin/noisetorch -i -t 40" ];
         ExecStop = "${pkgs.noisetorch}/bin/noisetorch -u";
         Type = "oneshot";
         RemainAfterExit = true;

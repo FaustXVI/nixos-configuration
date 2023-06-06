@@ -36,13 +36,13 @@ in
     firefox = {
       enable = true;
       package = unstable.firefox;
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        bitwarden
-        foxyproxy-standard
-        adBlockPlus
-      ];
       profiles = {
         "perso" = {
+          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+            bitwarden
+            foxyproxy-standard
+            adBlockPlus
+          ];
           settings = {
             "signon.rememberSignons" = false;
             "browser.startup.page" = 3;

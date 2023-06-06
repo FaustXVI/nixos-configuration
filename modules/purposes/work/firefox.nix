@@ -1,7 +1,8 @@
 { mylib, pkgs, config, lib, ... }:
 let
   perso = config.home-manager.users.xadet.programs.firefox.profiles."perso";
-in {
+in
+{
   config = mylib.mkIfComputerHasPurpose "work" {
     home-manager.users.xadet = { ... }: {
       programs.firefox.profiles = {
@@ -9,12 +10,12 @@ in {
         "eove" = {
           id = 1;
           isDefault = true;
-          inherit (perso) settings search;
+          inherit (perso) settings search extensions;
         };
         "fake" = {
           id = 3;
           isDefault = false;
-          inherit (perso) settings search;
+          inherit (perso) settings search extensions;
         };
       };
     };

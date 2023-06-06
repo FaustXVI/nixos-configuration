@@ -8,7 +8,7 @@
           yubico-piv-tool
           yubikey-personalization
           yubikey-personalization-gui
-          yubioath-desktop
+          yubioath-flutter
         ];
       };
       systemd.services.i3lock = {

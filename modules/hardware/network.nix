@@ -18,7 +18,9 @@
   services = {
     openssh = {
       enable = true;
-      gatewayPorts = "yes";
+      settings = {
+        GatewayPorts = "yes";
+      };
       extraConfig = ''
         StreamLocalBindUnlink yes
       '';
