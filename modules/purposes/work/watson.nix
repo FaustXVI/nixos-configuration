@@ -22,7 +22,7 @@
                 command = "watson status -p";
                 format = "[](bg:path fg:watson)[$symbol($output )]($style)[](fg:path bg:watson)";
                 style = "bg:watson";
-                symbol = "﨟";
+                symbol = "󱎏";
                 when = "watson status -p | grep -v \"No project\"";
               };
             };

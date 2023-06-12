@@ -53,7 +53,7 @@ let
       symbol = "";
     };
     package = {
-      symbol = "";
+      symbol = "";
     };
     python = {
       symbol = "";
@@ -87,7 +87,7 @@ in
             success_symbol = "[ ](bg:git)[](fg:git)";
           };
           cmd_duration = {
-            format = "[](fg:alert bg:context)[神$duration]($style)[](fg:alert bg:context)";
+            format = "[](fg:alert bg:context)[󰥔$duration]($style)[](fg:alert bg:context)";
             style = "bg:alert";
           };
           conda = {
@@ -95,7 +95,7 @@ in
           };
           directory = {
             format = "[$path ]($style)";
-            read_only = " ";
+            read_only = " ";
             style = "bg:path";
             truncation_length = 3;
             truncation_symbol = "…/";
@@ -130,7 +130,7 @@ in
             style = "bg:context";
           };
           memory_usage = {
-            symbol = "";
+            symbol = "";
           };
           meson = {
             symbol = "喝";
