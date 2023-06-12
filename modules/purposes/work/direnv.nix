@@ -14,6 +14,7 @@
         ["eo150-cpu-software"]="EO-150M" 
         ["eo300-cpu-software"]="EO-300" 
         ["eo-connect"]="EO-CONNECT" 
+        ["rust-training"]="NEXGEN" 
         )
 
         for DIR in "''${!directory_mapping[@]}"

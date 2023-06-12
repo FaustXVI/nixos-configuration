@@ -13,7 +13,7 @@ in
           inherit (perso) settings search extensions;
         };
         "fake" = {
-          id = 3;
+          id = 2;
           isDefault = false;
           inherit (perso) settings search extensions;
         };
