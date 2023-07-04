@@ -3,8 +3,7 @@
 let
   videoNumber = "9";
   plugScript = pkgs.writeShellScriptBin "plugCamera" ''
-    #!/usr/bin/env bash
-    gphoto2 --stdout --capture-movie | ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video${videoNumber}
+    ${pkgs.gphoto2}/bin/gphoto2 --stdout --capture-movie | ${pkgs.ffmpeg_6-full}/bin/ffmpeg -i - -vcodec rawvideo -pix_fmt yuv420p -threads 8 -f v4l2 /dev/video${videoNumber}
   '';
 in
 {
@@ -31,7 +30,7 @@ in
       systemPackages = with pkgs; [
         openshot-qt
         gphoto2
-        ffmpeg
+        ffmpeg_6-full
         v4l-utils
         simplescreenrecorder
         plugScript
