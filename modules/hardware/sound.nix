@@ -7,11 +7,6 @@
       pavucontrol
     ];
   };
-  programs = {
-    noisetorch = {
-      enable = true;
-    };
-  };
   hardware = {
     pulseaudio = {
       enable = true;
