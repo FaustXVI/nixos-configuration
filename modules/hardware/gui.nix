@@ -17,6 +17,9 @@
     ];
   };
   services = {
+    udisks2 = {
+      enable = true;
+    };
     xserver = {
       enable = true;
       windowManager = {
