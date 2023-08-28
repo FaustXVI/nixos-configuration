@@ -7,6 +7,7 @@
     };
     systemPackages = with pkgs; [
       vim
+      obsidian
     ];
   };
 }
