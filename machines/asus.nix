@@ -10,9 +10,9 @@ in
   imports =
     [
       "${hard}/common/pc/laptop"
-    ../hardware-configuration.nix
-    ../modules
-  ];
+      ../hardware-configuration.nix
+      ../modules
+    ];
 
   xadetComputer = {
     type = "desktop";

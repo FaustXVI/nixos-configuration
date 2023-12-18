@@ -1,7 +1,8 @@
 { mylib, config, ... }:
 let
   home = config.users.users.xadet.home;
-in {
+in
+{
   config = mylib.mkIfComputerHasPurpose "work" {
     sops.secrets.githubToken = {
       format = "binary";

@@ -3,8 +3,8 @@
 stdenv.mkDerivation rec {
   name = "install-script";
   version = "latest";
-  buildInputs = [ ] ;  
-    
+  buildInputs = [ ];
+
   src = ./.;
   installPhase = ''
     mkdir -p $out/bin

@@ -21,7 +21,7 @@
     btop = {
       enable = true;
     };
-    exa = {
+    eza = {
       enable = true;
     };
     fzf = {
