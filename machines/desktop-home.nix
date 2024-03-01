@@ -1,19 +1,8 @@
 { config, pkgs, ... }:
 
-let
-  hard = builtins.fetchGit {
-    url = "https://github.com/NixOS/nixos-hardware.git";
-    rev = "b7ac0a56029e4f9e6743b9993037a5aaafd57103";
-  };
-in
 {
   imports =
     [
-      "${hard}/common/cpu/amd"
-      "${hard}/common/cpu/amd/pstate.nix"
-      "${hard}/common/gpu/nvidia"
-      "${hard}/common/pc"
-      "${hard}/common/pc/ssd"
       ./desktop-home-hardware.nix
       ../modules
     ];
