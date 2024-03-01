@@ -18,8 +18,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, sops, nur, home-manager, nixos-hardware, ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
+  outputs = { self, nixpkgs, sops, nur, home-manager, nixos-hardware, ... }@inputs: let
+    nixosMachine = configFile :  nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       specialArgs = { 
         inherit inputs;
@@ -29,8 +29,12 @@
         home-manager.nixosModules.home-manager
         sops.nixosModules.sops
         nur.nixosModules.nur
-        ./machines/desktop-home.nix
+        configFile
       ];
+    };
+  in {
+    nixosConfigurations = {
+      desktop-home = nixosMachine ./machines/desktop-home.nix;
     };
   };
 }
