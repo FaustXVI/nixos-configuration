@@ -14,7 +14,7 @@ in
       "${hard}/common/gpu/nvidia"
       "${hard}/common/pc"
       "${hard}/common/pc/ssd"
-      ../hardware-configuration.nix
+      ./desktop-home-hardware.nix
       ../modules
     ];
   xadetComputer = {

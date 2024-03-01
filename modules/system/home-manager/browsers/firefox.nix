@@ -1,4 +1,4 @@
-{ pkgs, unstable, lib, ... }@args:
+{ pkgs, unstable, lib, config, ... }@args:
 let
   buildFirefoxXpiAddon = lib.makeOverridable ({ stdenv ? pkgs.stdenv
                                               , fetchurl ? pkgs.fetchurl
@@ -38,7 +38,7 @@ in
       package = unstable.firefox;
       profiles = {
         "perso" = {
-          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          extensions = with config.nur.repos.rycee.firefox-addons; [
             bitwarden
             foxyproxy-standard
             adBlockPlus
