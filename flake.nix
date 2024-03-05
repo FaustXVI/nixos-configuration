@@ -35,6 +35,7 @@
   in {
     nixosConfigurations = {
       desktop-home = nixosMachine ./machines/desktop-home.nix;
+      eove = nixosMachine ./machines/eove.nix;
     };
   };
 }

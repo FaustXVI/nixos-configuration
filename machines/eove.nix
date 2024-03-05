@@ -1,13 +1,13 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
+let
+  nixos-hardware = inputs.nixos-hardware;
+in
 {
   imports =
     [
-      "${builtins.fetchGit { 
-        url = "https://github.com/NixOS/nixos-hardware.git";
-        rev = "b7ac0a56029e4f9e6743b9993037a5aaafd57103";
-      }}/framework/12th-gen-intel"
-      ../hardware-configuration.nix
+      nixos-hardware.nixosModules.framework-12th-gen-intel
+      ./eove-hardware.nix
       ../modules
     ];
 
