@@ -8,34 +8,45 @@
     nur = {
       url = "github:nix-community/NUR/master";
     };
-    sops= {
+    sops = {
       url = "github:Mic92/sops-nix/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager= {
+    home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, sops, nur, home-manager, nixos-hardware, ... }@inputs: let
-    nixosMachine = configFile :  nixpkgs.lib.nixosSystem rec {
+  outputs = { self, nixpkgs, sops, nur, home-manager, nixos-hardware, ... }@inputs:
+    let
       system = "x86_64-linux";
-      specialArgs = { 
-        inherit inputs;
-        unstable = import inputs.unstable-pkgs {inherit system; config.allowUnfree = true; };
+      pkgs = import nixpkgs { inherit system; };
+      nixosMachine = configFile: nixpkgs.lib.nixosSystem rec {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          unstable = import inputs.unstable-pkgs { inherit system; config.allowUnfree = true; };
+        };
+        modules = [
+          home-manager.nixosModules.home-manager
+          sops.nixosModules.sops
+          nur.nixosModules.nur
+          configFile
+        ];
       };
-      modules = [
-        home-manager.nixosModules.home-manager
-        sops.nixosModules.sops
-        nur.nixosModules.nur
-        configFile
-      ];
+    in
+    {
+      devShells."${system}".default = pkgs.mkShell {
+        packages = [
+          pkgs.sops
+          pkgs.age
+        ];
+        SOPS_AGE_KEY_FILE = "${toString ./.}/keys/ageKey.txt";
+      };
+      nixosConfigurations = {
+        desktop-home = nixosMachine ./machines/desktop-home.nix;
+        eove = nixosMachine ./machines/eove.nix;
+      };
     };
-  in {
-    nixosConfigurations = {
-      desktop-home = nixosMachine ./machines/desktop-home.nix;
-      eove = nixosMachine ./machines/eove.nix;
-    };
-  };
 }

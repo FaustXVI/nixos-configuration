@@ -19,7 +19,7 @@
     };
     extraOptions = ''
       min-free = ${toString (10 * 1024 * 1024 * 1024)}
-      #!include ${config.sops.secrets.extra-nix-conf.path}
+      !include ${config.sops.secrets.extra-nix-conf.path}
     '';
     gc = {
       dates = "13:10";
