@@ -1,9 +1,11 @@
 name: Auto update
 
-on: push
+on: 
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
-  format-code:
+  auto-update:
     runs-on: ubuntu-latest
 
     permissions:
