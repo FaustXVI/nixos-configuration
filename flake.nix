@@ -32,7 +32,7 @@
           home-manager.nixosModules.home-manager
           sops.nixosModules.sops
           nur.nixosModules.nur
-          configFile
+          "${./.}/machines/${configFile}.nix"
         ];
       };
     in
@@ -44,9 +44,9 @@
         ];
         SOPS_AGE_KEY_FILE = "${toString ./.}/keys/ageKey.txt";
       };
-      nixosConfigurations = {
-        desktop-home = nixosMachine ./machines/desktop-home.nix;
-        eove = nixosMachine ./machines/eove.nix;
-      };
+      nixosConfigurations = builtins.foldl' (set: name: set // {"${name}" = nixosMachine "${name}"; } ) {} [
+        "desktop-home"
+        "eove"
+      ];
     };
 }
