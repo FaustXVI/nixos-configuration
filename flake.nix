@@ -33,6 +33,14 @@
           sops.nixosModules.sops
           nur.nixosModules.nur
           "${./.}/machines/${configFile}.nix"
+          {
+            options = {
+              usedFlake = pkgs.lib.mkOption {
+                type = pkgs.lib.types.str;
+                default = "${configFile}";
+              };
+            };
+          }
         ];
       };
     in
