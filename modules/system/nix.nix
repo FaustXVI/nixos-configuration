@@ -6,6 +6,8 @@
       enable = true;
       dates = "13:00";
       persistent = true;
+      flake = "github:FaustXVI/nixos-configuration#${config.usedFlake}";
+      flags = [ "--refresh" ];
     };
   };
 
