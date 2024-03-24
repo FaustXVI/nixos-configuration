@@ -5,7 +5,7 @@
     autoUpgrade = {
       enable = true;
       dates = "13:00";
-      persistent = "true";
+      persistent = true;
     };
   };
 
