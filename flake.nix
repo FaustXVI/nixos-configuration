@@ -52,6 +52,13 @@
         ];
         SOPS_AGE_KEY_FILE = "${toString ./.}/keys/ageKey.txt";
       };
+      installIso = (nixpkgs.lib.nixosSystem rec {
+        inherit system;
+              modules = [
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+          ./install/iso.nix
+        ];
+      }).config.system.build.isoImage;
       nixosConfigurations = builtins.foldl' (set: name: set // {"${name}" = nixosMachine "${name}"; } ) {} [
         "desktop-home"
         "eove"

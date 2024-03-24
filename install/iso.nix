@@ -12,13 +12,6 @@ let
 in
 {
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
-  imports = [
-    <nixos/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
-
-    # Provide an initial copy of the NixOS channel so that the user
-    # doesn't need to run "nix-channel --update" first.
-    <nixos/nixos/modules/installer/cd-dvd/channel.nix>
-  ];
   console.keyMap = "fr";
   environment.systemPackages = with pkgs; [
     git
