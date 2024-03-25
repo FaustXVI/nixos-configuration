@@ -16,6 +16,7 @@
         ["eo-connect"]="EO-CONNECT" 
         ["rust-training"]="NEXGEN" 
         ["poc-bhl-rust"]="NEXGEN" 
+        ["vent-cpu-bsp"]="NEXGEN" 
         )
 
         for DIR in "''${!directory_mapping[@]}"
