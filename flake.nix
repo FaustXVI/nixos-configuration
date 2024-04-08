@@ -50,7 +50,7 @@
           pkgs.sops
           pkgs.age
         ];
-        SOPS_AGE_KEY_FILE = "${toString ./.}/keys/ageKey.txt";
+        SOPS_AGE_KEY_FILE = "/home/xadet/nixos-configuration/keys/ageKey.txt";
       };
       installIso = (nixpkgs.lib.nixosSystem rec {
         inherit system;
