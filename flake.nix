@@ -54,12 +54,12 @@
       };
       installIso = (nixpkgs.lib.nixosSystem rec {
         inherit system;
-              modules = [
+        modules = [
           "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
           ./install/iso.nix
         ];
       }).config.system.build.isoImage;
-      nixosConfigurations = builtins.foldl' (set: name: set // {"${name}" = nixosMachine "${name}"; } ) {} [
+      nixosConfigurations = builtins.foldl' (set: name: set // { "${name}" = nixosMachine "${name}"; }) { } [
         "desktop-home"
         "eove"
       ];

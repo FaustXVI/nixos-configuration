@@ -1,6 +1,16 @@
-{ mylib, ... }:
+{ mylib, pkgs, ... }:
 {
   config = mylib.mkIfComputerHasPurpose "work" {
+    environment = {
+      systemPackages = with pkgs; [
+        wireshark
+      ];
+    };
+    programs = {
+      wireshark = {
+        enable = true;
+      };
+    };
     networking = {
       firewall = {
         allowedTCPPorts = [ 8000 8042 ];
