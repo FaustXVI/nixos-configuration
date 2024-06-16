@@ -41,7 +41,7 @@
                 enable = true;
                 dates = "13:00";
                 persistent = true;
-                flake = "github:FaustXVI/nixos-configuration#${configFile}";
+                flake = "/etc/nixos/flake.nix#${configFile}";
                 flags = [ "--refresh" ] ++ inputUpdates;
               };
             };
