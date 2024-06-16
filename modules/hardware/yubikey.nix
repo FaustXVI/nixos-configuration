@@ -33,7 +33,9 @@ in
       };
       security = {
         pam = {
-          enableSSHAgentAuth = true;
+          sshAgentAuth = {
+            enable = true;
+          };
           u2f = {
             enable = true;
             control = "required";

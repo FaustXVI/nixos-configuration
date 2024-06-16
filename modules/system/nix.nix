@@ -1,16 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  system = {
-    autoUpgrade = {
-      enable = true;
-      dates = "13:00";
-      persistent = true;
-      flake = "github:FaustXVI/nixos-configuration#${config.usedFlake}";
-      flags = [ "--refresh" ];
-    };
-  };
-
   nixpkgs.config.allowUnfree = true;
   sops.secrets.extra-nix-conf = {
     format = "binary";

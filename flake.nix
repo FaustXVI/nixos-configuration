@@ -2,7 +2,7 @@
   description = "My nixos config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     unstable-pkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur = {
@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -22,6 +22,8 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
+      inputNames = builtins.filter (name: name != "self") (builtins.attrNames inputs);
+      inputUpdates = builtins.foldl' (acc: input: builtins.trace input (acc ++ [ "--update-input" (builtins.toString "${input}") ])) [ ] inputNames;
       nixosMachine = configFile: nixpkgs.lib.nixosSystem rec {
         inherit system;
         specialArgs = {
@@ -33,6 +35,17 @@
           sops.nixosModules.sops
           nur.nixosModules.nur
           "${./.}/machines/${configFile}.nix"
+          {
+            system = {
+              autoUpgrade = {
+                enable = true;
+                dates = "13:00";
+                persistent = true;
+                flake = "github:FaustXVI/nixos-configuration#${configFile}";
+                flags = [ "--refresh" ] ++ inputUpdates;
+              };
+            };
+          }
           {
             options = {
               usedFlake = pkgs.lib.mkOption {

@@ -17,8 +17,10 @@
     };
     xserver = {
       autoRepeatDelay = 200;
-      layout = "fr";
-      xkbVariant = "oss"; # TODO conflict with console value ?
+      xkb = {
+        variant = "oss"; # TODO conflict with console value ?
+        layout = "fr";
+      };
       inputClassSections = [
         ''
           Identifier      "TypeMatrix"
