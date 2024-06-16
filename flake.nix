@@ -23,7 +23,7 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
       inputNames = builtins.filter (name: name != "self") (builtins.attrNames inputs);
-      inputUpdates = builtins.foldl' (acc: input: builtins.trace input (acc ++ [ "--update-input" (builtins.toString "${input}") ])) [ ] inputNames;
+      inputUpdates = builtins.foldl' (acc: input: acc ++ [ "--update-input" (builtins.toString "${input}") ]) [ ] inputNames;
       nixosMachine = configFile: nixpkgs.lib.nixosSystem rec {
         inherit system;
         specialArgs = {

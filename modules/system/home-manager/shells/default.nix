@@ -46,9 +46,9 @@
       cat = "bat";
       top = "btop";
       diff = "delta";
-      ".." = "z ..";
-      "..." = "z ../..";
-      cd = "z";
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      c = "z";
       ls = "${exa}";
       ll = "${exa} -l";
       la = "${exa} -a";
