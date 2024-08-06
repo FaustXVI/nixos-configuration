@@ -55,6 +55,7 @@
       lla = "${exa} -la";
     };
     packages = with pkgs; [
+      viu
       thefuck
       peco
       srm
