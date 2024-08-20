@@ -1,6 +1,7 @@
 { pkgs, mylib, ... }@args:
 {
   imports = mylib.importAllWith args ./.;
+  xdg.configFile."direnv/direnvrc".source = ./direnvrc;
   programs = {
     direnv = {
       enable = true;

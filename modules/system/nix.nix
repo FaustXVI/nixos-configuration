@@ -9,6 +9,10 @@
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [
+        "root"
+        config.users.users.xadet.name
+      ];
     };
     extraOptions = ''
       min-free = ${toString (10 * 1024 * 1024 * 1024)}
