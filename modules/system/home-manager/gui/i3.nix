@@ -23,7 +23,7 @@ in
       };
       keybindings = {
         # start a terminal
-        "${modifier}+Return" = "exec kitty";
+        "${modifier}+Return" = "exec wezterm";
         # kill focused window
         "${modifier}+Shift+c" = "kill";
         # start dmenu

@@ -22,6 +22,12 @@
     btop = {
       enable = true;
     };
+    mcfly = {
+      enable = true;
+      fzf = {
+        enable = true;
+      };
+    };
     eza = {
       enable = true;
     };
