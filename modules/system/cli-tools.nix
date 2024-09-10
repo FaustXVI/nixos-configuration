@@ -12,6 +12,7 @@
       unzip
       htop
       psmisc
+      ncdu
     ];
   };
 }
