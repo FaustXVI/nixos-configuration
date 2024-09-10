@@ -2,10 +2,9 @@
 
 {
   nixpkgs.config.allowUnfree = true;
-  sops.secrets.extra-nix-conf = {
-    format = "binary";
-    sopsFile = ./secrets/extra-nix.conf;
-  };
+  sops.templates."nix-github-token.conf".content = ''
+    access-tokens = github.com=${config.sops.placeholder.githubToken}
+  '';
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
@@ -16,7 +15,7 @@
     };
     extraOptions = ''
       min-free = ${toString (10 * 1024 * 1024 * 1024)}
-      !include ${config.sops.secrets.extra-nix-conf.path}
+      !include ${config.sops.templates."nix-github-token.conf".path}
     '';
     gc = {
       dates = "13:10";
