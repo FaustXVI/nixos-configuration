@@ -15,7 +15,12 @@
       };
       printing = {
         enable = true;
-        drivers = with pkgs; [ hplip gutenprint cups-filters ];
+        drivers = pkgs.lib.singleton (pkgs.linkFarm "drivers" [
+          {
+            name = "share/cups/model/HP_DeskJet_3762.ppd";
+            path = ./HP_DeskJet_3762.ppd;
+          }
+        ]);
         browsing = true;
       };
     };
@@ -27,7 +32,7 @@
           location = "home";
           description = "HP DeskJet 3762";
           deviceUri = "ipp://192.168.1.84/ipp";
-          model = "everywhere";
+          model = "HP_DeskJet_3762.ppd";
         }];
       };
       sane = {
