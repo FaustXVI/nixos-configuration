@@ -10,7 +10,7 @@ let
   installDirectory = ''''${HOME}/remarkable'';
   targetDirectory = ''''${HOME}/.remarkable'';
   expectedPath = "${targetDirectory}/${binaryName}";
-  wine = "${pkgs.wine64Packages.unstableFull}/bin/wine64";
+  wine = "${pkgs.wineWowPackages.unstableFull}/bin/wine64";
 in
   pkgs.writeShellScriptBin "remarkable" ''
     export WINEPREFIX="''${HOME}/.wine-remarkable"
@@ -19,7 +19,10 @@ in
     if [ ! -f ${expectedPath} ]
     then
     mkdir -p ${installDirectory}
-    echo "Install the app in ${installDirectory}, it will later be renamed ${targetDirectory}"
+    ${pkgs.winetricks}/bin/winetricks vcrun2022
+    echo "Please plug in the remarkable then press enter" 
+    read enterPressed
+    echo "Please install the app in ${installDirectory}, it will later be renamed ${targetDirectory}"
     ${wine} ${installer} 2>/dev/null >/dev/null
     mv ${installDirectory} ${targetDirectory}
     fi
