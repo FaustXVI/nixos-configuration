@@ -19,9 +19,7 @@ in
     if [ ! -f ${expectedPath} ]
     then
     mkdir -p ${installDirectory}
-    ${pkgs.winetricks}/bin/winetricks vcrun2022
-    echo "Please plug in the remarkable then press enter" 
-    read enterPressed
+    ${pkgs.winetricks}/bin/winetricks --force --unattended vcrun2022
     echo "Please install the app in ${installDirectory}, it will later be renamed ${targetDirectory}"
     ${wine} ${installer} 2>/dev/null >/dev/null
     mv ${installDirectory} ${targetDirectory}
