@@ -32,6 +32,7 @@
           unstable = import inputs.unstable-pkgs { inherit system; config.allowUnfree = true; };
         };
         modules = [
+          { nixpkgs.overlays = [ (final: prev: xadetPackages) ]; }
           home-manager.nixosModules.home-manager
           sops.nixosModules.sops
           nur.nixosModules.nur
