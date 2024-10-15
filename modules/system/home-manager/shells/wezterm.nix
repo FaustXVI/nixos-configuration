@@ -18,6 +18,10 @@
              key = 't',
              action = wezterm.action.SpawnTab 'CurrentPaneDomain',
            }, { 
+             mods = 'ALT',
+             key = 'n',
+             action = wezterm.action.SpawnWindow
+           }, { 
              mods = 'SHIFT|ALT', 
              key = 't', 
              action = wezterm.action.ShowTabNavigator 
