@@ -1,10 +1,13 @@
-{ ... }:
+{ lib, config,... }:
+let 
+  font = lib.lists.head config.fonts.fontconfig.defaultFonts.monospace;
+in
 {
   programs.wezterm = {
     enable = true;
     extraConfig = ''
       return {
-        font = wezterm.font 'Fira Code',
+        font = wezterm.font "${font}",
         font_size = 18,
         scrollback_lines = 20000,
         color_scheme = 'Darcula (base16)',
