@@ -52,6 +52,9 @@
     zoxide = {
       enable = true;
     };
+    yazi = {
+      enable = true;
+    };
     atuin = {
       enable = true;
       flags = ["--disable-up-arrow"];
