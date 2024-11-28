@@ -24,7 +24,7 @@
       pkgs = import nixpkgs { inherit system; };
       inputNames = builtins.filter (name: name != "self") (builtins.attrNames inputs);
       inputUpdates = builtins.foldl' (acc: input: acc ++ [ "--update-input" (builtins.toString "${input}") ]) [ ] inputNames;
-      xadetPackages = import ./packages {inherit pkgs;};
+      xadetPackages = import ./packages { inherit pkgs; };
       nixosMachine = configFile: nixpkgs.lib.nixosSystem rec {
         inherit system;
         specialArgs = {

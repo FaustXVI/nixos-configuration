@@ -25,9 +25,9 @@
     udisks2 = {
       enable = true;
     };
-      displayManager = {
-        defaultSession = "none+i3";
-      };
+    displayManager = {
+      defaultSession = "none+i3";
+    };
     xserver = {
       enable = true;
       windowManager = {

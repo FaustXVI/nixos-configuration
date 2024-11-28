@@ -1,5 +1,5 @@
-{ lib, config,... }:
-let 
+{ lib, config, ... }:
+let
   font = lib.lists.head config.fonts.fontconfig.defaultFonts.monospace;
 in
 {

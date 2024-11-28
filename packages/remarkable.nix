@@ -12,17 +12,17 @@ let
   expectedPath = "${targetDirectory}/${binaryName}";
   wine = "${pkgs.wineWowPackages.unstableFull}/bin/wine64";
 in
-  pkgs.writeShellScriptBin "remarkable" ''
-    export WINEPREFIX="''${HOME}/.wine-remarkable"
-    export WINEARCH="win64"
-    export WINE="${wine}"
-    if [ ! -f ${expectedPath} ]
-    then
-    mkdir -p ${installDirectory}
-    ${pkgs.winetricks}/bin/winetricks --force --unattended vcrun2022
-    echo "Please install the app in ${installDirectory}, it will later be renamed ${targetDirectory}"
-    ${wine} ${installer} 2>/dev/null >/dev/null
-    mv ${installDirectory} ${targetDirectory}
-    fi
-    ${wine} ${expectedPath}  2>/dev/null >/dev/null
-  ''
+pkgs.writeShellScriptBin "remarkable" ''
+  export WINEPREFIX="''${HOME}/.wine-remarkable"
+  export WINEARCH="win64"
+  export WINE="${wine}"
+  if [ ! -f ${expectedPath} ]
+  then
+  mkdir -p ${installDirectory}
+  ${pkgs.winetricks}/bin/winetricks --force --unattended vcrun2022
+  echo "Please install the app in ${installDirectory}, it will later be renamed ${targetDirectory}"
+  ${wine} ${installer} 2>/dev/null >/dev/null
+  mv ${installDirectory} ${targetDirectory}
+  fi
+  ${wine} ${expectedPath}  2>/dev/null >/dev/null
+''
