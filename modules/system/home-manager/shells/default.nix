@@ -51,6 +51,7 @@
     };
     zoxide = {
       enable = true;
+      options = [ "--cmd cd" ];
     };
     yazi = {
       enable = true;
@@ -71,8 +72,6 @@
       diff = "delta";
       ".." = "cd ..";
       "..." = "cd ../..";
-      c = "z";
-      #cd = "z";
       ls = "${exa}";
       ll = "${exa} -l";
       la = "${exa} -a";
