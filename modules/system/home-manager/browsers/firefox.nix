@@ -35,13 +35,15 @@ in
   programs = {
     firefox = {
       enable = true;
-      package = unstable.firefox;
+      package = unstable.firefox-bin;
       profiles = {
         "perso" = {
           extensions = with config.nur.repos.rycee.firefox-addons; [
             bitwarden
             foxyproxy-standard
-            adBlockPlus
+#            adBlockPlus
+            adblocker-ultimate
+            screenshot-capture-annotate
           ];
           settings = {
             "signon.rememberSignons" = false;
