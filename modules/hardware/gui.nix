@@ -2,7 +2,7 @@
 
 {
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
     };
   };
@@ -12,13 +12,13 @@
       i3status
       i3lock
       libnotify
-      gnome3.adwaita-icon-theme
+      adwaita-icon-theme
       dunst
       arandr
       autorandr
       udiskie
       pasystray
-      gnome.nautilus
+      nautilus
     ];
   };
   services = {

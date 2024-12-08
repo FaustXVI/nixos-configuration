@@ -8,7 +8,9 @@
   };
   programs = {
     bash = {
-      enableCompletion = true;
+      completion = {
+        enable = true;
+      };
     };
     fish = {
       enable = true;

@@ -5,7 +5,7 @@ in
 {
   config = mylib.mkIfComputerHasPurpose "work" {
     home-manager.users.xadet = { ... }: {
-      programs.firefox.profiles = {
+      programs.firefox.profiles = lib.mkForce {
         "perso".isDefault = false;
         "eove" = {
           id = 1;

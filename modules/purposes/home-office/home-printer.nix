@@ -4,7 +4,7 @@
   config = mylib.mkIfComputerHasPurpose "home-office" {
     environment = {
       systemPackages = with pkgs; [
-        gnome.simple-scan
+        simple-scan
       ];
     };
     services = {

@@ -51,5 +51,5 @@
       ];
     };
   };
-  sound.mediaKeys.enable = true;
+  #sound.mediaKeys.enable = true;
 }

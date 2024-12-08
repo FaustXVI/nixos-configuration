@@ -9,7 +9,7 @@
   };
   hardware = {
     pulseaudio = {
-      enable = true;
+      enable = false;
       support32Bit = true;
       package = pkgs.pulseaudioFull;
     };

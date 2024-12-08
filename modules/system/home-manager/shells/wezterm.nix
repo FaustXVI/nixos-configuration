@@ -9,6 +9,7 @@ in
       return {
         font = wezterm.font "${font}",
         font_size = 18,
+        front_end = "WebGpu",
         scrollback_lines = 20000,
         color_scheme = 'Darcula (base16)',
         keys = {

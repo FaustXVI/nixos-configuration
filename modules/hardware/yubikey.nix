@@ -33,14 +33,16 @@ in
       };
       security = {
         pam = {
+          services.login.u2fAuth = true;
           sshAgentAuth = {
             enable = true;
           };
           u2f = {
-            enable = true;
-            control = "required";
-            cue = true;
-            authFile = authFile;
+              enable = true;
+              control = "required";
+            settings = {
+              authfile = authFile;
+          };
           };
         };
       };

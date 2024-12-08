@@ -46,9 +46,6 @@
     fd = {
       enable = true;
     };
-    taskwarrior = {
-      enable = true;
-    };
     zoxide = {
       enable = true;
       options = [ "--cmd cd" ];
