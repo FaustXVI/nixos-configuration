@@ -38,7 +38,7 @@ in
       package = unstable.firefox-bin;
       profiles = {
         "perso" = {
-          extensions = with config.nur.repos.rycee.firefox-addons; [
+          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
             bitwarden
             foxyproxy-standard
 #            adBlockPlus

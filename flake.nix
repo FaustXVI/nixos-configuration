@@ -4,12 +4,13 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     unstable-pkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
     nur = {
-      url = "github:nix-community/NUR/master";
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     sops = {
-      url = "github:Mic92/sops-nix/master";
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -35,7 +36,8 @@
           { nixpkgs.overlays = [ (final: prev: xadetPackages) ]; }
           home-manager.nixosModules.home-manager
           sops.nixosModules.sops
-          nur.nixosModules.nur
+          nur.modules.nixos.default
+          nur.legacyPackages."${system}".repos.iopq.modules.xraya
           "${./.}/machines/${configFile}.nix"
           {
             system = {
