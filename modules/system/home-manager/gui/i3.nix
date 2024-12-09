@@ -59,9 +59,9 @@ in
         "${modifier}+Shift+e" = ''exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"'';
         "${modifier}+Shift+d" = ''mode "resize"'';
         "${modifier}+l" = "exec i3lock -t -i ~/.background-image";
-        "XF86AudioRaiseVolume" = ''exec --no-startup-id amixer set Master 5%+'';
-        "XF86AudioLowerVolume" = ''exec --no-startup-id amixer set Master 5%-'';
-        "XF86AudioMute" = ''exec --no-startup-id amixer set Master toggle'';
+        "XF86AudioRaiseVolume" = ''exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -i 5'';
+        "XF86AudioLowerVolume" = ''exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -d 5'';
+        "XF86AudioMute" = ''exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -t'';
       };
       keycodebindings = {
         # switch to workspace
