@@ -38,11 +38,11 @@ in
             enable = true;
           };
           u2f = {
-              enable = true;
-              control = "required";
+            enable = true;
+            control = "required";
             settings = {
               authfile = authFile;
-          };
+            };
           };
         };
       };

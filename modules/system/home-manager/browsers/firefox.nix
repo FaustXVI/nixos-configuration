@@ -1,4 +1,4 @@
-{ pkgs, unstable, lib, config, ... }@args:
+{ pkgs, unstable, lib, config, mylib, ... }@args:
 let
   buildFirefoxXpiAddon = lib.makeOverridable ({ stdenv ? pkgs.stdenv
                                               , fetchurl ? pkgs.fetchurl
@@ -30,6 +30,74 @@ let
     url = "https://addons.mozilla.org/firefox/downloads/file/4039476/adblock_plus-3.16.1.xpi";
     sha256 = "IQ8IjTv1kWjoO1zyJYYBnZn4DCb+pfzuwAZemMtT8nI=";
   };
+  extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+    bitwarden
+    foxyproxy-standard
+    #            adBlockPlus
+    adblocker-ultimate
+    screenshot-capture-annotate
+  ];
+  settings = {
+    "signon.rememberSignons" = false;
+    "browser.startup.page" = 3;
+    "media.eme.enabled" = true;
+    "extensions.formautofill.creditCards.enabled" = false;
+    "accessibility.typeaheadfind" = true;
+    "browser.download.useDownloadDir" = false;
+  };
+  search = {
+    force = true;
+    default = "Google";
+    engines = {
+      "Nix Packages" = {
+        urls = [{
+          template = "https://search.nixos.org/packages";
+          params = [
+            { name = "type"; value = "packages"; }
+            { name = "query"; value = "{searchTerms}"; }
+          ];
+        }];
+
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        definedAliases = [ "@np" ];
+      };
+
+      "NixOS options" = {
+        urls = [{
+          template = "https://search.nixos.org/options";
+          params = [
+            { name = "type"; value = "packages"; }
+            { name = "query"; value = "{searchTerms}"; }
+          ];
+        }];
+
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        definedAliases = [ "@no" ];
+      };
+
+      "Home manager options" = {
+        urls = [{
+          template = "https://home-manager-options.extranix.com/";
+          params = [
+            { name = "query"; value = "{searchTerms}"; }
+          ];
+        }];
+
+        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+        definedAliases = [ "@hm" ];
+      };
+
+      "NixOS Wiki" = {
+        urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
+        iconUpdateURL = "https://nixos.wiki/favicon.png";
+        updateInterval = 24 * 60 * 60 * 1000; # every day
+        definedAliases = [ "@nw" ];
+      };
+
+      "Bing".metaData.hidden = true;
+      "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
+    };
+  };
 in
 {
   programs = {
@@ -38,62 +106,8 @@ in
       package = unstable.firefox-bin;
       profiles = {
         "perso" = {
-          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-            bitwarden
-            foxyproxy-standard
-#            adBlockPlus
-            adblocker-ultimate
-            screenshot-capture-annotate
-          ];
-          settings = {
-            "signon.rememberSignons" = false;
-            "browser.startup.page" = 3;
-            "media.eme.enabled" = true;
-            "extensions.formautofill.creditCards.enabled" = false;
-            "accessibility.typeaheadfind" = true;
-            "browser.download.useDownloadDir" = false;
-          };
-          search = {
-            force = true;
-            default = "Google";
-            engines = {
-              "Nix Packages" = {
-                urls = [{
-                  template = "https://search.nixos.org/packages";
-                  params = [
-                    { name = "type"; value = "packages"; }
-                    { name = "query"; value = "{searchTerms}"; }
-                  ];
-                }];
-
-                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = [ "@np" ];
-              };
-
-              "NixOS options" = {
-                urls = [{
-                  template = "https://search.nixos.org/options";
-                  params = [
-                    { name = "type"; value = "packages"; }
-                    { name = "query"; value = "{searchTerms}"; }
-                  ];
-                }];
-
-                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = [ "@no" ];
-              };
-
-              "NixOS Wiki" = {
-                urls = [{ template = "https://nixos.wiki/index.php?search={searchTerms}"; }];
-                iconUpdateURL = "https://nixos.wiki/favicon.png";
-                updateInterval = 24 * 60 * 60 * 1000; # every day
-                definedAliases = [ "@nw" ];
-              };
-
-              "Bing".metaData.hidden = true;
-              "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
-            };
-          };
+          id = 0;
+          inherit settings search extensions;
         };
       };
     };

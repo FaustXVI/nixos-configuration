@@ -3,7 +3,7 @@
   environment = {
     systemPackages = with pkgs; [
       unstable.google-chrome
-#      unstable.firefox-bin
+      #      unstable.firefox-bin
       spotify
       vlc
       feh
