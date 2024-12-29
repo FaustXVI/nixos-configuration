@@ -6,6 +6,11 @@
       virt-manager
     ];
   };
+  fonts = {
+    packages = with pkgs; [
+      virt-manager
+    ];
+  };
   virtualisation = {
     docker = {
       enable = true;
