@@ -62,6 +62,8 @@ in
         "XF86AudioRaiseVolume" = ''exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -i 5'';
         "XF86AudioLowerVolume" = ''exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -d 5'';
         "XF86AudioMute" = ''exec --no-startup-id ${pkgs.pamixer}/bin/pamixer -t'';
+        "XF86MonBrightnessUp" = ''exec --no-startup-id ${pkgs.light}/bin/light -A 10'';
+        "XF86MonBrightnessDown" = ''exec --no-startup-id ${pkgs.light}/bin/light -U 10'';
       };
       keycodebindings = {
         # switch to workspace
