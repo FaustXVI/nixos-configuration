@@ -17,7 +17,6 @@ in
   xadetComputer = {
     type = "desktop";
     purposes = [ ];
-    yubikeyAutolock = false;
   };
 
   system.stateVersion = "22.11";

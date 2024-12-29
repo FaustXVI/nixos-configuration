@@ -15,7 +15,6 @@ in
   xadetComputer = {
     type = "laptop";
     purposes = [ "work" "home-office" "gaming" ];
-    #    yubikeyAutolock = false;
   };
 
   hardware.enableAllFirmware = true;
