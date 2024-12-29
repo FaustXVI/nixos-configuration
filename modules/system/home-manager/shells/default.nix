@@ -13,9 +13,6 @@
       enable = true;
       extraPackages = with pkgs.bat-extras; [ batman batgrep  ];
     };
-    broot = {
-      enable = true;
-    };
     btop = {
       enable = true;
     };
@@ -67,5 +64,8 @@
       man = "batman";
       grep = "batgrep";
     };
+    packages = with pkgs; [
+      entr
+    ];
   };
 }
