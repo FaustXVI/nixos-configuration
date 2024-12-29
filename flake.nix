@@ -45,7 +45,7 @@
                 enable = true;
                 dates = "13:00";
                 persistent = true;
-                flake = "/etc/nixos/flake.nix#${configFile}";
+                flake = "/home/xadet/nixos-configuration/flake.nix#${configFile}";
                 flags = [ "--refresh" ] ++ inputUpdates;
               };
             };
