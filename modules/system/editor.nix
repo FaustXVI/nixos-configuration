@@ -1,9 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0" # needed for obsidian
-  ];
   environment = {
     variables = {
       EDITOR = lib.mkForce "vim";
@@ -13,6 +10,7 @@
       obsidian
       pandoc
       texlive.combined.scheme-full
+      libreoffice
     ];
   };
 }

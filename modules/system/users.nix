@@ -2,11 +2,6 @@
 
 {
 
-  environment = {
-    systemPackages = with pkgs; [
-      home-manager
-    ];
-  };
   users = {
     mutableUsers = true;
     extraUsers = {

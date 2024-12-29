@@ -23,17 +23,9 @@ let
         install -v -m644 "$src" "$dst/${addonId}.xpi"
       '';
     });
-  adBlockPlus = buildFirefoxXpiAddon rec {
-    pname = "adBlock plus";
-    version = "3.16.1";
-    addonId = "{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4039476/adblock_plus-3.16.1.xpi";
-    sha256 = "IQ8IjTv1kWjoO1zyJYYBnZn4DCb+pfzuwAZemMtT8nI=";
-  };
   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
     bitwarden
     foxyproxy-standard
-    #            adBlockPlus
     adblocker-ultimate
     screenshot-capture-annotate
   ];
@@ -104,12 +96,23 @@ in
     firefox = {
       enable = true;
       package = unstable.firefox-bin;
-      profiles = {
-        "perso" = {
-          id = 0;
-          inherit settings search extensions;
-        };
-      };
+      profiles = lib.mkMerge [
+        {
+          "perso" = {
+            id = 0;
+            inherit settings search extensions;
+          };
+        }
+        (mylib.mkIfComputerHasPurpose "work"
+          {
+            "perso".isDefault = false;
+            "eove" = {
+              id = 1;
+              isDefault = true;
+              inherit search settings extensions;
+            };
+          })
+      ];
     };
   };
 }

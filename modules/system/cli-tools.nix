@@ -10,7 +10,6 @@
       file
       zip
       unzip
-      htop
       psmisc
       ncdu
     ];

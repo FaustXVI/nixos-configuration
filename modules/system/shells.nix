@@ -1,11 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  environment = {
-    systemPackages = with pkgs; [
-      terminator
-    ];
-  };
   programs = {
     bash = {
       completion = {
