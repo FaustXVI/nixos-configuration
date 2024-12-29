@@ -1,6 +1,6 @@
-{ ... }:
+{ lib, config, ... }:
 let
-  font = "Fira Code Light 16";
+  font = lib.lists.head config.fonts.fontconfig.defaultFonts.monospace;
   black = "#111111";
   white = "#eeeeee";
   cursor = "#999999";
@@ -19,7 +19,7 @@ in
         "default" = {
           foreground_color = "${white}";
           cursor_color = "${cursor}";
-          font = "${font}";
+          font = "${font} 18";
           scrollback_infinite = true;
           use_system_font = false;
         };
@@ -27,7 +27,7 @@ in
           foreground_color = "${black}";
           background_color = "${white}";
           cursor_color = "${cursor}";
-          font = "${font}";
+          font = "${font} 18";
           scrollback_infinite = true;
           use_system_font = false;
         };

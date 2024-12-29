@@ -1,26 +1,62 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 let
   modifier = "Mod4";
+  font = lib.lists.head config.fonts.fontconfig.defaultFonts.monospace;
+  fonts = {
+    names = [ font ];
+    size = 14.0;
+  };
 in
 {
   home.file.".background-image".source = ./background-image;
-  programs = {
-    i3status = {
-      enable = true;
-    };
-  };
   xsession.windowManager.i3 = {
     enable = true;
     # Please see http://i3wm.org/docs/userguide.html for a complete reference!
     config = {
-      inherit modifier;
+      inherit modifier fonts;
       assigns = {
         "1" = [{ class = "(?i)firefox"; }];
       };
-      fonts = {
-        names = [ "pango:monospace" ];
-        size = 8.0;
-      };
+      bars = [{
+        inherit fonts;
+        mode = "dock";
+        hiddenState = "hide";
+        position = "bottom";
+        workspaceButtons = true;
+        workspaceNumbers = true;
+        statusCommand = "${pkgs.i3status}/bin/i3status";
+        trayOutput = "primary";
+        colors = {
+          background = "#000000";
+          statusline = "#ffffff";
+          separator = "#666666";
+          focusedWorkspace = {
+            border = "#4c7899";
+            background = "#285577";
+            text = "#ffffff";
+          };
+          activeWorkspace = {
+            border = "#333333";
+            background = "#5f676a";
+            text = "#ffffff";
+          };
+          inactiveWorkspace = {
+            border = "#333333";
+            background = "#222222";
+            text = "#888888";
+          };
+          urgentWorkspace = {
+            border = "#2f343a";
+            background = "#900000";
+            text = "#ffffff";
+          };
+          bindingMode = {
+            border = "#2f343a";
+            background = "#900000";
+            text = "#ffffff";
+          };
+        };
+      }];
       keybindings = {
         # start a terminal
         "${modifier}+Return" = "exec wezterm";
