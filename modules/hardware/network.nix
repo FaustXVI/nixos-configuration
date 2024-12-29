@@ -22,12 +22,14 @@
   services = {
     openssh = {
       enable = true;
+      openFirewall = true;
       settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        PermitRootLogin = "no";
         GatewayPorts = "yes";
+        StreamLocalBindUnlink="yes";
       };
-      extraConfig = ''
-        StreamLocalBindUnlink yes
-      '';
     };
   };
 }
