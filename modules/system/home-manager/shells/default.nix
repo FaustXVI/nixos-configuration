@@ -9,24 +9,15 @@
         enable = true;
       };
     };
-    autojump = {
-      enable = true;
-    };
     bat = {
       enable = true;
-      #extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batwatch prettybat batwatch batpipe ];
+      extraPackages = with pkgs.bat-extras; [ batman batgrep  ];
     };
     broot = {
       enable = true;
     };
     btop = {
       enable = true;
-    };
-    mcfly = {
-      enable = true;
-      fzf = {
-        enable = true;
-      };
     };
     eza = {
       enable = true;
@@ -73,12 +64,8 @@
       ll = "${exa} -l";
       la = "${exa} -a";
       lla = "${exa} -la";
+      man = "batman";
+      grep = "batgrep";
     };
-    packages = with pkgs; [
-      viu
-      thefuck
-      peco
-      srm
-    ];
   };
 }
