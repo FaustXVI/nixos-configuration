@@ -9,7 +9,9 @@ in
       nixos-hardware.nixosModules.framework-12th-gen-intel
       ./eove-hardware.nix
       ../modules
+      #./luks-interactive-login.nix
     ];
+#  facter.reportPath = ./facter-eove.json;
 
 
   xadetComputer = {

@@ -5,6 +5,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     unstable-pkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +24,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, sops, nur, home-manager, nixos-hardware, ... }@inputs:
+  outputs = { self, nixpkgs, sops, nur, home-manager, nixos-hardware, disko, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -35,9 +40,11 @@
         modules = [
           { nixpkgs.overlays = [ (final: prev: xadetPackages) ]; }
           home-manager.nixosModules.home-manager
+          disko.nixosModules.disko
           sops.nixosModules.sops
           nur.modules.nixos.default
           nur.legacyPackages."${system}".repos.iopq.modules.xraya
+          inputs.nixos-facter-modules.nixosModules.facter
           "${./.}/machines/${configFile}.nix"
           {
             system = {
