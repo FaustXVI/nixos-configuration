@@ -18,7 +18,7 @@ in
     ];
   xadetComputer = {
     type = "desktop";
-    purposes = [ "home" "gaming" "youtube" "photo" "home-office" ];
+    purposes = [ "perso" "gaming" "youtube" "photo" "home-office" ];
   };
   hardware.nvidia.open = false;
 

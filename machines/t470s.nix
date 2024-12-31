@@ -13,7 +13,7 @@
 
   xadetComputer = {
     type = "laptop";
-    purposes = [ "home" ];
+    purposes = [ "perso" ];
   };
   services = {
     xserver = {

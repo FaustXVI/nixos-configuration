@@ -16,7 +16,7 @@ let
   };
 in
 {
-  config = mylib.mkIfComputerHasPurpose "home" {
+  config = mylib.mkIfComputerHasPurpose "perso" {
     sops.secrets.nas = {
       format = "binary";
       sopsFile = ./secrets/nas-credentials.txt;
