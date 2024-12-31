@@ -15,15 +15,15 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/66c1b8a2-f90b-45c0-b028-1048ff1278b4";
+      device = "/dev/disk/by-uuid/df89ce81-e9f1-469f-8d42-0e435adf9564";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."nixos-cyphered".device = "/dev/disk/by-uuid/85a691a8-fb27-43ac-8211-1907aa15419e";
+  boot.initrd.luks.devices."nixos-cyphered".device = "/dev/disk/by-uuid/d2c95ab9-aa11-411c-921d-ca7f98bce103";
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/B76D-2604";
+      device = "/dev/disk/by-uuid/329C-7A46";
       fsType = "vfat";
     };
 
