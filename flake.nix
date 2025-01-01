@@ -36,10 +36,14 @@
   outputs = { self, nixpkgs, sops, nur, home-manager, nixos-hardware, disko, nixos-anywhere, ... }@inputs:
     let
       system = "x86_64-linux";
+      targets = [
+        "desktop-home"
+        "eove"
+      ];
       pkgs = import nixpkgs { inherit system; };
       inputNames = builtins.filter (name: name != "self") (builtins.attrNames inputs);
       inputUpdates = builtins.foldl' (acc: input: acc ++ [ "--update-input" (builtins.toString "${input}") ]) [ ] inputNames;
-      xadetPackages = import ./packages { inherit pkgs self nixos-anywhere system; };
+      xadetPackages = import ./packages { inherit pkgs self nixos-anywhere system targets; };
       nixosMachine = configFile: nixpkgs.lib.nixosSystem rec {
         inherit system;
         specialArgs = {
@@ -88,10 +92,7 @@
           export SOPS_AGE_KEY_FILE="''$(pwd)/keys/ageKey.txt";
         '';
       };
-      installIso = import ./install/iso.nix (inputs // { inherit system pkgs; });
-      nixosConfigurations = builtins.foldl' (set: name: set // { "${name}" = nixosMachine "${name}"; }) { } [
-        "desktop-home"
-        "eove"
-      ];
+      installIso = import ./install/iso.nix (inputs // { inherit system pkgs targets; });
+      nixosConfigurations = builtins.foldl' (set: name: set // { "${name}" = nixosMachine "${name}"; }) { } targets;
     };
 }
