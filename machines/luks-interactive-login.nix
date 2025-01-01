@@ -1,10 +1,13 @@
 { lib, config, ... }:
+let 
+  suitable_disk = builtins.head (builtins.filter (d: d ? "bus_type") config.facter.report.hardware.disk);
+in
 {
   disko.devices = {
     disk = {
       main = {
         type = "disk";
-        device = lib.mkDefault (builtins.head config.facter.report.hardware.disk).unix_device_name;
+        device = builtins.trace suitable_disk.unix_device_name (lib.mkDefault suitable_disk.unix_device_name);
         content = {
           type = "gpt";
           partitions = {
