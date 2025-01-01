@@ -1,4 +1,4 @@
-{ config, pkgs,lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   networking = {
@@ -29,7 +29,7 @@
         KbdInteractiveAuthentication = false;
         PermitRootLogin = "no";
         GatewayPorts = "yes";
-        StreamLocalBindUnlink="yes";
+        StreamLocalBindUnlink = "yes";
       };
     };
   };
