@@ -7,9 +7,9 @@ in
   imports =
     [
       #nixos-hardware.nixosModules.framework-12th-gen-intel
-      ./eove-hardware.nix
+#      ./eove-hardware.nix
       ../modules
-      #./luks-interactive-login.nix
+      ./luks-interactive-login.nix
     ];
   facter.reportPath = ./facter-eove.json;
 

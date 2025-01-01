@@ -5,7 +5,10 @@
   users = {
     mutableUsers = false;
     users = {
-      root.hashedPassword = "!"; # Disable login as root cf : https://discourse.nixos.org/t/how-to-disable-root-user-account-in-configuration-nix/13235/5
+      root = {
+        hashedPassword = "!"; # Disable login as root cf : https://discourse.nixos.org/t/how-to-disable-root-user-account-in-configuration-nix/13235/5
+        hashedPasswordFile = pkgs.lib.mkForce null;
+      };
       xadet = {
         shell = pkgs.fish;
         isNormalUser = true;
