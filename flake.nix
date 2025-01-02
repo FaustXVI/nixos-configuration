@@ -92,7 +92,7 @@
           export SOPS_AGE_KEY_FILE="''$(pwd)/keys/ageKey.txt";
         '';
       };
-      installIso = import ./install/iso.nix (inputs // { inherit system pkgs targets; });
+      installIso = builtins.foldl' (set: target: set // { "${target}" = import ./install/iso.nix (inputs // { inherit system pkgs target; }); }) { } targets;
       nixosConfigurations = builtins.foldl' (set: name: set // { "${name}" = nixosMachine "${name}"; }) { } targets;
     };
 }
