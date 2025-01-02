@@ -7,7 +7,7 @@ in
     disk = {
       main = {
         type = "disk";
-        device = builtins.trace suitable_disk.unix_device_name (lib.mkDefault suitable_disk.unix_device_name);
+        device = lib.mkDefault suitable_disk.unix_device_name;
         content = {
           type = "gpt";
           partitions = {
