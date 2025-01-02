@@ -1,6 +1,6 @@
 { lib, config, ... }:
 let
-  suitable_disk = builtins.head (builtins.filter (d: d ? "bus_type") config.facter.report.hardware.disk);
+  suitable_disk = builtins.head (builtins.filter (d: d ? "bus_type" && ! builtins.any (s: s == "usb" ) d.class_list) config.facter.report.hardware.disk);
 in
 {
   disko.devices = {
