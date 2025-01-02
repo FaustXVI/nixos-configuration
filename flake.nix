@@ -93,6 +93,7 @@
         '';
       };
       installIso = builtins.foldl' (set: target: set // { "${target}" = import ./install/iso.nix (inputs // { inherit system pkgs target; }); }) { } targets;
+      testInstallIso = builtins.foldl' (set: target: set // { "${target}" = import ./install/testIso.nix { inherit pkgs target self; }; }) { } targets;
       nixosConfigurations = builtins.foldl' (set: name: set // { "${name}" = nixosMachine "${name}"; }) { } targets;
     };
 }
