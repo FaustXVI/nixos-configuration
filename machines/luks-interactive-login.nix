@@ -1,5 +1,5 @@
 { lib, config, ... }:
-let 
+let
   suitable_disk = builtins.head (builtins.filter (d: d ? "bus_type") config.facter.report.hardware.disk);
 in
 {

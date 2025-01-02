@@ -1,8 +1,6 @@
-# This module defines a small NixOS installation CD.  It does not
-# contain any graphical stuff.
-{ self, system, nixpkgs, pkgs, target,... }:
+{ self, system, nixpkgs, pkgs, target, ... }:
 let
-  to-install = self.nixosConfigurations.eove;
+  to-install = self.nixosConfigurations.${target};
   dependencies = [
     to-install.config.system.build.toplevel
     to-install.config.system.build.diskoScript
@@ -27,6 +25,11 @@ in
       isoImage.squashfsCompression = "gzip -Xcompression-level 1";
       environment.etc."install-closure".source = "${closureInfo}/store-paths";
       console.keyMap = "fr";
+      nix = {
+        settings = {
+          experimental-features = [ "nix-command" "flakes" ];
+        };
+      };
       environment.systemPackages = [
         pkgs.nixos-facter
         self.packages."${system}"."install-script-${target}"

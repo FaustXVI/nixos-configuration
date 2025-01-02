@@ -59,6 +59,7 @@
           nur.legacyPackages."${system}".repos.iopq.modules.xraya
           inputs.nixos-facter-modules.nixosModules.facter
           "${./.}/machines/${configFile}.nix"
+          ./modules
           {
             system = {
               autoUpgrade = {
