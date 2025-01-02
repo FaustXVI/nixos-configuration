@@ -17,7 +17,7 @@ pkgs.writeShellScriptBin "install-xadet-${target}-nixos" ''
   echo "Created temporary folder $ADDITIONAL_FILE_DIR"
   ${gpg} --import $LOCAL_SRC/modules/system/home-manager/crypto/xadet-public.key
   ${gpg} --card-status > /dev/null
-  cho "decyphering age key"
+  echo "decyphering age key"
   ${gpg} --pinentry-mode loopback -d $LOCAL_SRC/keys/ageKey.txt.gpg > $AGE_KEY
 
   sudo -E ${pkgs.nixos-facter}/bin/nixos-facter -o $FACTER_FILE
