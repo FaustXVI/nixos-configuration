@@ -21,8 +21,11 @@ in
   modules = [
     "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-graphical-gnome.nix"
     #"${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-    {
-      isoImage.squashfsCompression = "gzip -Xcompression-level 1";
+    ({config, ...}:{
+      isoImage = {
+        squashfsCompression = "gzip -Xcompression-level 1";
+        isoBaseName = "nixos-xadet-${target}-installer-${config.system.nixos.release}";
+      };
       environment.etc."install-closure".source = "${closureInfo}/store-paths";
       console.keyMap = "fr";
       nix = {
@@ -47,6 +50,6 @@ in
           initialHashedPassword = nixpkgs.lib.mkForce null;
         };
       };
-    }
+    })
   ];
 }).config.system.build.isoImage
