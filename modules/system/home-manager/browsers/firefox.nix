@@ -96,6 +96,7 @@ in
     firefox = {
       enable = true;
       package = unstable.firefox-bin;
+      languagePacks = [ "en-US" "fr" ];
       profiles = lib.mkMerge [
         {
           "perso" = {
