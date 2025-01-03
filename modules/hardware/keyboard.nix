@@ -2,8 +2,8 @@
 
 {
   console = {
-    #    useXkbConfig = true; # TODO check if usable at boot time
-    keyMap = "fr"; # TODO use fr-bepo on desktop
+    earlySetup =true;
+    useXkbConfig = true;
   };
   services = {
     udev = {
@@ -18,7 +18,7 @@
     xserver = {
       autoRepeatDelay = 200;
       xkb = {
-        variant = "oss"; # TODO conflict with console value ?
+        variant = "oss";
         layout = "fr";
       };
       inputClassSections = [
