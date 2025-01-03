@@ -6,14 +6,6 @@
     unstable-pkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
-    nixos-anywhere = {
-      url = "github:nix-community/nixos-anywhere";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixos-stable.follows = "nixpkgs";
-        disko.follows = "disko";
-      };
-    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +25,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, sops, nur, home-manager, nixos-hardware, disko, nixos-anywhere, ... }@inputs:
+  outputs = { self, nixpkgs, sops, nur, home-manager, nixos-hardware, disko,  ... }@inputs:
     let
       system = "x86_64-linux";
       targets = [
@@ -43,7 +35,7 @@
       pkgs = import nixpkgs { inherit system; };
       inputNames = builtins.filter (name: name != "self") (builtins.attrNames inputs);
       inputUpdates = builtins.foldl' (acc: input: acc ++ [ "--update-input" (builtins.toString "${input}") ]) [ ] inputNames;
-      xadetPackages = import ./packages { inherit pkgs self nixos-anywhere system targets; };
+      xadetPackages = import ./packages { inherit pkgs self disko system targets; };
       nixosMachine = configFile: nixpkgs.lib.nixosSystem rec {
         inherit system;
         specialArgs = {
