@@ -13,7 +13,7 @@ in
 
     sops.templates."githubToken.txt" = {
       content = ''${config.sops.placeholder.githubToken}'';
-      path = "${home}/.config/eove/githubToken";
+      path = "${home}/.githubToken";
       owner = config.users.users.xadet.name;
     };
     home-manager.users.xadet = {
