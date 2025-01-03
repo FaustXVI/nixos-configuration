@@ -25,17 +25,15 @@ pkgs.writeShellScriptBin "install-xadet-${target}-nixos" ''
   ${gpg} --pinentry-mode loopback -d $LOCAL_SRC/keys/ageKey.txt.gpg > $AGE_KEY
 
   sudo -E ${pkgs.nixos-facter}/bin/nixos-facter -o $FACTER_FILE
-  chown nixos $FACTER_FILE
-  chmod 777 $FACTER_FILE
-  cp -r $LOCAL_SRC $ADDITIONAL_FILE_DIR/home/xadet
+  sudo cp -r $LOCAL_SRC $ADDITIONAL_FILE_DIR/home/xadet
 
   sudo ${disko-bin} --yes-wipe-all-disks --mode destroy,format,mount --argstr device $DISK $LOCAL_SRC/machines/luks-interactive-login.nix
 
-  sudo nixos-install --flake $LOCAL_SRC#${target}
+  sudo nixos-install --no-root-passwd --flake $LOCAL_SRC#${target}
 
   sudo cp -u -r $ADDITIONAL_FILE_DIR/* /mnt
-  sudo chown --reference=/home/xadet -R /home/xadet
-  sudo chmod --reference=/home/xadet -R /home/xadet
+  sudo chown --reference=/mnt/home/xadet -R /mnt/home/xadet
+  sudo chmod --reference=/mnt/home/xadet -R /mnt/home/xadet
 
   ${pkgs.coreutils}/bin/shred -u $AGE_KEY
 ''
