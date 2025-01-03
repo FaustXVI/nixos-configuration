@@ -1,13 +1,10 @@
-{ lib, config, ... }:
-let
-  suitable_disk = builtins.head (builtins.filter (d: d ? "bus_type" && ! builtins.any (s: s == "usb" ) d.class_list) config.facter.report.hardware.disk);
-in
+{ device, ... }:
 {
   disko.devices = {
     disk = {
       main = {
+        inherit device;
         type = "disk";
-        device = lib.mkDefault suitable_disk.unix_device_name;
         content = {
           type = "gpt";
           partitions = {
