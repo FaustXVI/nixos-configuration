@@ -102,7 +102,7 @@
         "module_alias": "usb:v8087p0032d0000dcE0dsc01dp01icE0isc01ip01in00"
       },
       {
-        "index": 64,
+        "index": 65,
         "attached_to": 56,
         "class_list": [
           "usb",
@@ -783,7 +783,7 @@
     ],
     "chip_card": [
       {
-        "index": 55,
+        "index": 66,
         "attached_to": 56,
         "class_list": [
           "chip_card",
@@ -819,8 +819,8 @@
           "value": 0
         },
         "model": "Yubico YubiKey OTP+FIDO+CCID",
-        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb3/3-4/3-4:1.2",
-        "sysfs_bus_id": "3-4:1.2",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb3/3-3/3-3:1.2",
+        "sysfs_bus_id": "3-3:1.2",
         "resources": [
           {
             "type": "baud",
@@ -1098,7 +1098,7 @@
           "range": 0
         },
         "unix_device_names": [
-          "/dev/disk/by-diskseq/1",
+          "/dev/disk/by-diskseq/9",
           "/dev/disk/by-id/nvme-WD_BLACK_SN770_500GB_220310800945",
           "/dev/disk/by-id/nvme-WD_BLACK_SN770_500GB_220310800945_1",
           "/dev/disk/by-id/nvme-eui.e8238fa6bf530001001b448b45ea4b50",
@@ -1132,11 +1132,22 @@
       },
       {
         "index": 54,
-        "attached_to": 0,
+        "attached_to": 45,
         "class_list": [
           "disk",
+          "usb",
+          "scsi",
           "block_device"
         ],
+        "bus_type": {
+          "hex": "0084",
+          "name": "SCSI",
+          "value": 132
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
         "base_class": {
           "hex": "0106",
           "name": "Mass Storage Device",
@@ -1147,26 +1158,82 @@
           "name": "Disk",
           "value": 0
         },
-        "model": "Disk",
-        "sysfs_id": "/class/block/zram0",
-        "unix_device_name": "/dev/zram0",
+        "vendor": {
+          "hex": "346d",
+          "name": "VendorCo",
+          "value": 13421
+        },
+        "device": {
+          "hex": "5678",
+          "name": "ProductCode",
+          "value": 22136
+        },
+        "revision": {
+          "hex": "0000",
+          "name": "2.00",
+          "value": 0
+        },
+        "serial": "4641951121249532134",
+        "model": "VendorCo ProductCode",
+        "sysfs_id": "/class/block/sda",
+        "sysfs_bus_id": "0:0:0:0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:14.0/usb3/3-5/3-5:1.0/host0/target0:0:0/0:0:0:0",
+        "unix_device_name": "/dev/sda",
         "unix_device_number": {
           "type": 98,
-          "major": 253,
+          "major": 8,
+          "minor": 0,
+          "range": 16
+        },
+        "unix_device_names": [
+          "/dev/disk/by-diskseq/10",
+          "/dev/disk/by-id/usb-VendorCo_ProductCode_4641951121249532134-0:0",
+          "/dev/disk/by-path/pci-0000:00:14.0-usb-0:5:1.0-scsi-0:0:0:0",
+          "/dev/disk/by-path/pci-0000:00:14.0-usbv2-0:5:1.0-scsi-0:0:0:0",
+          "/dev/sda"
+        ],
+        "unix_device_name2": "/dev/sg0",
+        "unix_device_number2": {
+          "type": 99,
+          "major": 21,
           "minor": 0,
           "range": 1
         },
-        "unix_device_names": [
-          "/dev/zram0"
-        ],
         "resources": [
+          {
+            "type": "baud",
+            "speed": 480000000,
+            "bits": 0,
+            "stop_bits": 0,
+            "parity": 0,
+            "handshake": 0
+          },
+          {
+            "type": "disk_geo",
+            "cylinders": 60000,
+            "heads": 64,
+            "sectors": 32,
+            "size": 0,
+            "geo_type": "logical"
+          },
           {
             "type": "size",
             "unit": "sectors",
-            "value_1": 4071424,
-            "value_2": 4096
+            "value_1": 122880000,
+            "value_2": 512
           }
-        ]
+        ],
+        "driver": "usb-storage",
+        "driver_module": "usb_storage",
+        "drivers": [
+          "sd",
+          "usb-storage"
+        ],
+        "driver_modules": [
+          "sd_mod",
+          "usb_storage"
+        ],
+        "module_alias": "usb:v346Dp5678d0200dc00dsc00dp00ic08isc06ip50in00"
       }
     ],
     "graphics_card": [
@@ -1369,7 +1436,7 @@
         "module_alias": "usb:v1D6Bp0002d0606dc09dsc00dp01ic09isc00ip00in00"
       },
       {
-        "index": 59,
+        "index": 60,
         "attached_to": 45,
         "class_list": [
           "usb",
@@ -1442,7 +1509,7 @@
         "module_alias": "usb:v1D6Bp0003d0606dc09dsc00dp03ic09isc00ip00in00"
       },
       {
-        "index": 62,
+        "index": 63,
         "attached_to": 25,
         "class_list": [
           "usb",
@@ -1525,7 +1592,7 @@
         "module_alias": "usb:v1D6Bp0002d0606dc09dsc00dp01ic09isc00ip00in00"
       },
       {
-        "index": 65,
+        "index": 67,
         "attached_to": 25,
         "class_list": [
           "usb",
@@ -1600,7 +1667,7 @@
     ],
     "keyboard": [
       {
-        "index": 57,
+        "index": 55,
         "attached_to": 56,
         "class_list": [
           "keyboard",
@@ -1641,8 +1708,8 @@
           "value": 0
         },
         "model": "Yubico YubiKey OTP+FIDO+CCID",
-        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb3/3-4/3-4:1.0",
-        "sysfs_bus_id": "3-4:1.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb3/3-3/3-3:1.0",
+        "sysfs_bus_id": "3-3:1.0",
         "unix_device_name": "/dev/input/event1",
         "unix_device_number": {
           "type": 99,
@@ -1652,8 +1719,8 @@
         },
         "unix_device_names": [
           "/dev/input/by-id/usb-Yubico_YubiKey_OTP+FIDO+CCID-event-kbd",
-          "/dev/input/by-path/pci-0000:00:14.0-usb-0:4:1.0-event-kbd",
-          "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:4:1.0-event-kbd",
+          "/dev/input/by-path/pci-0000:00:14.0-usb-0:3:1.0-event-kbd",
+          "/dev/input/by-path/pci-0000:00:14.0-usbv2-0:3:1.0-event-kbd",
           "/dev/input/event1"
         ],
         "resources": [
@@ -1731,7 +1798,7 @@
           {
             "type": "mem",
             "base": 0,
-            "range": 33353359360,
+            "range": 33353363456,
             "enabled": true,
             "access": "read_write",
             "prefetch": "unknown"
@@ -1848,9 +1915,9 @@
           "hex": "0274",
           "value": 628
         },
-        "sysfs_id": "/devices/pci0000:00/0000:00:15.3/i2c_designware.2/i2c-3/i2c-PIXA3854:00/0018:093A:0274.0008/input/input15",
+        "sysfs_id": "/devices/pci0000:00/0000:00:15.3/i2c_designware.2/i2c-3/i2c-PIXA3854:00/0018:093A:0274.0005/input/input12",
         "unix_device_names": [
-          "/dev/input/event8",
+          "/dev/input/event6",
           "/dev/input/ + handler"
         ]
       }
@@ -2041,29 +2108,6 @@
     ],
     "network_interface": [
       {
-        "index": 67,
-        "attached_to": 0,
-        "class_list": [
-          "network_interface"
-        ],
-        "base_class": {
-          "hex": "0107",
-          "name": "Network Interface",
-          "value": 263
-        },
-        "sub_class": {
-          "hex": "0000",
-          "name": "Loopback",
-          "value": 0
-        },
-        "model": "Loopback network interface",
-        "sysfs_id": "/class/net/lo",
-        "unix_device_name": "lo",
-        "unix_device_names": [
-          "lo"
-        ]
-      },
-      {
         "index": 68,
         "attached_to": 50,
         "class_list": [
@@ -2103,6 +2147,29 @@
         ],
         "driver_modules": [
           "iwlwifi"
+        ]
+      },
+      {
+        "index": 69,
+        "attached_to": 0,
+        "class_list": [
+          "network_interface"
+        ],
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Loopback",
+          "value": 0
+        },
+        "model": "Loopback network interface",
+        "sysfs_id": "/class/net/lo",
+        "unix_device_name": "lo",
+        "unix_device_names": [
+          "lo"
         ]
       }
     ],
@@ -2322,7 +2389,7 @@
         "resources": [
           {
             "type": "irq",
-            "base": 184,
+            "base": 202,
             "triggered": 0,
             "enabled": true
           },
@@ -2340,7 +2407,7 @@
           "command": 1030,
           "header_type": 0,
           "secondary_bus": 0,
-          "irq": 184,
+          "irq": 202,
           "prog_if": 0
         },
         "driver": "proc_thermal_pci",
@@ -3090,7 +3157,7 @@
         "resources": [
           {
             "type": "irq",
-            "base": 204,
+            "base": 206,
             "triggered": 0,
             "enabled": true
           },
@@ -3116,7 +3183,7 @@
           "command": 1030,
           "header_type": 0,
           "secondary_bus": 0,
-          "irq": 204,
+          "irq": 206,
           "prog_if": 128
         },
         "driver": "snd_hda_intel",
@@ -3273,7 +3340,7 @@
     ],
     "usb": [
       {
-        "index": 60,
+        "index": 57,
         "attached_to": 56,
         "class_list": [
           "usb",
@@ -3310,8 +3377,8 @@
         },
         "serial": "11AD1D00B21A3F05372D0B00",
         "model": "Framework HDMI Expansion Card",
-        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb3/3-5/3-5:1.0",
-        "sysfs_bus_id": "3-5:1.0",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb3/3-4/3-4:1.0",
+        "sysfs_bus_id": "3-4:1.0",
         "resources": [
           {
             "type": "baud",
@@ -3352,7 +3419,98 @@
         "module_alias": "usb:v32ACp0002d0000dc00dsc00dp00ic11isc00ip00in00"
       },
       {
-        "index": 61,
+        "index": 59,
+        "attached_to": 56,
+        "class_list": [
+          "usb",
+          "unknown"
+        ],
+        "bus_type": {
+          "hex": "0086",
+          "name": "USB",
+          "value": 134
+        },
+        "slot": {
+          "bus": 0,
+          "number": 0
+        },
+        "base_class": {
+          "hex": "0000",
+          "name": "Unclassified device",
+          "value": 0
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Unclassified device",
+          "value": 0
+        },
+        "vendor": {
+          "hex": "1050",
+          "name": "Yubico",
+          "value": 4176
+        },
+        "device": {
+          "hex": "0407",
+          "name": "YubiKey OTP+FIDO+CCID",
+          "value": 1031
+        },
+        "revision": {
+          "hex": "0000",
+          "name": "5.12",
+          "value": 0
+        },
+        "model": "Yubico YubiKey OTP+FIDO+CCID",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb3/3-3/3-3:1.1",
+        "sysfs_bus_id": "3-3:1.1",
+        "resources": [
+          {
+            "type": "baud",
+            "speed": 12000000,
+            "bits": 0,
+            "stop_bits": 0,
+            "parity": 0,
+            "handshake": 0
+          }
+        ],
+        "detail": {
+          "device_class": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "device_protocol": 0,
+          "interface_class": {
+            "hex": "0003",
+            "name": "hid",
+            "value": 3
+          },
+          "interface_subclass": {
+            "hex": "0000",
+            "name": "per_interface",
+            "value": 0
+          },
+          "interface_protocol": 0,
+          "interface_number": 1,
+          "interface_alternate_setting": 0
+        },
+        "hotplug": "usb",
+        "driver": "usbhid",
+        "driver_module": "usbhid",
+        "drivers": [
+          "usbhid"
+        ],
+        "driver_modules": [
+          "usbhid"
+        ],
+        "module_alias": "usb:v1050p0407d0512dc00dsc00dp00ic03isc00ip00in01"
+      },
+      {
+        "index": 62,
         "attached_to": 56,
         "class_list": [
           "usb",
@@ -3436,98 +3594,7 @@
         "module_alias": "usb:v27C6p609Cd0100dcEFdsc00dp00icFFisc00ip00in00"
       },
       {
-        "index": 63,
-        "attached_to": 56,
-        "class_list": [
-          "usb",
-          "unknown"
-        ],
-        "bus_type": {
-          "hex": "0086",
-          "name": "USB",
-          "value": 134
-        },
-        "slot": {
-          "bus": 0,
-          "number": 0
-        },
-        "base_class": {
-          "hex": "0000",
-          "name": "Unclassified device",
-          "value": 0
-        },
-        "sub_class": {
-          "hex": "0000",
-          "name": "Unclassified device",
-          "value": 0
-        },
-        "vendor": {
-          "hex": "1050",
-          "name": "Yubico",
-          "value": 4176
-        },
-        "device": {
-          "hex": "0407",
-          "name": "YubiKey OTP+FIDO+CCID",
-          "value": 1031
-        },
-        "revision": {
-          "hex": "0000",
-          "name": "5.12",
-          "value": 0
-        },
-        "model": "Yubico YubiKey OTP+FIDO+CCID",
-        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb3/3-4/3-4:1.1",
-        "sysfs_bus_id": "3-4:1.1",
-        "resources": [
-          {
-            "type": "baud",
-            "speed": 12000000,
-            "bits": 0,
-            "stop_bits": 0,
-            "parity": 0,
-            "handshake": 0
-          }
-        ],
-        "detail": {
-          "device_class": {
-            "hex": "0000",
-            "name": "per_interface",
-            "value": 0
-          },
-          "device_subclass": {
-            "hex": "0000",
-            "name": "per_interface",
-            "value": 0
-          },
-          "device_protocol": 0,
-          "interface_class": {
-            "hex": "0003",
-            "name": "hid",
-            "value": 3
-          },
-          "interface_subclass": {
-            "hex": "0000",
-            "name": "per_interface",
-            "value": 0
-          },
-          "interface_protocol": 0,
-          "interface_number": 1,
-          "interface_alternate_setting": 0
-        },
-        "hotplug": "usb",
-        "driver": "usbhid",
-        "driver_module": "usbhid",
-        "drivers": [
-          "usbhid"
-        ],
-        "driver_modules": [
-          "usbhid"
-        ],
-        "module_alias": "usb:v1050p0407d0512dc00dsc00dp00ic03isc00ip00in01"
-      },
-      {
-        "index": 66,
+        "index": 64,
         "attached_to": 56,
         "class_list": [
           "usb",
@@ -3564,8 +3631,8 @@
         },
         "serial": "11AD1D00B21A3F05372D0B00",
         "model": "Framework HDMI Expansion Card",
-        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb3/3-5/3-5:1.1",
-        "sysfs_bus_id": "3-5:1.1",
+        "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb3/3-4/3-4:1.1",
+        "sysfs_bus_id": "3-4:1.1",
         "resources": [
           {
             "type": "baud",
@@ -3673,7 +3740,7 @@
         "resources": [
           {
             "type": "irq",
-            "base": 144,
+            "base": 128,
             "triggered": 0,
             "enabled": true
           },
@@ -3691,7 +3758,7 @@
           "command": 1030,
           "header_type": 0,
           "secondary_bus": 0,
-          "irq": 144,
+          "irq": 128,
           "prog_if": 48
         },
         "driver": "xhci_hcd",
@@ -3859,7 +3926,7 @@
         "resources": [
           {
             "type": "irq",
-            "base": 145,
+            "base": 129,
             "triggered": 0,
             "enabled": true
           },
@@ -3877,7 +3944,7 @@
           "command": 1030,
           "header_type": 0,
           "secondary_bus": 0,
-          "irq": 145,
+          "irq": 129,
           "prog_if": 48
         },
         "driver": "xhci_hcd",
