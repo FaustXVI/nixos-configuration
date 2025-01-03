@@ -18,11 +18,11 @@ pkgs.writeShellScriptBin "install-xadet-${target}-nixos" ''
   mkdir -p $ADDITIONAL_FILE_DIR/root $ADDITIONAL_FILE_DIR/home/xadet
   AGE_KEY="$ADDITIONAL_FILE_DIR/root/ageKey.txt"
   FACTER_FILE="$LOCAL_SRC/machines/facter-${target}.json"
-  #echo "Created temporary folder $ADDITIONAL_FILE_DIR"
-  #${gpg} --import $LOCAL_SRC/modules/system/home-manager/crypto/xadet-public.key
-  #${gpg} --card-status > /dev/null
-  #echo "decyphering age key"
-  #${gpg} --pinentry-mode loopback -d $LOCAL_SRC/keys/ageKey.txt.gpg > $AGE_KEY
+  echo "Created temporary folder $ADDITIONAL_FILE_DIR"
+  ${gpg} --import $LOCAL_SRC/modules/system/home-manager/crypto/xadet-public.key
+  ${gpg} --card-status > /dev/null
+  echo "decyphering age key"
+  ${gpg} --pinentry-mode loopback -d $LOCAL_SRC/keys/ageKey.txt.gpg > $AGE_KEY
 
   sudo -E ${pkgs.nixos-facter}/bin/nixos-facter -o $FACTER_FILE
   chown nixos $FACTER_FILE
