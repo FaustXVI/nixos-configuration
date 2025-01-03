@@ -11,7 +11,7 @@ pkgs.writeShellScriptBin "install-xadet-${target}-nixos" ''
   cp -r ${config-src} $LOCAL_SRC
   export SSHPASS="nixos"
   ADDITIONAL_FILE_DIR=$(${pkgs.coreutils}/bin/mktemp -d)
-  mkdir -p $ADDITIONAL_FILE_DIR/root $ADDITIONAL_FILE_DIR/xadet
+  mkdir -p $ADDITIONAL_FILE_DIR/root $ADDITIONAL_FILE_DIR/home/xadet
   AGE_KEY="$ADDITIONAL_FILE_DIR/root/ageKey.txt"
   FACTER_FILE="$LOCAL_SRC/machines/facter-${target}.json"
   echo "Created temporary folder $ADDITIONAL_FILE_DIR"
@@ -23,7 +23,7 @@ pkgs.writeShellScriptBin "install-xadet-${target}-nixos" ''
   sudo -E ${pkgs.nixos-facter}/bin/nixos-facter -o $FACTER_FILE
   chown nixos $FACTER_FILE
   chmod 777 $FACTER_FILE
-  cp -r $LOCAL_SRC $ADDITIONAL_FILE_DIR/xadet
+  cp -r $LOCAL_SRC $ADDITIONAL_FILE_DIR/home/xadet
 
   ${nixos-anywhere-bin} --flake $LOCAL_SRC#${target} --target-host root@localhost --extra-files $ADDITIONAL_FILE_DIR --env-password
 
