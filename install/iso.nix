@@ -1,4 +1,7 @@
-{ self, system, nixpkgs, pkgs, target, ... }:
+{ self, system, nixpkgs, pkgs, targets, ... }:
+let
+  scripts = builtins.map (target: self.packages."${system}"."install-script-${target}")  targets;
+in
 (nixpkgs.lib.nixosSystem {
   inherit system;
   modules = [
@@ -7,7 +10,7 @@
     ({config, ...}:{
       isoImage = {
         squashfsCompression = "gzip -Xcompression-level 1";
-        isoBaseName = "nixos-xadet-${target}-installer-${config.system.nixos.release}";
+        isoBaseName = "nixos-xadet-installer-${config.system.nixos.release}";
       };
       console.keyMap = "fr";
       nix = {
@@ -17,8 +20,7 @@
       };
       environment.systemPackages = [
         pkgs.nixos-facter
-        self.packages."${system}"."install-script-${target}"
-      ];
+      ] ++ scripts;
       services.xserver.xkb = {
         layout = "fr";
       };
