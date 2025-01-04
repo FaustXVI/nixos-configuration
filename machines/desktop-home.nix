@@ -1,20 +1,14 @@
 { config, pkgs, inputs, ... }:
 
 let
-  nixos-hardware = inputs.nixos-hardware;
   LG = "HDMI-0";
   Samsung = "DP-3";
+  device = "/dev/todo";
 in
 {
   imports =
     [
-      nixos-hardware.nixosModules.common-cpu-amd
-      nixos-hardware.nixosModules.common-cpu-amd-pstate
-      nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-      nixos-hardware.nixosModules.common-pc
-      nixos-hardware.nixosModules.common-pc-ssd
-      ./desktop-home-hardware.nix
-      ../modules
+      (import ./luks-interactive-login.nix {inherit device;})
     ];
   xadetComputer = {
     type = "desktop";

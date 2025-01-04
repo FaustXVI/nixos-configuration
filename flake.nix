@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     unstable-pkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     disko = {
       url = "github:nix-community/disko";
@@ -25,7 +24,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, sops, nur, home-manager, nixos-hardware, disko,  ... }@inputs:
+  outputs = { self, nixpkgs, sops, nur, home-manager, disko,  ... }@inputs:
     let
       system = "x86_64-linux";
       targets = [
