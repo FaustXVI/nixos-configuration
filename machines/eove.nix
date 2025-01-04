@@ -2,13 +2,13 @@
 
 let
   nixos-hardware = inputs.nixos-hardware;
-  suitable_disk = builtins.head (builtins.filter (d: d ? "bus_type" && ! builtins.any (s: s == "usb" ) d.class_list) config.facter.report.hardware.disk);
+  suitable_disk = builtins.head (builtins.filter (d: d ? "bus_type" && ! builtins.any (s: s == "usb") d.class_list) config.facter.report.hardware.disk);
   device = suitable_disk.unix_device_name;
 in
 {
   imports =
     [
-      (import ./luks-interactive-login.nix {inherit device;})
+      (import ./luks-interactive-login.nix { inherit device; })
     ];
   facter.reportPath = ./facter-eove.json;
 

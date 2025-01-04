@@ -8,7 +8,7 @@ in
 {
   imports =
     [
-      (import ./luks-interactive-login.nix {inherit device;})
+      (import ./luks-interactive-login.nix { inherit device; })
     ];
   xadetComputer = {
     type = "desktop";

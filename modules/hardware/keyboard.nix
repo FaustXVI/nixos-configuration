@@ -2,7 +2,7 @@
 
 {
   console = {
-    earlySetup =true;
+    earlySetup = true;
     useXkbConfig = true;
   };
   services = {

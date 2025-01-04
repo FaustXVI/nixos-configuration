@@ -24,7 +24,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, sops, nur, home-manager, disko,  ... }@inputs:
+  outputs = { self, nixpkgs, sops, nur, home-manager, disko, ... }@inputs:
     let
       system = "x86_64-linux";
       targets = [
@@ -32,8 +32,6 @@
         "eove"
       ];
       pkgs = import nixpkgs { inherit system; };
-      inputNames = builtins.filter (name: name != "self") (builtins.attrNames inputs);
-      inputUpdates = builtins.foldl' (acc: input: acc ++ [ "--update-input" (builtins.toString "${input}") ]) [ ] inputNames;
       xadetPackages = import ./packages { inherit pkgs self disko system targets; };
       nixosMachine = configFile: nixpkgs.lib.nixosSystem rec {
         inherit system;
@@ -51,17 +49,6 @@
           inputs.nixos-facter-modules.nixosModules.facter
           "${./.}/machines/${configFile}.nix"
           ./modules
-          {
-            system = {
-              autoUpgrade = {
-                enable = true;
-                dates = "13:00";
-                persistent = true;
-                flake = "/home/xadet/nixos-configuration/flake.nix#${configFile}";
-                flags = [ "--refresh" ] ++ inputUpdates;
-              };
-            };
-          }
           {
             options = {
               usedFlake = pkgs.lib.mkOption {
