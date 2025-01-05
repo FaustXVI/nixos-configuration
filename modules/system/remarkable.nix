@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   environment = {
-    systemPackages = [ pkgs.remarkable ];
+    systemPackages = [ pkgs.remarkable pkgs.dedrm ];
   };
 }
