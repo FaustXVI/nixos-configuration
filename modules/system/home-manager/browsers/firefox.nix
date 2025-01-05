@@ -1,4 +1,4 @@
-{ pkgs, unstable, lib, config, mylib, ... }@args:
+{ pkgs, lib, config, mylib, ... }@args:
 let
   buildFirefoxXpiAddon = lib.makeOverridable ({ stdenv ? pkgs.stdenv
                                               , fetchurl ? pkgs.fetchurl
@@ -95,7 +95,7 @@ in
   programs = {
     firefox = {
       enable = true;
-      package = unstable.firefox-bin;
+      package = pkgs.unstable.firefox-bin;
       profiles = lib.mkMerge [
         {
           "perso" = {

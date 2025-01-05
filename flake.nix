@@ -32,15 +32,12 @@
         "eove"
       ];
       pkgs = import nixpkgs { inherit system; };
+      unstable = import inputs.unstable-pkgs { inherit system; config.allowUnfree = true; };
       xadetPackages = import ./packages { inherit pkgs self disko system targets; };
       nixosMachine = configFile: nixpkgs.lib.nixosSystem rec {
         inherit system;
-        specialArgs = {
-          inherit inputs;
-          unstable = import inputs.unstable-pkgs { inherit system; config.allowUnfree = true; };
-        };
         modules = [
-          { nixpkgs.overlays = [ (final: prev: xadetPackages) ]; }
+          { nixpkgs.overlays = [ (final: prev: xadetPackages) (final: prev: {inherit unstable;})]; }
           home-manager.nixosModules.home-manager
           disko.nixosModules.disko
           sops.nixosModules.sops
