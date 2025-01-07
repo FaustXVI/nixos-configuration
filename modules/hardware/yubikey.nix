@@ -15,7 +15,7 @@ in
         yubioath-flutter
       ];
     };
-    systemd.services.i3lock = {
+    systemd.services.i3-auto-lock = {
       enable = true;
       description = "i3lock";
       environment = { DISPLAY = ":0"; };
@@ -52,7 +52,7 @@ in
       udev = {
         packages = with pkgs; [ yubikey-personalization libyubikey yubikey-personalization-gui ];
         extraRules = ''
-          ACTION=="remove", ENV{KEY}=="?*", ENV{ID_BUS}=="usb", ENV{ID_MODEL_ID}=="0407", ENV{ID_VENDOR_ID}=="1050", ENV{DISPLAY}=":0.0", ENV{XAUTHORITY}="${config.users.users.xadet.home}/.Xauthority", RUN+="${pkgs.bash}/bin/bash -c 'systemctl --no-block start i3lock'"
+          ACTION=="remove", ENV{KEY}=="?*", ENV{ID_BUS}=="usb", ENV{ID_MODEL_ID}=="0407", ENV{ID_VENDOR_ID}=="1050", ENV{DISPLAY}=":0.0", ENV{XAUTHORITY}="${config.users.users.xadet.home}/.Xauthority", RUN+="${pkgs.bash}/bin/bash -c 'systemctl --no-block start i3-auto-lock'"
         '';
       };
     };
