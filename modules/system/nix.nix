@@ -2,9 +2,12 @@
 
 {
   nixpkgs.config.allowUnfree = true;
-  sops.templates."nix-github-token.conf".content = ''
+  sops.templates."nix-github-token.conf" = {
+    owner = config.users.users.xadet.name;
+  content = ''
     access-tokens = github.com=${config.sops.placeholder.githubToken}
   '';
+};
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
