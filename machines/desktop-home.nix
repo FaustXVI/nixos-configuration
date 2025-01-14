@@ -3,7 +3,7 @@
 let
   LG = "HDMI-0";
   Samsung = "DP-3";
-  device = "/dev/todo";
+  device = "/dev/nvme1n1";
 in
 {
   imports =
@@ -14,7 +14,7 @@ in
     type = "desktop";
     purposes = [ "perso" "gaming" "youtube" "photo" "home-office" ];
   };
-  hardware.nvidia.open = false;
+  #hardware.nvidia.open = false;
 
 
   services = {
@@ -56,7 +56,7 @@ in
     };
   };
 
-  system.stateVersion = "21.05";
+  system.stateVersion = "24.11";
   time.hardwareClockInLocalTime = true;
 
 
