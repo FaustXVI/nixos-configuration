@@ -12,7 +12,7 @@ in
       userEmail = lib.mkDefault "1016863+FaustXVI@users.noreply.github.com";
       signing = {
         signByDefault = true;
-        key = "98AC52834768871837C022716E983A14A5221EE1";
+        key = "D158D40AD633259081FB834628EC14C71D3CFAAF";
       };
       aliases = {
         co = "checkout";
