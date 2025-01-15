@@ -70,6 +70,68 @@
       };
       installIso = import ./install/iso.nix (inputs // { inherit system pkgs targets; });
       testInstallIso = import ./install/testIso.nix { inherit pkgs self; };
-      nixosConfigurations = builtins.foldl' (set: name: set // { "${name}" = nixosMachine "${name}"; }) { } targets;
+      nixosConfigurations = builtins.foldl' (set: name: set // { "${name}" = nixosMachine "${name}"; }) { 
+        hyprtest = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            home-manager.nixosModules.home-manager
+            {
+              programs.hyprland.enable = true;
+              programs.regreet = {
+                enable = true;
+
+              };
+  environment.etc."greetd/hyprland.conf".text = ''
+    exec-once = regreet; hyprctl dispatch exit
+  '';
+              services.greetd = {
+  enable = true;
+  settings = {
+    initial_session = {
+      command = "${pkgs.lib.getExe pkgs.hyprland} --config /etc/greetd/hyprland.conf";
+      user = "greeter";
+    };
+  };
+};
+#              environment.variables = {
+#                XKB_DEFAULT_LAYOUT = "fr,fr";
+#                XKB_DEFAULT_VARIANT = "oss,bepo";
+#                XKB_DEFAULT_OPTIONS = "grp:alts_toggle";
+#              };
+              home-manager.users.test = {
+                home.stateVersion = "24.11";
+                wayland.windowManager.hyprland = {
+                  enable = true;
+                  extraConfig = ''
+                    $terminal = ${pkgs.kitty}/bin/kitty
+                    env = XCURSOR_SIZE,24
+                    env = HYPRCURSOR_SIZE,24
+                    $mainMod = SUPER
+                    bind = $mainMod, Q, exec, $terminal
+                    bind = $mainMod, M, exit,
+                    input {
+                      kb_layout = fr
+                    }
+                  '';
+                };
+              };
+              services.xserver = {
+                #enable = true;
+      xkb = {
+        variant = "oss";
+        layout = "fr";
+      };
+      };
+  console = {
+    keyMap = "fr";
+  };
+              users.users.test = {
+                isNormalUser = true;
+                password = "test";
+              };
+            }
+          ];
+        };
+      } targets;
     };
 }
