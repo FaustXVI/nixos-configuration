@@ -5,6 +5,11 @@
     earlySetup = true;
     useXkbConfig = true;
   };
+  environment.variables = {
+    XKB_DEFAULT_LAYOUT = config.services.xserver.xkb.layout;
+    XKB_DEFAULT_VARIANT = config.services.xserver.xkb.variant;
+    XKB_DEFAULT_OPTIONS = config.services.xserver.xkb.options;
+  };
   services = {
     udev = {
       # extra rules so that I can flash my ergodox
@@ -18,8 +23,9 @@
     xserver = {
       autoRepeatDelay = 200;
       xkb = {
-        variant = "oss";
-        layout = "fr";
+        layout = "fr,fr";
+        variant = "oss,bepo";
+        options = "grp:menu_toggle";
       };
       inputClassSections = [
         ''
