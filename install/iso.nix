@@ -12,7 +12,10 @@ in
         squashfsCompression = "gzip -Xcompression-level 1";
         isoBaseName = "nixos-xadet-installer-${config.system.nixos.release}";
       };
-      console.keyMap = "fr";
+      console = {
+        earlySetup = true;
+        useXkbConfig = true;
+      };
       nix = {
         settings = {
           experimental-features = [ "nix-command" "flakes" ];
@@ -22,7 +25,9 @@ in
         pkgs.nixos-facter
       ] ++ scripts;
       services.xserver.xkb = {
-        layout = "fr";
+        layout = "fr,fr";
+        variant = "oss,bepo";
+        options = "grp:menu_toggle";
       };
       users.users = {
         root = {
