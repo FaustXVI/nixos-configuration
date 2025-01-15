@@ -1,8 +1,8 @@
 { config, pkgs, inputs, ... }:
 
 let
-  LG = "HDMI-0";
-  Samsung = "DP-3";
+  LG = "HDMI-1";
+  Samsung = "DP-2";
   device = "/dev/nvme1n1";
 in
 {
