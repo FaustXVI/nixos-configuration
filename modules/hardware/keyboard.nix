@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, mylib, ... }:
 
 {
   console = {
@@ -24,7 +24,7 @@
       autoRepeatDelay = 200;
       xkb = {
         layout = "fr,fr";
-        variant = "oss,bepo";
+        variant = if mylib.computerIs "laptop" then "oss,bepo" else "bepo,oss";
         options = "grp:menu_toggle";
       };
       inputClassSections = [
