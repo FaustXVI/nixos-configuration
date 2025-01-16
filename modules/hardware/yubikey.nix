@@ -22,7 +22,7 @@ in
       serviceConfig = {
         User = config.users.users.xadet.name;
         Type = "forking";
-#        ExecStart = "${pkgs.i3lock}/bin/i3lock -i ${config.users.users.xadet.home}/.background-image";
+        ExecStart = "${pkgs.i3lock}/bin/i3lock -i ${config.users.users.xadet.home}/.background-image";
       };
     };
     services = {
