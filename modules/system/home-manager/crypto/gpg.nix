@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, mylib, ... }:
 with pkgs; {
   programs = {
     gpg = {
@@ -6,9 +6,7 @@ with pkgs; {
       scdaemonSettings = {
         disable-ccid = true;
       };
-      publicKeys = [
-        { source = ./xadet-public.key; }
-      ];
+      publicKeys = map (source: {inherit source; trust = "ultimate";} ) (mylib.filesInDir ./public-keys);
     };
   };
 }

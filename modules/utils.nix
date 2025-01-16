@@ -24,6 +24,8 @@ rec {
 
   importsWith = args: paths: map (path: import path args) paths;
 
+  filesInDir = dir: with builtins; map (f: "${dir}/${f}") (attrNames (filterAttr (f: t: t == "regular") (readDir dir)));
+
   importAllFilteredWith = filter: args: p:
     let
       path = builtins.toString p;
