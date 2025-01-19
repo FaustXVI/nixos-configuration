@@ -8,9 +8,9 @@
   };
   environment = {
     systemPackages = with pkgs; [
+      kitty
+      wl-clipboard
       dmenu
-      i3status
-      i3lock
       libnotify
       adwaita-icon-theme
       dunst
@@ -25,30 +25,37 @@
     udisks2 = {
       enable = true;
     };
-    displayManager = {
-      defaultSession = "none+i3";
-    };
-    xserver = {
-      enable = true;
-      windowManager = {
-        i3 = {
-          enable = true;
-        };
-      };
-      desktopManager = {
-        wallpaper = {
-          mode = "max";
-        };
-      };
-      displayManager = {
-        sessionCommands = ''
-          ${pkgs.networkmanagerapplet}/bin/nm-applet &
-          ${pkgs.udiskie}/bin/udiskie -a -t -n -F &
-          ${pkgs.pasystray}/bin/pasystray &
-        '';
-        lightdm = {
-          enable = true;
-        };
+  };
+  services.pipewire.wireplumber.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
+  };
+  security.pam.services.hyprlock = {};
+  #programs.regreet = {
+  #  enable = true;
+
+  #};
+  #environment.etc."greetd/hyprland.conf".text = ''
+  #                      input {
+  #                        kb_layout = fr
+  #                        kb_variant = bepo
+  #                      }
+  #      exec-once = ${pkgs.lib.getExe pkgs.greetd.regreet}; hyprctl dispatch exit
+  #      misc {
+  #      disable_hyprland_logo = true
+  #      disable_splash_rendering = true
+  #  #    disable_hyprland_qtutils_check = true
+  #      }
+  #'';
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        #command = "${pkgs.lib.getExe pkgs.hyprland} -c /etc/greetd/hyprland.conf";
+        command = "${pkgs.lib.getExe pkgs.hyprland}";
+        user = config.users.users.xadet.name;
       };
     };
   };

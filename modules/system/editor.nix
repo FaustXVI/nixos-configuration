@@ -6,7 +6,12 @@
       EDITOR = lib.mkForce "vim";
     };
     systemPackages = with pkgs; [
-      vim
+      (vim_configurable.customize {
+        name = "vim";
+        vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
+          start = [ vim-wayland-clipboard ];
+        };
+      })
       obsidian
       pandoc
       texlive.combined.scheme-full

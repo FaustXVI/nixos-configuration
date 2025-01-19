@@ -6,7 +6,7 @@ with pkgs; {
       scdaemonSettings = {
         disable-ccid = true;
       };
-      publicKeys = map (source: {inherit source; trust = "ultimate";} ) (mylib.filesInDir ./public-keys);
+      publicKeys = map (source: { inherit source; trust = "ultimate"; }) (mylib.filesInDir ./public-keys);
     };
   };
 }
