@@ -44,7 +44,6 @@
     enable = true;
     plugins = with pkgs.hyprlandPlugins; [ hy3 ];
     extraConfig = ''
-            follow_mouse=0
             monitor=,preferred,auto,1
             $terminal = ${lib.getExe pkgs.wezterm}
             $menu = ${lib.getExe pkgs.dmenu}
@@ -135,11 +134,17 @@
       }
             input {
               kb_layout = fr
+            follow_mouse=2
           touchpad {
               natural_scroll = false
           }
             }
+            device {
+            name = zsa-technology-labs-ergodox-ez-1
+            kb_variant = bepo
+            }
             bind = $mainMod, Return, exec, $terminal
+            bind = $mainMod SHIFT, C, killactive,
             bind = $mainMod, M, exit,
             bind = $mainMod, R, exec, $menu
       bind = $mainMod, left, hy3:movefocus, l
@@ -191,7 +196,6 @@
       windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
 
       exec-once = ${lib.getExe pkgs.hyprpolkitagent}
-      exec-once = ${lib.getExe pkgs.hyprlock}
       exec-once = udiskie
       exec-once = nm-applet
     '';

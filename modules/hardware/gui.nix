@@ -57,7 +57,7 @@
   #    };
   #  };
   #};
-    # https://github.com/hyprwm/hyprland-wiki/issues/409
+  # https://github.com/hyprwm/hyprland-wiki/issues/409
   xdg.portal = {
     enable = true;
     configPackages = with pkgs; [ hyprland ];
