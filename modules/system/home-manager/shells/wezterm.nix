@@ -7,7 +7,7 @@ in
     enable = true;
     extraConfig = ''
       return {
-        enable_wayland = true,
+        enable_wayland = false,
         font = wezterm.font "${font}",
         font_size = 18,
         front_end = "WebGpu",
