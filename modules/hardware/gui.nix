@@ -32,11 +32,10 @@
     withUWSM = true;
     xwayland.enable = true;
   };
-  security.pam.services.hyprlock = {};
-  #programs.regreet = {
-  #  enable = true;
-
-  #};
+  security.pam.services.hyprlock = { };
+  programs.regreet = {
+    enable = true;
+  };
   #environment.etc."greetd/hyprland.conf".text = ''
   #                      input {
   #                        kb_layout = fr
@@ -49,14 +48,32 @@
   #  #    disable_hyprland_qtutils_check = true
   #      }
   #'';
-  services.greetd = {
+  #services.greetd = {
+  #  enable = true;
+  #  settings = {
+  #    default_session = {
+  #      command = "${pkgs.lib.getExe pkgs.hyprland} -c /etc/greetd/hyprland.conf";
+  #      user = config.users.users.xadet.name;
+  #    };
+  #  };
+  #};
+    # https://github.com/hyprwm/hyprland-wiki/issues/409
+  xdg.portal = {
     enable = true;
-    settings = {
-      default_session = {
-        #command = "${pkgs.lib.getExe pkgs.hyprland} -c /etc/greetd/hyprland.conf";
-        command = "${pkgs.lib.getExe pkgs.hyprland}";
-        user = config.users.users.xadet.name;
+    configPackages = with pkgs; [ hyprland ];
+    config = {
+      common = {
+        default = [ "hyprland" "gtk" ];
       };
     };
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
+    ];
+    xdgOpenUsePortal = true;
   };
+  # Fix xdg-portals opening URLs: https://github.com/NixOS/nixpkgs/issues/189851
+  systemd.user.extraConfig = ''
+    DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
+  '';
 }
