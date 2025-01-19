@@ -1,11 +1,28 @@
 { pkgs, lib, config, ... }:
 {
+  #services.kanshi = {
+  #  enable = true;
+  #  profiles = {
+  #    undocked = {
+  #    
+  #    };
+  #  };
+  #};
+
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+
+    preload = ["${./background-image}"];
+    wallpaper = [",${./background-image}"];
+  };
+  };
+
   programs.hyprlock = {
     enable = true;
     settings = {
       general = {
         disable_loading_bar = true;
-        grace = 300;
         hide_cursor = true;
         no_fade_in = false;
       };
@@ -37,6 +54,36 @@
   };
   programs.waybar = {
     enable = true;
+    systemd.enable = true;
+    settings = {
+      mainBar = {
+        layer = "top";
+        position = "top";
+        height = 30;
+      };
+    };
+  };
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+        ignore_dbus_inhibit = false;
+        lock_cmd = "hyprlock";
+      };
+
+      listener = [
+        {
+          timeout = 900;
+          on-timeout = "hyprlock";
+        }
+        {
+          timeout = 1200;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+      ];
+    };
   };
   services.cliphist.enable = true;
   programs.rofi.enable = true;
@@ -46,14 +93,11 @@
     extraConfig = ''
             monitor=,preferred,auto,1
             $terminal = ${lib.getExe pkgs.wezterm}
-            $menu = ${lib.getExe pkgs.dmenu}
-            env = XCURSOR_SIZE,24
-            env = HYPRCURSOR_SIZE,24
             $mainMod = SUPER
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general {
-          gaps_in = 5
-          gaps_out = 20
+          gaps_in = 0
+          gaps_out = 2
 
           border_size = 2
 
@@ -74,7 +118,7 @@
 
           # Change transparency of focused and unfocused windows
           active_opacity = 1.0
-          inactive_opacity = 1.0
+          inactive_opacity = 0.9
 
           shadow {
               enabled = true
@@ -134,23 +178,40 @@
       }
             input {
               kb_layout = fr
+              resolve_binds_by_sym = 1
             follow_mouse=2
           touchpad {
               natural_scroll = false
           }
             }
             device {
-            name = zsa-technology-labs-ergodox-ez-1
+            name = zsa-technology-labs-ergodox-ez
             kb_variant = bepo
             }
+
+      plugin {
+      hy3{
+      autotile {
+      enable = true
+      }
+      }
+      }
+
+            
             bind = $mainMod, Return, exec, $terminal
             bind = $mainMod SHIFT, C, killactive,
-            bind = $mainMod, M, exit,
-            bind = $mainMod, R, exec, $menu
+            bind = $mainMod SHIFT, E, exit,
+            bind = $mainMod, R, exec, ${lib.getExe pkgs.rofi} -show run
+            bind = $mainMod, L, exec, ${lib.getExe pkgs.hyprlock}
+            bind = $mainMod, V, exec, cliphist list |  ${lib.getExe pkgs.rofi} -dmenu | cliphist decode | wl-copy -pc
       bind = $mainMod, left, hy3:movefocus, l
       bind = $mainMod, right, hy3:movefocus, r
       bind = $mainMod, up, hy3:movefocus, u
       bind = $mainMod, down, hy3:movefocus, d
+      bind = $mainMod SHIFT, left, hy3:movewindow, l
+      bind = $mainMod SHIFT, right, hy3:movewindow, r
+      bind = $mainMod SHIFT, up, hy3:movewindow, u
+      bind = $mainMod SHIFT, down, hy3:movewindow, d
       # Switch workspaces with mainMod + [0-9]
       bind = $mainMod, code:10, workspace, 1
       bind = $mainMod, code:11, workspace, 2
@@ -164,16 +225,16 @@
       bind = $mainMod, code:19, workspace, 10
 
       # Move active window to a workspace with mainMod + SHIFT + [0-9]
-      bind = $mainMod SHIFT, code:10, movetoworkspace, 1
-      bind = $mainMod SHIFT, code:11, movetoworkspace, 2
-      bind = $mainMod SHIFT, code:12, movetoworkspace, 3
-      bind = $mainMod SHIFT, code:13, movetoworkspace, 4
-      bind = $mainMod SHIFT, code:14, movetoworkspace, 5
-      bind = $mainMod SHIFT, code:15, movetoworkspace, 6
-      bind = $mainMod SHIFT, code:16, movetoworkspace, 7
-      bind = $mainMod SHIFT, code:17, movetoworkspace, 8
-      bind = $mainMod SHIFT, code:18, movetoworkspace, 9
-      bind = $mainMod SHIFT, code:19, movetoworkspace, 10
+      bind = $mainMod SHIFT, code:10, hy3:movetoworkspace, 1
+      bind = $mainMod SHIFT, code:11, hy3:movetoworkspace, 2
+      bind = $mainMod SHIFT, code:12, hy3:movetoworkspace, 3
+      bind = $mainMod SHIFT, code:13, hy3:movetoworkspace, 4
+      bind = $mainMod SHIFT, code:14, hy3:movetoworkspace, 5
+      bind = $mainMod SHIFT, code:15, hy3:movetoworkspace, 6
+      bind = $mainMod SHIFT, code:16, hy3:movetoworkspace, 7
+      bind = $mainMod SHIFT, code:17, hy3:movetoworkspace, 8
+      bind = $mainMod SHIFT, code:18, hy3:movetoworkspace, 9
+      bind = $mainMod SHIFT, code:19, hy3:movetoworkspace, 10
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
@@ -196,6 +257,8 @@
       windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
 
       exec-once = ${lib.getExe pkgs.hyprpolkitagent}
+      exec-once = wl-paste --type text --watch cliphist store
+      #exec-once = waybar
       exec-once = udiskie
       exec-once = nm-applet
     '';

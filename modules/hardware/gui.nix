@@ -7,8 +7,16 @@
     };
   };
   environment = {
+    sessionVariables = {
+      WLR_NO_HARDWARE_CURSORS = 1;
+      NIXOS_OZONE_WL = 1;
+      XCURSOR_SIZE = 48;
+      HYPRCURSOR_SIZE = 48;
+    };
     systemPackages = with pkgs; [
       kitty
+      hyprpolkitagent
+      rofi
       wl-clipboard
       dmenu
       libnotify
@@ -36,27 +44,30 @@
   programs.regreet = {
     enable = true;
   };
-  #environment.etc."greetd/hyprland.conf".text = ''
-  #                      input {
-  #                        kb_layout = fr
-  #                        kb_variant = bepo
-  #                      }
-  #      exec-once = ${pkgs.lib.getExe pkgs.greetd.regreet}; hyprctl dispatch exit
-  #      misc {
-  #      disable_hyprland_logo = true
-  #      disable_splash_rendering = true
-  #  #    disable_hyprland_qtutils_check = true
-  #      }
-  #'';
-  #services.greetd = {
-  #  enable = true;
-  #  settings = {
-  #    default_session = {
-  #      command = "${pkgs.lib.getExe pkgs.hyprland} -c /etc/greetd/hyprland.conf";
-  #      user = config.users.users.xadet.name;
-  #    };
-  #  };
-  #};
+  environment.etc."greetd/hyprland.conf".text = ''
+                        input {
+                          kb_layout = fr
+                        }
+            device {
+            name = zsa-technology-labs-ergodox-ez
+            kb_variant = bepo
+            }
+        exec-once = ${pkgs.lib.getExe pkgs.greetd.regreet}; hyprctl dispatch exit
+        misc {
+        disable_hyprland_logo = true
+        disable_splash_rendering = true
+    #    disable_hyprland_qtutils_check = true
+        }
+  '';
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.lib.getExe pkgs.hyprland} -c /etc/greetd/hyprland.conf";
+        user = config.users.users.xadet.name;
+      };
+    };
+  };
   # https://github.com/hyprwm/hyprland-wiki/issues/409
   xdg.portal = {
     enable = true;
