@@ -15,6 +15,7 @@
     };
     systemPackages = with pkgs; [
       kitty
+      hyprcursor
       hyprpolkitagent
       rofi
       wl-clipboard
@@ -25,7 +26,6 @@
       arandr
       autorandr
       udiskie
-      pasystray
       nautilus
     ];
   };
