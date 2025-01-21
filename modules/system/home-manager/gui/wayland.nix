@@ -109,7 +109,7 @@
           "backlight"
           "tray"
           "clock"
-          "group/power"
+          "custom/poweroff"
         ];
 
         tray = {
@@ -196,32 +196,10 @@
           };
           on-click = "pavucontrol";
         };
-        "group/power" = {
-          orientation = "inherit";
-          drawer = {
-            transition-left-to-right = false;
-            click-to-reveal = true;
-          };
-          modules = [
-            "custom/poweroff"
-            "custom/reboot"
-            "custom/lock"
-          ];
-        };
-        "custom/lock" = {
-          "format" = " ";
-          "tooltip" = false;
-          "on-click" = "hyprlock";
-        };
-        "custom/reboot" = {
-          "format" = " ";
-          "tooltip" = false;
-          "on-click" = "reboot";
-        };
         "custom/poweroff" = {
-          "format" = " ⏻";
-          "tooltip" = false;
-          "on-click" = "poweroff";
+          format = "󱄅";
+          tooltip = false;
+          on-click = "wlogout";
         };
       };
     };

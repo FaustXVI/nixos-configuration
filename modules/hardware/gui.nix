@@ -27,6 +27,7 @@
       autorandr
       udiskie
       nautilus
+      wlogout
     ];
   };
   services = {
