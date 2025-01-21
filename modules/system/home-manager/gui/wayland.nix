@@ -1,21 +1,52 @@
 { pkgs, lib, config, ... }:
 {
-  #services.kanshi = {
-  #  enable = true;
-  #  profiles = {
-  #    undocked = {
-  #    
-  #    };
-  #  };
-  #};
+  services.kanshi = {
+    enable = true;
+    settings = [
+      {
+        output = {
+          criteria = "eDP-1";
+          status = "enable";
+        };
+      }
+      {
+        profile =
+          {
+            name = "docked";
+            outputs = [
+              {
+                criteria = "eDP-1";
+                status = "disable";
+              }
+              {
+                criteria = "LG Electronics LG ULTRAWIDE 0x01010101";
+              }
+              {
+                criteria = "Samsung Electric Company SyncMaster 0x4E563233";
+              }
+            ];
+          };
+      }
+      {
+        profile = {
+          name = "undocked";
+          outputs = [
+            {
+              criteria = "eDP-1";
+            }
+          ];
+        };
+      }
+    ];
+  };
 
   services.hyprpaper = {
     enable = true;
     settings = {
 
-    preload = ["${./background-image}"];
-    wallpaper = [",${./background-image}"];
-  };
+      preload = [ "${./background-image}" ];
+      wallpaper = [ ",${./background-image}" ];
+    };
   };
 
   programs.hyprlock = {
@@ -63,6 +94,135 @@
         layer = "top";
         position = "top";
         height = 30;
+        modules-left = [
+          "hyprland/window"
+        ];
+        modules-center = [
+          "hyprland/workspaces"
+        ];
+
+        modules-right = [
+          "network"
+          "group/monitoring"
+          "battery"
+          "pulseaudio"
+          "backlight"
+          "tray"
+          "clock"
+          "group/power"
+        ];
+
+        tray = {
+          spacing = 10;
+        };
+        clock = {
+          interval = 1;
+          format = "{:%Y-%m-%d %H:%M:%S}";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          calendar = {
+            mode = "year";
+            mode-mon-col = 3;
+            weeks-pos = "right";
+            on-scroll = 1;
+            format = {
+              months = "<span color='#ffead3'><b>{}</b></span>";
+              days = "<span color='#ecc6d9'><b>{}</b></span>";
+              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
+              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
+            };
+          };
+        };
+        "group/monitoring" = {
+          orientation = "inherit";
+          drawer = {
+            click-to-reveal = true;
+          };
+          modules = [
+            "cpu"
+            "memory"
+            "temperature"
+          ];
+        };
+        cpu = {
+          format = "{usage}% ";
+          tooltip = false;
+        };
+        memory = {
+          format = "{}% ";
+        };
+        temperature = {
+          thermal-zone = 1;
+          critical-threshold = 80;
+          format = "{temperatureC}°C {icon}";
+          format-icons = [ "" "" "󱗗" ];
+        };
+        backlight = {
+          format = "{percent}% {icon}";
+          format-icons = [ "" "" "" "" "" "" "" "" "" ];
+        };
+        battery = {
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = "{capacity}% {icon}";
+          format-full = "{capacity}% {icon}";
+          format-charging = "{capacity}% 󰂄";
+          format-plugged = "{capacity}% ";
+          format-icons = [ "" "" "" "" "" ];
+          tooltip = false;
+        };
+        network = {
+          format-wifi = "{ipaddr} {essid} ({signalStrength}%) ";
+          format-ethernet = "{ipaddr} 󰈀";
+          format-disconnected = "󰌙";
+          format-linked = "{ifname} (No IP)";
+          tooltip-format = "{ifname} via {gwaddr}";
+        };
+        pulseaudio = {
+          format = "{volume}% {icon}";
+          format-bluetooth = "{volume}% {icon}";
+          format-bluetooth-muted = " {icon}";
+          format-muted = "";
+          format-icons = {
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [ "" "" "" ];
+          };
+          on-click = "pavucontrol";
+        };
+        "group/power" = {
+          orientation = "inherit";
+          drawer = {
+            transition-left-to-right = false;
+            click-to-reveal = true;
+          };
+          modules = [
+            "custom/poweroff"
+            "custom/reboot"
+            "custom/lock"
+          ];
+        };
+        "custom/lock" = {
+          "format" = " ";
+          "tooltip" = false;
+          "on-click" = "hyprlock";
+        };
+        "custom/reboot" = {
+          "format" = " ";
+          "tooltip" = false;
+          "on-click" = "reboot";
+        };
+        "custom/poweroff" = {
+          "format" = " ⏻";
+          "tooltip" = false;
+          "on-click" = "poweroff";
+        };
       };
     };
   };
@@ -94,7 +254,7 @@
     enable = true;
     plugins = with pkgs.hyprlandPlugins; [ hy3 ];
     extraConfig = ''
-            monitor=,preferred,auto,1
+            monitor=FALLBACK,preferred,auto,1
             $terminal = ${lib.getExe pkgs.wezterm}
             $mainMod = SUPER
       # https://wiki.hyprland.org/Configuring/Variables/#general
@@ -261,9 +421,9 @@
 
       exec-once = ${lib.getExe pkgs.hyprpolkitagent}
       exec-once = wl-paste --type text --watch cliphist store
-      #exec-once = waybar
-      exec-once = udiskie
+      exec-once = udiskie -t
       exec-once = nm-applet
+      exec-once = kanshi
     '';
   };
 }
