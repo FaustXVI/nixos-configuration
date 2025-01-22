@@ -7,6 +7,7 @@
         output = {
           criteria = "eDP-1";
           status = "enable";
+          scale = 1.175;
         };
       }
       {
@@ -20,9 +21,11 @@
               }
               {
                 criteria = "LG Electronics LG ULTRAWIDE 0x01010101";
+                scale = 1.0;
               }
               {
                 criteria = "Samsung Electric Company SyncMaster 0x4E563233";
+                scale = 1.0;
               }
             ];
           };
@@ -158,8 +161,10 @@
           format-icons = [ "" "" "󱗗" ];
         };
         backlight = {
-          format = "{percent}% {icon}";
+          format = "{icon}";
           format-icons = [ "" "" "" "" "" "" "" "" "" ];
+          on-scroll-up= "${lib.getExe pkgs.light} -A 1";
+          on-scroll-down= "${lib.getExe pkgs.light} -U 1";
         };
         battery = {
           states = {
@@ -232,7 +237,7 @@
     enable = true;
     plugins = with pkgs.hyprlandPlugins; [ hy3 ];
     extraConfig = ''
-            monitor=FALLBACK,preferred,auto,1
+            monitor=FALLBACK,highres,auto,1
             $terminal = ${lib.getExe pkgs.wezterm}
             $mainMod = SUPER
       # https://wiki.hyprland.org/Configuring/Variables/#general
@@ -385,8 +390,8 @@
       bindel = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
       bindel = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bindel = ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-      bindel = ,XF86MonBrightnessUp, exec, brightnessctl s 10%+
-      bindel = ,XF86MonBrightnessDown, exec, brightnessctl s 10%-
+      bindel = ,XF86MonBrightnessUp, exec, ${lib.getExe pkgs.light} -A 5
+      bindel = ,XF86MonBrightnessDown, exec, ${lib.getExe pkgs.light} -U 5
 
       # Requires playerctl
       bindl = , XF86AudioNext, exec, playerctl next
@@ -397,11 +402,12 @@
       # Fix some dragging issues with XWayland
       windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
 
-      exec-once = ${lib.getExe pkgs.hyprpolkitagent}
+      exec-once = kanshi
+      exec-once = systemctl --user start hyprpolkitagent
       exec-once = wl-paste --type text --watch cliphist store
+      exec-once = wl-paste --type image --watch cliphist store
       exec-once = udiskie -t
       exec-once = nm-applet
-      exec-once = kanshi
     '';
   };
 }
