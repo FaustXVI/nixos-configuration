@@ -18,7 +18,7 @@ in
     systemd.services.auto-lock = {
       enable = true;
       description = "Lock screen";
-      environment = { XDG_RUNTIME_DIR="/run/user/${builtins.toString config.users.users.xadet.uid}"; };
+      environment = { XDG_RUNTIME_DIR = "/run/user/${builtins.toString config.users.users.xadet.uid}"; };
       serviceConfig = {
         User = config.users.users.xadet.name;
         Type = "forking";

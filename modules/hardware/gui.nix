@@ -46,20 +46,24 @@
   programs.regreet = {
     enable = true;
   };
+  environment.etc."wayland/keyboard.conf".text = ''
+    input {
+      kb_layout = fr
+    }
+
+    device {
+      name = zsa-technology-labs-ergodox-ez
+      kb_variant = bepo
+    }
+  '';
   environment.etc."greetd/hyprland.conf".text = ''
-                        input {
-                          kb_layout = fr
-                        }
-            device {
-            name = zsa-technology-labs-ergodox-ez
-            kb_variant = bepo
-            }
-        exec-once = ${pkgs.lib.getExe pkgs.greetd.regreet}; hyprctl dispatch exit
-        misc {
-        disable_hyprland_logo = true
-        disable_splash_rendering = true
-    #    disable_hyprland_qtutils_check = true
-        }
+    source = /etc/wayland/keyboard.conf
+    exec-once = ${pkgs.lib.getExe pkgs.greetd.regreet}; hyprctl dispatch exit
+    misc {
+      disable_hyprland_logo = true
+      disable_splash_rendering = true
+      #disable_hyprland_qtutils_check = true
+    }
   '';
   services.greetd = {
     enable = true;
