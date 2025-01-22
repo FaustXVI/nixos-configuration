@@ -5,7 +5,7 @@
     plugins = with pkgs.hyprlandPlugins; [ hy3 ];
     settings = {
       monitor = "FALLBACK,highres,auto,1";
-      "$terminal" = "${lib.getExe pkgs.wezterm}";
+      "$terminal" = "${lib.getExe pkgs.kitty}";
       "$mainMod" = "SUPER";
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general = {
