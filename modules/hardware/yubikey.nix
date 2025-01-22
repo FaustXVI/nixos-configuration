@@ -41,6 +41,7 @@ in
           control = "required";
           settings = {
             authfile = authFile;
+            cue = true;
           };
         };
       };
