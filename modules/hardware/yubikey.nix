@@ -18,11 +18,9 @@ in
     systemd.services.auto-lock = {
       enable = true;
       description = "Lock screen";
-      environment = { XDG_RUNTIME_DIR = "/run/user/${builtins.toString config.users.users.xadet.uid}"; };
       serviceConfig = {
         User = config.users.users.xadet.name;
-        Type = "forking";
-        ExecStart = ''${lib.getExe pkgs.bash} -c 'WAYLAND_DISPLAY=$(ls $XDG_RUNTIME_DIR | grep "^wayland-[0-9]\+$") ${lib.getExe pkgs.hyprlock}' '';
+        ExecStart = ''${pkgs.hyprland}/bin/hyprctl --instance 0 'dispatch exec hyprlock' '';
       };
     };
     services = {
