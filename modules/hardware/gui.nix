@@ -56,6 +56,9 @@
       name = zsa-technology-labs-ergodox-ez
       kb_variant = bepo
     }
+
+
+    monitor = ,preferred,auto,1
   '';
   environment.etc."greetd/hyprland.conf".text = ''
     source = /etc/wayland/keyboard.conf

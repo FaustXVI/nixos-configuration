@@ -11,7 +11,7 @@
       scrollback_lines = 20000;
     };
     keybindings = {
-      "super+n"= "launch --cwd=current --type=os-window";
+      "super+n" = "launch --cwd=current --type=os-window";
     };
     extraConfig = ''
       include themes.conf

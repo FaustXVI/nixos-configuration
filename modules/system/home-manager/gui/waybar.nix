@@ -1,5 +1,6 @@
 { pkgs, lib, config, ... }:
 {
+  services.playerctld.enable = true;
   programs.waybar = {
     enable = true;
     systemd = {
@@ -19,12 +20,15 @@
         ];
 
         modules-right = [
+          "mpris"
           "network"
           "group/monitoring"
           "battery"
           "pulseaudio"
           "backlight"
           "tray"
+          #"idle_inhibitor"
+          "clock#date"
           "clock"
           "custom/poweroff"
         ];
@@ -34,7 +38,11 @@
         };
         clock = {
           interval = 1;
-          format = "{:%Y-%m-%d %H:%M:%S}";
+          format = "{:%H:%M:%S}";
+          tooltip=false;
+        };
+        "clock#date" = {
+          format = "{:%Y-%m-%d}";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
             mode = "year";
@@ -59,14 +67,18 @@
             "cpu"
             "memory"
             "temperature"
+            "disk"
           ];
         };
         cpu = {
           format = "{usage}% ";
           tooltip = false;
         };
+        disk = {
+          format = "{percentage_free}% 󰋊";
+        };
         memory = {
-          format = "{}% ";
+          format = "{}% ";
         };
         temperature = {
           thermal-zone = 1;
@@ -80,6 +92,13 @@
           on-scroll-up = "${lib.getExe pkgs.light} -A 1";
           on-scroll-down = "${lib.getExe pkgs.light} -U 1";
         };
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = "";
+            deactivated = "";
+          };
+        };
         battery = {
           states = {
             warning = 30;
@@ -92,12 +111,26 @@
           format-icons = [ "" "" "" "" "" ];
           tooltip = false;
         };
+        mpris = {
+          format = "{player_icon} {title} ";
+          format-paused = "{player_icon} {title} {status_icon}";
+          player-icons = {
+            default = "";
+            spotify = "";
+            firefox = "";
+          };
+          status-icons = {
+            paused = "";
+          };
+        };
         network = {
-          format-wifi = "{ipaddr} {essid} ({signalStrength}%) ";
-          format-ethernet = "{ipaddr} 󰈀";
+          format-wifi = "{signalStrength}% {icon}";
+          format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
+          format-ethernet = "󰈀";
           format-disconnected = "󰌙";
           format-linked = "{ifname} (No IP)";
-          tooltip-format = "{ifname} via {gwaddr}";
+          tooltip-format = "{ipaddr}";
+          tooltip-format-wifi = "{ipaddr} on {essid}";
         };
         pulseaudio = {
           format = "{volume}% {icon}";
