@@ -2,6 +2,7 @@
 
 {
   security.polkit.enable = true;
+  boot.plymouth.enable = true;
   hardware = {
     graphics = {
       enable = true;

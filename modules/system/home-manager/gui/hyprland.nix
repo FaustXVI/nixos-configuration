@@ -111,7 +111,7 @@
         "$mainMod SHIFT, C, killactive"
         "$mainMod SHIFT, E, exit"
         "$mainMod, R, exec, ${lib.getExe pkgs.rofi} -show run"
-        "$mainMod, L, exec, ${lib.getExe pkgs.hyprlock}"
+        "$mainMod, L, exec, ${lib.getExe pkgs.hyprlock} --immediate"
         "$mainMod, V, exec, cliphist list |  ${lib.getExe pkgs.rofi} -dmenu | cliphist decode | wl-copy -pc"
         "$mainMod, left, hy3:movefocus, l"
         "$mainMod, right, hy3:movefocus, r"
