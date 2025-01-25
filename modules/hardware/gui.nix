@@ -14,6 +14,8 @@
       NIXOS_OZONE_WL = 1;
       XCURSOR_SIZE = 48;
       HYPRCURSOR_SIZE = 48;
+      GDK_BACKEND="wayland";
+      MOZ_ENABLE_WAYLAND=1;
     };
     systemPackages = with pkgs; [
       kitty
