@@ -3,6 +3,11 @@
 {
   security.polkit.enable = true;
   boot.plymouth.enable = true;
+  catppuccin = {
+    accent = "teal";
+    flavor = "mocha";
+    enable = true;
+  };
   hardware = {
     graphics = {
       enable = true;
@@ -14,8 +19,8 @@
       NIXOS_OZONE_WL = 1;
       XCURSOR_THEME = "catppuccin-mocha-dark-cursors";
       XCURSOR_SIZE = 48;
-      GDK_BACKEND="wayland";
-      MOZ_ENABLE_WAYLAND=1;
+      GDK_BACKEND = "wayland";
+      MOZ_ENABLE_WAYLAND = 1;
     };
     systemPackages = with pkgs; [
       kitty

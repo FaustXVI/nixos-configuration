@@ -24,6 +24,8 @@
 
         layout = "hy3";
       };
+
+      layerrule = [ "blur, bar" ];
       decoration = {
         rounding = 10;
 
@@ -156,7 +158,7 @@
         "systemctl --user enable --now hyprpolkitagent.service"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
-        "udiskie -t"
+        "udiskie"
       ];
       source = [ "/etc/wayland/keyboard.conf" ];
     };

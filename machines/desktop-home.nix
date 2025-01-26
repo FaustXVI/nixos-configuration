@@ -14,7 +14,7 @@ in
     type = "desktop";
     purposes = [ "perso" "gaming" "youtube" "photo" "home-office" ];
   };
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
     graphics.enable = true;
     nvidia = {
@@ -35,7 +35,7 @@ in
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       __GL_GSYNC_ALLOWED = "1";
       LIBSEAT_BACKEND = "logind";
-      NVD_BACKEND="direct";
+      NVD_BACKEND = "direct";
     };
   };
 

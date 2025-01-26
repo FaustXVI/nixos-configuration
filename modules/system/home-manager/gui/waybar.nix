@@ -7,6 +7,91 @@
       enable = true;
       target = "hyprland-session.target";
     };
+    style = ''
+* {
+  font-size: 18px;
+  min-height: 0;
+}
+
+#waybar {
+  background: transparent;
+  color: @text;
+}
+
+#workspaces {
+  opacity: 0.8;
+}
+
+#workspaces button {
+  color: @lavender;
+  border-radius: 1rem;
+  padding: 0.4rem;
+}
+
+#workspaces button.active {
+  color: @sky;
+  border-radius: 1rem;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  border-radius: 1rem;
+}
+
+#workspaces,
+#monitoring,
+#tray,
+#status,
+#datetime,
+#custom-poweroff {
+  border-radius: 0 0 1rem 1rem;
+  background-color: alpha(@surface0, 0.8);
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+}
+
+#clock {
+  color: @blue;
+}
+
+#clock.date {
+  padding-right: 1rem;
+}
+
+#battery {
+  color: @green;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
+#clock,
+#battery,
+#pulseaudio,
+#backlight,
+#network {
+  padding: 0;
+  background-color: transparent;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#pulseaudio {
+  color: @maroon;
+}
+
+#custom-poweroff {
+    color: @blue;
+}
+
+    '';
     settings = {
       mainBar = {
         layer = "top";
@@ -21,25 +106,28 @@
 
         modules-right = [
           "mpris"
-          "network"
           "group/monitoring"
-          "battery"
-          "pulseaudio"
-          "backlight"
+          "group/status"
           "tray"
           #"idle_inhibitor"
-          "clock#date"
-          "clock"
+          "group/datetime"
           "custom/poweroff"
         ];
 
         tray = {
           spacing = 10;
         };
+        "group/datetime" = {
+          orientation = "inherit";
+          modules = [
+            "clock#date"
+            "clock"
+          ];
+        };
         clock = {
           interval = 1;
           format = "{:%H:%M:%S}";
-          tooltip=false;
+          tooltip = false;
         };
         "clock#date" = {
           format = "{:%Y-%m-%d}";
@@ -86,8 +174,18 @@
           format = "{temperatureC}°C {icon}";
           format-icons = [ "" "" "󱗗" ];
         };
+        "group/status" = {
+          orientation = "inherit";
+          modules = [
+            "backlight"
+            "battery"
+            "network"
+            "pulseaudio"
+          ];
+        };
         backlight = {
           format = "{icon}";
+          tooltip-format = "{percent}%";
           format-icons = [ "" "" "" "" "" "" "" "" "" ];
           on-scroll-up = "${lib.getExe pkgs.light} -A 1";
           on-scroll-down = "${lib.getExe pkgs.light} -U 1";
@@ -104,12 +202,13 @@
             warning = 30;
             critical = 15;
           };
-          format = "{capacity}% {icon}";
-          format-full = "{capacity}% {icon}";
-          format-charging = "{capacity}% 󰂄";
-          format-plugged = "{capacity}% ";
+          format = "{icon}";
+          format-full = "{icon}";
+          format-charging = "󰂄";
+          format-plugged = "";
           format-icons = [ "" "" "" "" "" ];
-          tooltip = false;
+          tooltip = true;
+          tooltip-format = "{capacity}% : {time}";
         };
         mpris = {
           format = "{player_icon} {title} ";
@@ -124,19 +223,19 @@
           };
         };
         network = {
-          format-wifi = "{signalStrength}% {icon}";
+          format-wifi = "{icon}";
           format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
           format-ethernet = "󰈀";
           format-disconnected = "󰌙";
           format-linked = "{ifname} (No IP)";
           tooltip-format = "{ipaddr}";
-          tooltip-format-wifi = "{ipaddr} on {essid}";
+          tooltip-format-wifi = "{ipaddr} on {essid} ({signalStrength}%)";
           on-click = "kitty nmtui";
         };
         pulseaudio = {
-          format = "{volume}% {icon}";
-          format-bluetooth = "{volume}% {icon}";
-          format-bluetooth-muted = " {icon}";
+          format = "{icon}";
+          format-bluetooth = "{icon}";
+          format-bluetooth-muted = " ";
           format-muted = "";
           format-icons = {
             headphone = "";

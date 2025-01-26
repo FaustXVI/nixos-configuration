@@ -7,7 +7,7 @@
     catppuccin = {
       cursors = {
         enable = true;
-      accent = "dark";
+        accent = "dark";
       };
       accent = "teal";
       flavor = "mocha";
