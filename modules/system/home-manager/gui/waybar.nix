@@ -131,6 +131,7 @@
           format-linked = "{ifname} (No IP)";
           tooltip-format = "{ipaddr}";
           tooltip-format-wifi = "{ipaddr} on {essid}";
+          on-click = "kitty nmtui";
         };
         pulseaudio = {
           format = "{volume}% {icon}";

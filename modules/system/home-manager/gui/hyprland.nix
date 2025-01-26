@@ -153,13 +153,12 @@
       windowrulev2 = "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0";
       exec-once = [
         "kanshi"
-        "systemctl --user start hyprpolkitagent"
+        "systemctl --user enable --now hyprpolkitagent.service"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         "udiskie -t"
-        "nm-applet"
       ];
-      source = "/etc/wayland/keyboard.conf";
+      source = [ "/etc/wayland/keyboard.conf" ];
     };
   };
 }

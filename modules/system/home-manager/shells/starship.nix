@@ -1,9 +1,9 @@
-{ pkgs, mylib, lib, ... }@args:
+{ pkgs, mylib, lib, config, ... }@args:
 let
   asContext = attr: lib.mkMerge [
     attr
     {
-      style = "bg:context";
+      style = "fg:crust bg:blue";
     }
   ];
   asLanguage = attr: lib.mkMerge [
@@ -83,12 +83,12 @@ in
             symbol = " ";
           };
           character = {
-            error_symbol = "[](bg:git fg:alert)[  ](bg:alert)[](fg:alert)";
-            success_symbol = "[ ](bg:git)[](fg:git)";
+            error_symbol = "[](bg:peach fg:red)[  ](bg:red)[](fg:red)";
+            success_symbol = "[ ](bg:peach)[](fg:peach)";
           };
           cmd_duration = {
-            format = "[](fg:alert bg:context)[󰥔$duration]($style)[](fg:alert bg:context)";
-            style = "bg:alert";
+            format = "[](fg:red bg:blue)[󰥔$duration]($style)[](fg:red bg:blue)";
+            style = "fg:crust bg:red";
           };
           conda = {
             symbol = "";
@@ -96,38 +96,39 @@ in
           directory = {
             format = "[$path ]($style)";
             read_only = " ";
-            style = "bg:path";
+            style = "fg:crust bg:mauve";
             truncation_length = 3;
             truncation_symbol = "…/";
           };
           docker_context = {
             format = "[ $symbol $context ]($style) $path";
-            style = "bg:context";
+            style = "fg:crust bg:blue";
             symbol = "";
           };
-          format = ''([](fg:context)$nix_shell$all[](fg:context))$line_break[](fg:path)''${custom.watson}$directory[](fg:path bg:git)$git_branch$git_commit$git_state$git_status$character'';
+          format = ''([](fg:blue)$nix_shell$all[](fg:blue))$line_break[](fg:mauve)''${custom.watson}$directory[](fg:mauve bg:peach)$git_branch$git_commit$git_state$git_status$character'';
           git_branch = {
             format = "[ $symbol $branch]($style)";
-            style = "bg:git";
+            style = "fg:crust bg:peach";
             symbol = "";
           };
           git_commit = {
             format = "[  $hash$tag]($style)";
-            style = "bg:git";
+            style = "fg:crust bg:peach";
           };
           git_state = {
             format = "[ \\($state( $progress_current/$progress_total)\\)]($style)";
-            style = "bg:git";
+            style = "fg:crust bg:peach";
           };
           git_status = {
-            format = "[( $all_status$ahead_behind)]($style bg:git)";
+            format = "[( $all_status$ahead_behind)]($style)";
+            style = "fg:crust bg:peach";
           };
           hg_branch = {
             symbol = "";
           };
           jobs = {
             format = "[ $symbol( $number) ]($style)";
-            style = "bg:context";
+            style = "fg:crust bg:blue";
           };
           memory_usage = {
             symbol = "";
@@ -138,33 +139,21 @@ in
           nix_shell = {
             format = "[$symbol( $state )]($style)";
             impure_msg = "";
-            style = "bg:context";
+            style = "fg:crust bg:blue";
             symbol = "";
           };
-          palette = "xadet";
           palettes = {
-            original = {
-              alert = "#FC6262";
-              context = "#86BBD8";
-              git = "#FCA17D";
-              path = "#DA627D";
-              watson = "#DA627D";
-            };
-            xadet = {
-              alert = "#FC6262";
-              context = "#5f8599";
-              git = "#bf7b60";
-              path = "#bf566d";
-              watson = "#398039";
+            catppuccin_mocha = {
+              watson = "#a6e3a1";
             };
           };
           spack = {
             symbol = "🅢";
           };
           username = {
-            format = "[](fg:alert bg:context)[ $user]($style)[](fg:alert bg:context)";
-            style_root = "bg:alert";
-            style_user = "bg:alert";
+            format = "[](fg:red bg:blue)[ $user]($style)[](fg:red bg:blue)";
+            style_root = "fg:crust bg:red";
+            style_user = "fg:crust bg:red";
           };
         }
       ];

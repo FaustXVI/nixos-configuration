@@ -12,8 +12,8 @@
     sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = 1;
       NIXOS_OZONE_WL = 1;
+      XCURSOR_THEME = "catppuccin-mocha-dark-cursors";
       XCURSOR_SIZE = 48;
-      HYPRCURSOR_SIZE = 48;
       GDK_BACKEND="wayland";
       MOZ_ENABLE_WAYLAND=1;
     };

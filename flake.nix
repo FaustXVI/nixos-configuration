@@ -22,9 +22,13 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, sops, nur, home-manager, disko, ... }@inputs:
+  outputs = { self, nixpkgs, sops, nur, home-manager, disko, catppuccin, ... }@inputs:
     let
       system = "x86_64-linux";
       targets = [
@@ -37,11 +41,12 @@
       nixosMachine = configFile: nixpkgs.lib.nixosSystem rec {
         inherit system;
         modules = [
-          { nixpkgs.overlays = [ (final: prev: xadetPackages) (final: prev: { inherit unstable; }) ]; }
+          { nixpkgs.overlays = [ (final: prev: xadetPackages) (final: prev: { inherit unstable inputs; }) ]; }
           home-manager.nixosModules.home-manager
           disko.nixosModules.disko
           sops.nixosModules.sops
           nur.modules.nixos.default
+          catppuccin.nixosModules.catppuccin
           nur.legacyPackages."${system}".repos.iopq.modules.xraya
           inputs.nixos-facter-modules.nixosModules.facter
           "${./.}/machines/${configFile}.nix"
