@@ -8,92 +8,92 @@
       target = "hyprland-session.target";
     };
     style = ''
-* {
-  font-size: 18px;
-  min-height: 0;
-}
+      * {
+        font-size: 18px;
+        min-height: 0;
+      }
 
-#waybar {
-  background: transparent;
-  color: @text;
-}
+      #waybar {
+        background: transparent;
+        color: @text;
+      }
 
-#workspaces button {
-  color: @text;
-  border: 2px;
-  padding: 0.4rem;
-}
+      #workspaces button {
+        color: @text;
+        border: 2px;
+        padding: 0.4rem;
+      }
 
-#workspaces button.active,
-#workspaces button.visible,
-#workspaces button.focus
-{
-  background: @${config.catppuccin.accent};
-  color: @crust;
-}
+      #workspaces button.active,
+      #workspaces button.visible,
+      #workspaces button.focus
+      {
+        background: @${config.catppuccin.accent};
+        color: @crust;
+      }
 
-#workspaces button:hover {
-  background: @green;
-  color: @crust;
-}
+      #workspaces button:hover {
+        background: @green;
+        color: @crust;
+      }
 
-#workspaces,
-#monitoring,
-#status,
-#datetime,
-#custom-poweroff {
-  border-radius: 0 0 1rem 1rem;
-  background: alpha(@surface0, 0.8);
-  padding: 0.5rem 1rem;
-  margin-right: 1rem;
-}
-#tray {
-      padding : 0;
-}
+      #workspaces,
+      #monitoring,
+      #status,
+      #datetime,
+      #custom-poweroff {
+        border-radius: 0 0 1rem 1rem;
+        background: alpha(@surface0, 0.8);
+        padding: 0.5rem 1rem;
+        margin-right: 1rem;
+      }
+      #tray {
+            padding : 0;
+      }
 
-#clock.date {
-  padding-right: 1rem;
-}
+      #clock.date {
+        padding-right: 1rem;
+      }
 
-#mpris {
-  color: @green;
-}
+      #mpris {
+        color: @green;
+      }
 
-#battery {
-  color: @text;
-}
+      #battery {
+        color: @text;
+      }
 
-#battery.charging {
-  color: @green;
-}
+      #battery.charging {
+        color: @green;
+      }
 
-#battery.warning:not(.charging) {
-  color: @red;
-}
+      #battery.warning:not(.charging) {
+        color: @red;
+      }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#pulseaudio,
-#backlight,
-#network {
-  padding: 0 0.3rem;
-  background: transparent;
-}
+      #clock,
+      #battery,
+      #cpu,
+      #memory,
+      #disk,
+      #pulseaudio,
+      #backlight,
+      #network {
+        padding: 0 0.3rem;
+        background: transparent;
+      }
 
-#backlight {
-  color: @yellow;
-}
+      #backlight {
+        color: @yellow;
+      }
 
-#pulseaudio.muted {
-  color: @red;
-}
+      #pulseaudio.muted {
+        color: @red;
+      }
 
-#custom-poweroff {
-    color: @blue;
-}
+      #custom-poweroff {
+          color: @blue;
+      }
 
     '';
     settings = {
