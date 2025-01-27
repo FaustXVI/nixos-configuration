@@ -12,6 +12,7 @@
 
       background = [
         {
+          monitor = "";
           path = "screenshot";
           blur_passes = 3;
           blur_size = 8;
@@ -22,6 +23,7 @@
       label = [
         # TIME
         {
+          monitor = "";
           text = "$TIME";
           color = "$text";
           font_size = "90";
@@ -32,6 +34,7 @@
 
         # DATE
         {
+          monitor = "";
           text = ''cmd[update:43200000] date +"%A, %d %B %Y"'';
           color = "$text";
           font_size = "25";
@@ -43,6 +46,7 @@
 
       input-field = [
         {
+          monitor = "";
           size = "300, 60";
           outline_thickness = 4;
           dots_size = 0.2;
