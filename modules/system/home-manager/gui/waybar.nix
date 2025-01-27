@@ -18,48 +18,49 @@
   color: @text;
 }
 
-#workspaces {
-  opacity: 0.8;
-}
-
 #workspaces button {
-  color: @lavender;
-  border-radius: 1rem;
+  color: @text;
+  border: 2px;
   padding: 0.4rem;
 }
 
-#workspaces button.active {
-  color: @sky;
-  border-radius: 1rem;
+#workspaces button.active,
+#workspaces button.visible,
+#workspaces button.focus
+{
+  background: @${config.catppuccin.accent};
+  color: @crust;
 }
 
 #workspaces button:hover {
-  color: @sapphire;
-  border-radius: 1rem;
+  background: @green;
+  color: @crust;
 }
 
 #workspaces,
 #monitoring,
-#tray,
 #status,
 #datetime,
 #custom-poweroff {
   border-radius: 0 0 1rem 1rem;
-  background-color: alpha(@surface0, 0.8);
+  background: alpha(@surface0, 0.8);
   padding: 0.5rem 1rem;
   margin-right: 1rem;
 }
-
-#clock {
-  color: @blue;
+#tray {
+      padding : 0;
 }
 
 #clock.date {
   padding-right: 1rem;
 }
 
-#battery {
+#mpris {
   color: @green;
+}
+
+#battery {
+  color: @text;
 }
 
 #battery.charging {
@@ -72,19 +73,22 @@
 
 #clock,
 #battery,
+#cpu,
+#memory,
+#disk,
 #pulseaudio,
 #backlight,
 #network {
-  padding: 0;
-  background-color: transparent;
+  padding: 0 0.3rem;
+  background: transparent;
 }
 
 #backlight {
   color: @yellow;
 }
 
-#pulseaudio {
-  color: @maroon;
+#pulseaudio.muted {
+  color: @red;
 }
 
 #custom-poweroff {
@@ -98,17 +102,16 @@
         position = "top";
         height = 30;
         modules-left = [
-          "hyprland/window"
+          "tray"
+          "mpris"
         ];
         modules-center = [
           "hyprland/workspaces"
         ];
 
         modules-right = [
-          "mpris"
           "group/monitoring"
           "group/status"
-          "tray"
           #"idle_inhibitor"
           "group/datetime"
           "custom/poweroff"
@@ -234,6 +237,7 @@
         };
         pulseaudio = {
           format = "{icon}";
+          format-tooltip = "{volume}% on {desc}";
           format-bluetooth = "{icon}";
           format-bluetooth-muted = " ";
           format-muted = "";
