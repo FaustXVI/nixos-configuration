@@ -18,18 +18,50 @@
         }
       ];
 
+
+      label = [
+        # TIME
+        {
+          text = "$TIME";
+          color = "$text";
+          font_size = "90";
+          position = "-30, 0";
+          halign = "right";
+          valign = "top";
+        }
+
+        # DATE
+        {
+          text = ''cmd[update:43200000] date +"%A, %d %B %Y"'';
+          color = "$text";
+          font_size = "25";
+          position = "-30, -150";
+          halign = "right";
+          valign = "top";
+        }
+      ];
+
       input-field = [
         {
-          size = "200, 50";
-          position = "0, -80";
-          monitor = "";
+          size = "300, 60";
+          outline_thickness = 4;
+          dots_size = 0.2;
+          dots_spacing = 0.2;
           dots_center = true;
+          outer_color = "$accent";
+          inner_color = "$surface0";
+          font_color = "$text";
+          placeholder_text = ''<span foreground="##$textAlpha"><i>󰌾 Logged in as </i><span foreground="##$accentAlpha">$USER</span></span>'';
+          hide_input = false;
+          check_color = "$accent";
+          fail_color = "$red";
+          fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+          capslock_color = "$yellow";
+          position = "0, -47";
+          halign = "center";
+          valign = "center";
+          #monitor = "";
           fade_on_empty = false;
-          font_color = "rgb(202, 211, 245)";
-          inner_color = "rgb(91, 96, 120)";
-          outer_color = "rgb(24, 25, 38)";
-          outline_thickness = 5;
-          placeholder_text = "Password...";
           shadow_passes = 2;
         }
       ];
