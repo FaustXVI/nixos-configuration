@@ -6,6 +6,7 @@
     settings = {
       "$terminal" = "${lib.getExe pkgs.kitty}";
       "$mainMod" = "SUPER";
+      monitor = ",preferred,auto,1";
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general = {
         gaps_in = 0;
@@ -160,7 +161,7 @@
         "wl-paste --type image --watch cliphist store"
         "udiskie"
       ];
-      source = [ "/etc/wayland/keyboard.conf" ];
+      source = [ "/etc/wayland/common.conf" ];
     };
   };
 }
