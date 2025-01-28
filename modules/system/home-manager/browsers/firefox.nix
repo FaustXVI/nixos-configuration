@@ -28,6 +28,8 @@ let
     foxyproxy-standard
     adblocker-ultimate
     screenshot-capture-annotate
+    # https://github.com/catppuccin/firefox
+    firefox-color
   ];
   settings = {
     "signon.rememberSignons" = false;
