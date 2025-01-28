@@ -20,8 +20,8 @@
             custom = {
               watson = {
                 command = "watson status -p";
-                format = "[](bg:path fg:watson)[$symbol($output )]($style)[](fg:path bg:watson)";
-                style = "bg:watson";
+                format = "[](bg:mauve fg:watson)[$symbol($output )]($style)[](fg:mauve bg:watson)";
+                style = "bg:watson fg:crust";
                 symbol = "󱎏";
                 when = "watson status -p | grep -v \"No project\"";
               };

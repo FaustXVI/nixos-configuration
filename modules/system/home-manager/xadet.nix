@@ -7,7 +7,8 @@
     catppuccin = {
       cursors = {
         enable = true;
-        accent = "dark";
+#        accent = "dark";
+        accent = "rosewater";
       };
       accent = config.catppuccin.accent;
       flavor = config.catppuccin.flavor;
