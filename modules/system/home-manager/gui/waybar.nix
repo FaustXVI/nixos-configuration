@@ -32,6 +32,11 @@
         color: @crust;
       }
 
+      #workspaces button.urgent {
+        background: @red;
+        color: @crust;
+      }
+
       #workspaces button:hover {
         background: @green;
         color: @crust;

@@ -30,6 +30,8 @@ let
     screenshot-capture-annotate
     # https://github.com/catppuccin/firefox
     firefox-color
+    # https://github.com/catppuccin/userstyles/tree/main/styles/gmail
+    stylus
   ];
   settings = {
     "signon.rememberSignons" = false;
