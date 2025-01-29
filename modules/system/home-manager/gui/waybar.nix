@@ -104,7 +104,7 @@
       }
 
       #custom-poweroff {
-          color: @blue;
+          color: @${config.catppuccin.accent};
       }
 
     '';
