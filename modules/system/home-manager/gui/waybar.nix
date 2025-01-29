@@ -20,7 +20,7 @@
       #workspaces button {
         color: @text;
         border: 0;
-        padding: 0.4rem;
+        padding: 0.2rem 0.4rem;
       }
 
       #workspaces button.active,
@@ -56,8 +56,8 @@
         border-radius: 0 0 1rem 1rem;
         box-shadow: 0 0 0.5rem 0 @${config.catppuccin.accent};
         background: @surface0;
-        padding: 0.5rem 1rem;
-        margin: 0 0.75rem 0.75rem 0.75rem;
+        padding: 0.2rem 1rem;
+        margin: 0 0.6rem 0.6rem 0.6rem;
       }
       #tray {
             padding : 0;
@@ -90,8 +90,9 @@
       #disk,
       #pulseaudio,
       #backlight,
-      #network {
-        padding: 0 0.3rem;
+      #network,
+      #tray {
+        padding: 0 0.4rem;
         background: transparent;
       }
 
@@ -113,7 +114,6 @@
         layer = "top";
         position = "top";
         modules-left = [
-          "tray"
           "mpris"
         ];
         modules-center = [
@@ -121,8 +121,8 @@
         ];
 
         modules-right = [
-          "group/monitoring"
           "group/status"
+          "group/monitoring"
           #"idle_inhibitor"
           "group/datetime"
           "custom/poweroff"
@@ -195,6 +195,7 @@
             "battery"
             "network"
             "pulseaudio"
+            "tray"
           ];
         };
         backlight = {
