@@ -9,8 +9,7 @@
     };
     style = ''
       * {
-        font-size: 18px;
-        min-height: 0;
+        font-size: 14px;
       }
 
       #waybar {
@@ -20,7 +19,7 @@
 
       #workspaces button {
         color: @text;
-        border: 2px;
+        border: 0;
         padding: 0.4rem;
       }
 
@@ -28,8 +27,8 @@
       #workspaces button.visible,
       #workspaces button.focus
       {
-        background: @${config.catppuccin.accent};
-        color: @crust;
+        color: @${config.catppuccin.accent};
+        font-weight: bold;
       }
 
       #workspaces button.urgent {
@@ -38,8 +37,11 @@
       }
 
       #workspaces button:hover {
-        background: @green;
-        color: @crust;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        text-shadow: 0 0 2px @text, 0 0 4px @text, 0 0 6px @${config.catppuccin.accent}, 0 0 8px @${config.catppuccin.accent}, 0 0 10px @${config.catppuccin.accent}, 0 0 12px @${config.catppuccin.accent}, 0 0 14px @${config.catppuccin.accent};
+        font-weight: bold;
       }
 
       #workspaces,
@@ -48,9 +50,10 @@
       #datetime,
       #custom-poweroff {
         border-radius: 0 0 1rem 1rem;
-        background: alpha(@surface0, 0.8);
+        box-shadow: 0 0 0.5rem 0 @${config.catppuccin.accent};
+        background: @surface0;
         padding: 0.5rem 1rem;
-        margin-right: 1rem;
+        margin: 0 0.75rem 0.75rem 0.75rem;
       }
       #tray {
             padding : 0;
@@ -105,7 +108,6 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 30;
         modules-left = [
           "tray"
           "mpris"
