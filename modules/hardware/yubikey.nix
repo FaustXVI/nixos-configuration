@@ -7,6 +7,7 @@ let
 in
 {
   config = {
+    hardware.gpgSmartcards.enable = true;
     environment = {
       systemPackages = with pkgs; [
         yubico-piv-tool
