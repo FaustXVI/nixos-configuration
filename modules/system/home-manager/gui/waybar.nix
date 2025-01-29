@@ -32,8 +32,12 @@
       }
 
       #workspaces button.urgent {
-        background: @red;
-        color: @crust;
+        color: @text;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        text-shadow: 0 0 2px @text, 0 0 4px @text, 0 0 6px @red, 0 0 8px @red, 0 0 10px @red, 0 0 12px @red, 0 0 14px @red;
+        font-weight: bold;
       }
 
       #workspaces button:hover {
