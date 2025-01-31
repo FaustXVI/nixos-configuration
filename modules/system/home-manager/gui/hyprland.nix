@@ -30,9 +30,8 @@
       decoration = {
         rounding = 10;
 
-        # Change transparency of focused and unfocused windows
-        active_opacity = 1.0;
-        inactive_opacity = 0.9;
+        dim_inactive = true;
+        dim_strength = 0.25;
 
         shadow = {
           enabled = true;
