@@ -17,7 +17,6 @@
       display-window = " 󰕰  Window";
       display-Network = " 󰤨  Network";
       sidebar-mode = true;
-
     };
   };
 
