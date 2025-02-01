@@ -41,7 +41,7 @@
       nixosMachine = configFile: nixpkgs.lib.nixosSystem rec {
         inherit system;
         modules = [
-          { nixpkgs.overlays = [ (final: prev: xadetPackages) (final: prev: { inherit unstable inputs; }) ]; }
+          { nixpkgs.overlays = [ (final: prev: xadetPackages) (final: prev: { inherit unstable inputs system; }) ]; }
           home-manager.nixosModules.home-manager
           disko.nixosModules.disko
           sops.nixosModules.sops
