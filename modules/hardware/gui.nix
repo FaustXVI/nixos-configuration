@@ -62,9 +62,6 @@
       xwayland.enable = true;
     };
     security.pam.services.hyprlock = { };
-    programs.regreet = {
-      enable = true;
-    };
     environment.etc."wayland/common.conf".text = ''
       input {
         kb_layout = fr
