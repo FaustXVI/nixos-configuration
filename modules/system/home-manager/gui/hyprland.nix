@@ -26,7 +26,10 @@
         layout = "hy3";
       };
 
-      layerrule = [ "blur, bar" ];
+      layerrule = [ 
+        "blur, bar"
+        "blur, logout_dialog"
+      ];
       decoration = {
         rounding = 10;
 
@@ -37,16 +40,14 @@
           enabled = true;
           range = 4;
           render_power = 3;
-          color = "$mantle";
+          color = "$accent";
         };
 
         # https://wiki.hyprland.org/Configuring/Variables/#blur
         blur = {
           enabled = true;
-          size = 3;
-          passes = 1;
-
-          vibrancy = 0.1696;
+          size = 8;
+          passes = 3;
         };
       };
       # https://wiki.hyprland.org/Configuring/Variables/#animations
