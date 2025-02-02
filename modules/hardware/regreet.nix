@@ -11,6 +11,10 @@ window {
     background: @base;
 }
 
+selection {
+    color: @text;
+    background: alpha(@overlay2,0.3);
+}
 
 frame,
 image,
