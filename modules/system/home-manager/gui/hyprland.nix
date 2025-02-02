@@ -14,7 +14,7 @@
         border_size = 2;
 
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-        "col.active_border" = "$accent $lavender 45deg";
+        "col.active_border" = "$accent";
         "col.inactive_border" = "$overlay0";
 
         # Set to true enable resizing windows by clicking and dragging on borders and gaps
@@ -28,6 +28,7 @@
 
       layerrule = [ 
         "blur, bar"
+        "blur, rofi"
         "blur, logout_dialog"
       ];
       decoration = {
