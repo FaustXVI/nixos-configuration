@@ -27,7 +27,8 @@
       };
 
       layerrule = [ 
-        "blur, bar"
+#        "blur, bar"
+#        "ignorezero, bar"
         "blur, rofi"
         "blur, logout_dialog"
       ];
