@@ -8,3 +8,4 @@ nohup.out
 .personal-hook
 result
 .envrc
+*.bak
