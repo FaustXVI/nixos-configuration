@@ -18,28 +18,29 @@
       display-Network = " 󰤨  Network";
       sidebar-mode = true;
     };
-    theme = 
+    theme =
       let
-  # Use `mkLiteral` for string-like values that should show without
-  # quotes, e.g.:
-  # {
-  #   foo = "abc"; => foo: "abc";
-  #   bar = mkLiteral "abc"; => bar: abc;
-  # };
-  inherit (config.home-manager.users.xadet.lib.formats.rasi) mkLiteral;
-in {
-      "window, mainbox, inputbar, listview, entry, element, element selected, button, button selected, textbox" = {
-        background-color= mkLiteral "transparent";
+        # Use `mkLiteral` for string-like values that should show without
+        # quotes, e.g.:
+        # {
+        #   foo = "abc"; => foo: "abc";
+        #   bar = mkLiteral "abc"; => bar: abc;
+        # };
+        inherit (config.home-manager.users.xadet.lib.formats.rasi) mkLiteral;
+      in
+      {
+        "window, mainbox, inputbar, listview, entry, element, element selected, button, button selected, textbox" = {
+          background-color = mkLiteral "transparent";
+        };
+        "*" = {
+          accent = mkLiteral "#74c7ec";
+          blue = mkLiteral "@accent";
+        };
+        window = {
+          border-radius = mkLiteral "10px";
+          border-color = mkLiteral "@accent";
+        };
       };
-      "*" = {
-        accent = mkLiteral "#74c7ec";
-        blue = mkLiteral "@accent";
-      };
-      window = {
-        border-radius= mkLiteral "10px";
-        border-color= mkLiteral "@accent";
-      };
-    };
   };
 
 }

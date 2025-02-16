@@ -2,7 +2,7 @@
 {
   config = mylib.mkIfComputerHasPurpose "work" {
     home-manager.users.xadet = { ... }: rec {
-  xdg.configFile."direnv/lib/watson.sh".text = ''
+      xdg.configFile."direnv/lib/watson.sh".text = ''
         #!/usr/bin/env bash
 
         LOADED_DIR=$(pwd)

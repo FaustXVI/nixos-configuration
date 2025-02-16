@@ -10,8 +10,8 @@
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general = {
         gaps_in = 0;
-        gaps_out = 2;
-        border_size = 2;
+        gaps_out = 0;
+        border_size = 0;
 
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
         "col.active_border" = "$accent";
@@ -26,23 +26,23 @@
         layout = "hy3";
       };
 
-      layerrule = [ 
-#        "blur, bar"
-#        "ignorezero, bar"
+      layerrule = [
+        "blur, bar"
+        "ignorezero, bar"
         "blur, rofi"
         "blur, logout_dialog"
       ];
       decoration = {
-        rounding = 10;
+        rounding = 0;
 
         dim_inactive = true;
         dim_strength = 0.25;
 
         shadow = {
-          enabled = true;
-          range = 4;
-          render_power = 3;
-          color = "$accent";
+          enabled = false;
+          #  range = 4;
+          #  render_power = 3;
+          #  color = "$accent";
         };
 
         # https://wiki.hyprland.org/Configuring/Variables/#blur

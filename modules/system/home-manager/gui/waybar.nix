@@ -54,10 +54,11 @@
       #datetime,
       #custom-poweroff {
         border-radius: 0 0 1rem 1rem;
-        box-shadow: 0 0 0.5rem 0 @${config.catppuccin.accent};
-        background: @surface0;
+        border: 2px solid @${config.catppuccin.accent};
+        border-top: 0;
+        background: alpha(@${config.catppuccin.accent},0.2);
         padding: 0.2rem 1rem;
-        margin: 0 0.6rem 0.6rem 0.6rem;
+        margin: 0 0.6rem 0 0.6rem;
       }
       #tray {
             padding : 0;
@@ -94,10 +95,6 @@
       #tray {
         padding: 0 0.4rem;
         background: transparent;
-      }
-
-      #backlight {
-        color: @yellow;
       }
 
       #pulseaudio.muted {
