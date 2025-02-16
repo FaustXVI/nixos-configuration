@@ -31,10 +31,27 @@
   outputs = { self, nixpkgs, sops, nur, home-manager, disko, catppuccin, ... }@inputs:
     let
       system = "x86_64-linux";
-      targets = [
-        "desktop-home"
-        "eove"
-      ];
+      filterAttr = f: attrs:
+        let
+          names = with builtins; (filter (key: f key (getAttr key attrs)) (attrNames attrs));
+        in
+        with builtins;
+        foldl' (set: name: set // { "${name}" = getAttr name attrs; }) { } names;
+      machine-files = with builtins; attrNames (filterAttr (f: t: t == "regular") (readDir ./machines));
+      nix-machine-files = with builtins; filter
+        (n:
+          let
+            len = builtins.stringLength n;
+          in
+          builtins.substring (len - 4) len n == ".nix")
+        machine-files;
+      targets = with builtins; map
+        (n:
+          let
+            len = builtins.stringLength n;
+          in
+          builtins.substring 0 (len - 4) n)
+        nix-machine-files;
       pkgs = import nixpkgs { inherit system; };
       unstable = import inputs.unstable-pkgs { inherit system; config.allowUnfree = true; };
       xadetPackages = import ./packages { inherit pkgs self disko system targets; };

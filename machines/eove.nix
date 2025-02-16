@@ -10,7 +10,7 @@ in
 {
   imports =
     [
-      (import ./luks-interactive-login.nix { inherit device; })
+      (import ./common/luks-interactive-login.nix { inherit device; })
     ];
   facter.reportPath = ./facter-eove.json;
 
