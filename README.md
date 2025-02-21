@@ -1,6 +1,5 @@
 # Nixos configuration
 
-
 ## How to use
 
 Make sure a file representing the machine you want to setup is present in the `machines` folder and follwed by git.
