@@ -1,6 +1,5 @@
 # Nixos configuration
 
-
 ## How to use
 
 When installing nixos:
