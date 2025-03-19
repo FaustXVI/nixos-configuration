@@ -10,9 +10,19 @@ in
     [
       (import ./common/luks-interactive-login.nix { inherit device; })
     ];
+  nixpkgs.overlays = [
+    (final: prev: {
+      bambu-studio = prev.bambu-studio.overrideAttrs (oldAttrs: {
+        buildInputs = oldAttrs.buildInputs or [ ] ++ [ pkgs.makeWrapper ];
+        postInstall = oldAttrs.postInstall or "" + ''
+          wrapProgram $out/bin/bambu-studio --set __EGL_VENDOR_LIBRARY_FILENAMES "/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json"
+        '';
+      });
+    })
+  ];
   xadetComputer = {
     type = "desktop";
-    purposes = [ "perso" "gaming" "youtube" "photo" "home-office" ];
+    purposes = [ "perso" "gaming" "youtube" "photo" "home-office" "3dPrinting" ];
   };
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
