@@ -17,7 +17,7 @@ in
 
   xadetComputer = {
     type = "laptop";
-    purposes = [ "work" "home-office" "gaming" ];
+    purposes = [ "work" "home-office" "gaming" "3dPrinting" ];
   };
 
   system.stateVersion = "24.11";
