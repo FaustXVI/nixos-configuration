@@ -12,10 +12,20 @@ in
     ];
   nixpkgs.overlays = [
     (final: prev: {
+      freecad-wayland = prev.freecad-wayland.overrideAttrs (oldAttrs: {
+        buildInputs = oldAttrs.buildInputs or [ ] ++ [ pkgs.makeWrapper ];
+        postInstall = oldAttrs.postInstall or "" + ''
+          wrapProgram $out/bin/FreeCAD \
+            --set __GLX_VENDOR_LIBRARY_NAME mesa \
+            --set __EGL_VENDOR_LIBRARY_FILENAMES "${pkgs.mesa.drivers}/share/glvnd/egl_vendor.d/50_mesa.json"
+        '';
+      });
       bambu-studio = prev.bambu-studio.overrideAttrs (oldAttrs: {
         buildInputs = oldAttrs.buildInputs or [ ] ++ [ pkgs.makeWrapper ];
         postInstall = oldAttrs.postInstall or "" + ''
-          wrapProgram $out/bin/bambu-studio --set __EGL_VENDOR_LIBRARY_FILENAMES "/run/opengl-driver/share/glvnd/egl_vendor.d/50_mesa.json"
+          wrapProgram $out/bin/bambu-studio \
+             --set __GLX_VENDOR_LIBRARY_NAME mesa \
+            --set __EGL_VENDOR_LIBRARY_FILENAMES "${pkgs.mesa.drivers}/share/glvnd/egl_vendor.d/50_mesa.json"
         '';
       });
     })
