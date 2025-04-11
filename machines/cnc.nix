@@ -54,5 +54,19 @@ in
     u2f.enable = lib.mkForce false;
   };
 
+  home-manager = {
+    users.jjdtt = {
+      home.stateVersion = config.system.stateVersion;
+      xdg.desktopEntries = {
+        candle = {
+          name = "candle";
+          exec = "${lib.getExe pkgs.candle}";
+          terminal = false;
+          categories = [ "Application" ];
+        };
+      };
+    };
+  };
+
   system.stateVersion = "24.11";
 }
