@@ -96,9 +96,6 @@
               echo "Going to write $ISO_SIZE bytes to the USB stick at $TARGET_DEVICE"
               ${pkgs.util-linux}/bin/wipefs --all "$TARGET_DEVICE"
               dd if=${self.installIso}/iso/${self.installIso.isoName} of="$TARGET_DEVICE" status=progress
-              echo "start=,size=" | ${pkgs.util-linux}/bin/sfdisk -f -a "$TARGET_DEVICE"
-              sleep 1
-              ${pkgs.e2fsprogs}/bin/mkfs.ext4 -L "VAULT_WRITABLE" ''$(ls ''${TARGET_DEVICE}* | tail -1)
             '';
             usbScript = pkgs.writeShellScriptBin "iso-to-usb" ''
               set -e
