@@ -43,10 +43,15 @@ in
   services = {
     greetd.enable = lib.mkForce false;
     xserver = {
-      enable = true;
-      displayManager.lightdm.enable = true;
-      desktopManager.xfce.enable = true;
+      enable = lib.mkForce true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
     };
+  };
+
+  security.pam = {
+    services.login.u2fAuth = lib.mkForce false;
+    u2f.enable = lib.mkForce false;
   };
 
   system.stateVersion = "24.11";
