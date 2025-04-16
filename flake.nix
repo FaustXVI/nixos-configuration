@@ -62,6 +62,21 @@
             nixpkgs.overlays = [
               (final: prev: xadetPackages)
               (final: prev: { inherit unstable inputs system; })
+              (final: prev: {
+                candle = prev.candle.overrideAttrs (oldAttrs: rec {
+                  version = "1.2b";
+
+                  src = pkgs.fetchFromGitHub {
+                    owner = "Denvi";
+                    repo = "Candle";
+                    rev = "v${version}";
+                    sha256 = "sha256-+14ZRFtAo+WzM4v3U3l9uU3xzhzbdM8+iaujhz9dNuY=";
+                  };
+                  cmakeFlags = [
+                    "-DDEFAULT_SETTINGS_LOCATION=ON"
+                  ];
+                });
+              })
             ];
           }
           home-manager.nixosModules.home-manager

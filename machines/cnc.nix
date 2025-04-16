@@ -69,6 +69,9 @@ in
     };
   };
 
+  #programs.thunderbird.enable = true;
+  #programs.firefox.enable = true;
+
   i18n.defaultLocale = lib.mkForce "fr_FR.UTF-8";
 
   system.stateVersion = "24.11";
