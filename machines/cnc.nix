@@ -35,6 +35,7 @@ in
         isNormalUser = true;
         createHome = true;
         hashedPasswordFile = config.sops.secrets.jjdtt-password.path;
+        extraGroups = [ "dialout" "tty" "wheel" ];
       };
     };
   };
