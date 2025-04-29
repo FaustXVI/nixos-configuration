@@ -11,8 +11,6 @@ in
     environment = {
       systemPackages = with pkgs; [
         yubico-piv-tool
-        yubikey-personalization
-        yubikey-personalization-gui
         yubioath-flutter
       ];
     };
