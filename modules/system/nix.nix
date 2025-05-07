@@ -2,18 +2,20 @@
 
 {
   nixpkgs.config.allowUnfree = true;
+  # TODO move this to ~/.config/nix/nix.conf and remove it from global config
   sops.templates."nix-github-token.conf" = {
     owner = config.users.users.xadet.name;
     content = ''
       access-tokens = github.com=${config.sops.placeholder.githubToken}
+      impure-env = GITHUB_TOKEN=${config.sops.placeholder.githubToken}
+      extra-impure-env = NIX_NPM_TOKENS={"npm.pkg.github.com":"${config.sops.placeholder.githubToken}"}
     '';
   };
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [ "nix-command" "flakes" "configurable-impure-env" ];
       trusted-users = [
-        "root"
-        config.users.users.xadet.name
+        "@wheel"
       ];
     };
     extraOptions = ''
