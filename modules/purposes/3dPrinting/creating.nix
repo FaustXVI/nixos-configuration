@@ -5,7 +5,6 @@
     environment = {
       systemPackages = with pkgs; [
         freecad-wayland
-        openscad
       ];
     };
   };
