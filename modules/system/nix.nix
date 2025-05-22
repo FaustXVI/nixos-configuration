@@ -7,13 +7,20 @@
     owner = config.users.users.xadet.name;
     content = ''
       access-tokens = github.com=${config.sops.placeholder.githubToken}
-      impure-env = GITHUB_TOKEN=${config.sops.placeholder.githubToken}
-      extra-impure-env = NIX_NPM_TOKENS={"npm.pkg.github.com":"${config.sops.placeholder.githubToken}"}
     '';
+  };
+  sops.templates."nix.env" = {
+    content = ''
+GITHUB_TOKEN=${config.sops.placeholder.githubToken}
+NIX_NPM_TOKENS={"npm.pkg.github.com":"${config.sops.placeholder.githubToken}"}
+    '';
+  };
+  systemd.services.nix-daemon.serviceConfig = {
+    EnvironmentFile = config.sops.templates."nix.env".path;
   };
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" "configurable-impure-env" ];
+      experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [
         "@wheel"
       ];
