@@ -15,6 +15,20 @@ GITHUB_TOKEN=${config.sops.placeholder.githubToken}
 NIX_NPM_TOKENS={"npm.pkg.github.com":"${config.sops.placeholder.githubToken}"}
     '';
   };
+  sops.templates."github-token_git.conf" = {
+    owner = config.users.users.xadet.name;
+    content = ''
+      [url "https://${config.sops.placeholder.githubToken}@github.com"]
+          insteadOf = git+ssh://github.com
+    '';
+  };
+  environment.etc."gitconfig" = {
+    enable = true;
+    text = ''
+      [include]
+        path = ${config.sops.templates."github-token_git.conf".path};
+    '';
+  };
   systemd.services.nix-daemon.serviceConfig = {
     EnvironmentFile = config.sops.templates."nix.env".path;
   };
