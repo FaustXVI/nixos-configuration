@@ -2,7 +2,7 @@
 let
   authFile = pkgs.writeText "u2f_file"
     ''
-      xadet:KkTVzBCQuGE7sUgzx7oXyX4baaNkflLHR44gcNBwxDQN/+iPPsh1le3vnRvkEorZ9WGjhg/pk51FWp+5VmCeyQ==,Qkvu0bTmYByEKQ3eAzVgMIuqC8c7zJMfHQxgSlRu3KwPNEfK9MZbUrkApTBGwjDI8RzFtjAMZOh9rLAh16Bp7Q==,es256,+presence:z+fF70trV02I3MhsfkgWfkA9dMAmtnS6ccO5giEHyr+ORo7QVyMFNZO2YbukcCQ92rw981UydBk4/XY9dQB2Nw==,8+8uOvWSsYt6/xP0+ibieKnH75FNg50nWBpwU7auC4kfItxg42BFvKrhXS2zLQ1Jxs/eQefgLqgzAKUgPysO2w==,es256,+presence
+      xadet:KkTVzBCQuGE7sUgzx7oXyX4baaNkflLHR44gcNBwxDQN/+iPPsh1le3vnRvkEorZ9WGjhg/pk51FWp+5VmCeyQ==,Qkvu0bTmYByEKQ3eAzVgMIuqC8c7zJMfHQxgSlRu3KwPNEfK9MZbUrkApTBGwjDI8RzFtjAMZOh9rLAh16Bp7Q==,es256,+presence:z+fF70trV02I3MhsfkgWfkA9dMAmtnS6ccO5giEHyr+ORo7QVyMFNZO2YbukcCQ92rw981UydBk4/XY9dQB2Nw==,8+8uOvWSsYt6/xP0+ibieKnH75FNg50nWBpwU7auC4kfItxg42BFvKrhXS2zLQ1Jxs/eQefgLqgzAKUgPysO2w==,es256,+presence:nNbXVTSNX2tZBTzvpAlOQP7ahfvTaFliRWDSSDrBkLHf+JbMEs7Xh5U6Z0+vcAi6MRL25u36HcpJyL1AjhnitQ==,CVAhZuzHEUJ9irYDM4wfHKMz+OXiV7nXTQR3rdX3b/xvDIB9KfNF4R3CeJWcKul1Y2mShtpsEldFVFUJhSFJ/g==,es256,+presence
     '';
 in
 {
