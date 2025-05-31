@@ -1,7 +1,7 @@
 { config, mylib, pkgs, ... }@args:
 {
   imports = [
-    pkgs.inputs.catppuccin.homeManagerModules.catppuccin
+    pkgs.inputs.catppuccin.homeModules.catppuccin
   ] ++ (mylib.importsWith args [ ./shells ]);
   config = {
     catppuccin = {

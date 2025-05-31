@@ -6,7 +6,6 @@
       systemPackages = with pkgs; [
         steam
         discord
-        xboxdrv
       ];
     };
 

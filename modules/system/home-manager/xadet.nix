@@ -1,7 +1,7 @@
 { mylib, config, pkgs, ... }@args:
 {
   imports = [
-    pkgs.inputs.catppuccin.homeManagerModules.catppuccin
+    pkgs.inputs.catppuccin.homeModules.catppuccin
   ] ++ (mylib.importAllFilteredWith (n: n != "root.nix" && n != "xadet.nix") args ./.);
   config = {
     catppuccin = {

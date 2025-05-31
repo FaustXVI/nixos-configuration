@@ -36,6 +36,7 @@
       combobox popover contents modelbutton,
       combobox button,
       combobox window menu,
+      frame,
       input {
           color: @text;
           border-color: @surface0;

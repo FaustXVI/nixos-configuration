@@ -12,7 +12,8 @@
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
-      nerdfonts
+      nerd-fonts.fira-code
+      nerd-fonts.noto
     ];
     fontconfig = {
       defaultFonts = {

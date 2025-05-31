@@ -35,7 +35,7 @@ in
         simplescreenrecorder
         plugScript
         inkscape
-        kdenlive
+        kdePackages.kdenlive
         ladspaPlugins
         rnnoise-plugin
       ];
