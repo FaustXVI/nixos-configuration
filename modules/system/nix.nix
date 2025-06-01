@@ -11,8 +11,8 @@
   };
   sops.templates."nix.env" = {
     content = ''
-GITHUB_TOKEN=${config.sops.placeholder.githubToken}
-NIX_NPM_TOKENS={"npm.pkg.github.com":"${config.sops.placeholder.githubToken}"}
+      GITHUB_TOKEN=${config.sops.placeholder.githubToken}
+      NIX_NPM_TOKENS={"npm.pkg.github.com":"${config.sops.placeholder.githubToken}"}
     '';
   };
   sops.templates."github-token_git.conf" = {

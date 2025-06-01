@@ -11,27 +11,32 @@ in
       (import ./common/luks-interactive-login.nix { inherit device; })
     ];
   nixpkgs.overlays = [
-    (final: prev: {
-      freecad-wayland = prev.freecad-wayland.overrideAttrs (oldAttrs: {
-        buildInputs = oldAttrs.buildInputs or [ ] ++ [ pkgs.makeWrapper ];
-        postInstall = oldAttrs.postInstall or "" + ''
-          wrapProgram $out/bin/FreeCAD \
-            --set __GLX_VENDOR_LIBRARY_NAME mesa \
-            --set __EGL_VENDOR_LIBRARY_FILENAMES "${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json"
+    (final: prev:
+      let
+        exports = ''
+          export __GLX_VENDOR_LIBRARY_NAME="mesa"
+          export __EGL_VENDOR_LIBRARY_FILENAMES="${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json"
+          export MESA_LOADER_DRIVER_OVERRIDE="zink"
+          export GALLIUM_DRIVER="zink"
+          export WEBKIT_DISABLE_DMABUF_RENDERER=1
         '';
-      });
-      bambu-studio = prev.bambu-studio.overrideAttrs (oldAttrs: {
-        buildInputs = oldAttrs.buildInputs or [ ] ++ [ pkgs.makeWrapper ];
-        postInstall = oldAttrs.postInstall or "" + ''
-          wrapProgram $out/bin/bambu-studio \
-             --set __GLX_VENDOR_LIBRARY_NAME mesa \
-            --set __EGL_VENDOR_LIBRARY_FILENAMES "${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json" \
-            --set MESA_LOADER_DRIVER_OVERRIDE zink \
-            --set GALLIUM_DRIVER zink \
-            --set WEBKIT_DISABLE_DMABUF_RENDERER 1
-        '';
-      });
-    })
+      in
+      {
+        freecad-wayland = final.writeScriptBin "FreeCAD" ''
+          ${exports}
+          ${prev.freecad-wayland}/bin/FreeCAD'';
+        bambu-studio = final.writeScriptBin "bambu-studio" ''
+                      ${exports}
+                      ${prev.lib.getExe (prev.bambu-studio.overrideAttrs (oldAttrs: {
+          	version = "01.00.01.50";
+          	src = prev.fetchFromGitHub {
+          		owner = "bambulab";
+          		repo = "BambuStudio";
+          		rev = "v01.00.01.50";
+          		hash = "sha256-7mkrPl2CQSfc1lRjl1ilwxdYcK5iRU//QGKmdCicK30=";
+          	};
+          }))}'';
+      })
   ];
   xadetComputer = {
     type = "desktop";
