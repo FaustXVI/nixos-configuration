@@ -35,7 +35,7 @@
       decoration = {
         rounding = 0;
 
-        dim_inactive = true;
+        dim_inactive = false;
         dim_strength = 0.25;
 
         shadow = {
