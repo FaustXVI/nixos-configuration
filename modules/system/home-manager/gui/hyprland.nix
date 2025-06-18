@@ -160,6 +160,7 @@
         "kanshi"
         "systemctl --user enable --now hyprpolkitagent.service"
         "wl-paste --type text --watch cliphist store"
+        "wl-paste --primary --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         "udiskie"
       ];
