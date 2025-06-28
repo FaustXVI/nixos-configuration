@@ -98,6 +98,22 @@
         "type": "github"
       }
     },
+    "navi-faust-cheats": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1677574814,
+        "narHash": "sha256-3wC4ghLd1kGH2TpXC1qRdM22dhlh5PeN28usQvfAnzk=",
+        "owner": "FaustXVI",
+        "repo": "navi-cheatsheets",
+        "rev": "a76f77d48f55ae255c78b5032af66f2c56f9a08c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FaustXVI",
+        "repo": "navi-cheatsheets",
+        "type": "github"
+      }
+    },
     "nixos-facter-modules": {
       "locked": {
         "lastModified": 1743671943,
@@ -157,6 +173,7 @@
         "disko": "disko",
         "home-manager": "home-manager",
         "navi-cheats": "navi-cheats",
+        "navi-faust-cheats": "navi-faust-cheats",
         "nixos-facter-modules": "nixos-facter-modules",
         "nixpkgs": "nixpkgs",
         "nur": "nur",

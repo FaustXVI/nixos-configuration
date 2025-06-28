@@ -27,8 +27,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     navi-cheats = {
-      flake = false;
       url = "github:denisidoro/cheats";
+      flake = false;
+    };
+    navi-faust-cheats = {
+      url = "github:FaustXVI/navi-cheatsheets";
+      flake = false;
     };
   };
 
