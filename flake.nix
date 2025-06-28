@@ -26,6 +26,10 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    navi-cheats = {
+      flake = false;
+      url = "github:denisidoro/cheats";
+    };
   };
 
   outputs = { self, nixpkgs, sops, nur, home-manager, disko, catppuccin, ... }@inputs:
