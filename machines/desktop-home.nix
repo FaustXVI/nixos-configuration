@@ -40,9 +40,10 @@ in
   ];
   xadetComputer = {
     type = "desktop";
-    purposes = [ "perso" "gaming" "youtube" "photo" "home-office" "3dPrinting" ];
+    purposes = [ "perso" "gaming" "youtube" "photo" "home-office" "3dPrinting" "llm" ];
   };
   services.xserver.videoDrivers = [ "nvidia" ];
+  services.ollama.package = pkgs.ollama-cuda;
   hardware = {
     graphics.enable = true;
     nvidia = {
