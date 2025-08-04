@@ -23,7 +23,9 @@ let
         install -v -m644 "$src" "$dst/${addonId}.xpi"
       '';
     });
-  extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+    extensions = {
+      force = true;
+      packages = with pkgs.nur.repos.rycee.firefox-addons; [
     bitwarden
     foxyproxy-standard
     adblocker-ultimate
@@ -33,6 +35,7 @@ let
     # https://github.com/catppuccin/userstyles/tree/main/styles/gmail
     stylus
   ];
+};
   settings = {
     "signon.rememberSignons" = false;
     "browser.startup.page" = 3;
@@ -102,15 +105,20 @@ in
       package = pkgs.unstable.firefox-bin;
       profiles = lib.mkMerge [
         {
-          "perso" = {
+          default = {
+            id = 42;
+            isDefault = false;
+            inherit settings search extensions;
+          };
+          perso = {
             id = 0;
             inherit settings search extensions;
           };
         }
         (mylib.mkIfComputerHasPurpose "work"
           {
-            "perso".isDefault = false;
-            "eove" = {
+            perso.isDefault = false;
+            eove = {
               id = 1;
               isDefault = true;
               inherit search settings extensions;
