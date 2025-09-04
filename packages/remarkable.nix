@@ -1,16 +1,16 @@
 { pkgs, ... }:
 let
-  version = "3.14.1.889";
+  version = "3.20.0.922";
   installerUrl = "https://downloads.remarkable.com/desktop/production/win/reMarkable-${version}-win64.exe";
   installer = pkgs.fetchurl {
     url = installerUrl;
-    hash = "sha256-uSsLL95YYrLEXBbZMGQX34hz0KX/vil7GWH+cqZn/z0=";
+    hash = "sha256-bzd2Wa4oz5p6HaTVu66ynP5wlAn/JHvog7mCG0BO+Og=";
   };
   binaryName = "reMarkable.exe";
   installDirectory = ''''${HOME}/remarkable'';
   targetDirectory = ''''${HOME}/.remarkable'';
   expectedPath = "${targetDirectory}/${binaryName}";
-  wine = "${pkgs.wineWowPackages.unstableFull}/bin/wine64";
+  wine = "${pkgs.wineWowPackages.stableFull}/bin/wine";
 in
 pkgs.writeShellScriptBin "remarkable" ''
   export WINEPREFIX="''${HOME}/.wine-remarkable"
