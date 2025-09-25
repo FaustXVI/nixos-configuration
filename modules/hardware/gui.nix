@@ -48,6 +48,7 @@
         udiskie
         nautilus
         wlogout
+        gscreenshot
       ];
     };
     services = {
