@@ -10,6 +10,7 @@
       unzip
       psmisc
       ncdu
+      nh
     ];
   };
 }
