@@ -11,6 +11,9 @@
       psmisc
       ncdu
       nh
+      cht-sh
+      jnv
+      sig
     ];
   };
 }
