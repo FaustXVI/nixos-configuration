@@ -48,7 +48,7 @@ in
     };
     services = {
       udev = {
-        packages = with pkgs; [ yubikey-personalization libyubikey yubikey-personalization-gui ];
+        packages = with pkgs; [ yubikey-personalization libyubikey ];
         extraRules = ''
           ACTION=="remove", ENV{KEY}=="?*", ENV{ID_BUS}=="usb", ENV{ID_MODEL_ID}=="0407", ENV{ID_VENDOR_ID}=="1050", RUN+="${pkgs.bash}/bin/bash -c 'systemctl --no-block start auto-lock'"
         '';
