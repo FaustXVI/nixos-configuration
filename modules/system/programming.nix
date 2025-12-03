@@ -10,6 +10,7 @@
       unstable.jetbrains.clion
       unstable.jetbrains.rust-rover
       docker-compose
+      meld
     ];
   };
 }
