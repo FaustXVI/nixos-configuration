@@ -18,7 +18,7 @@ in
     };
     home-manager.users.xadet = {
       programs.git = {
-        userName = "Xavier Detant";
+        settings.user.name = "Xavier Detant";
       };
     };
   };

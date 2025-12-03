@@ -8,26 +8,22 @@ in
   programs = {
     git = {
       enable = true;
-      userName = lib.mkDefault "FaustXVI";
-      userEmail = lib.mkDefault "1016863+FaustXVI@users.noreply.github.com";
-      signing = {
-        signByDefault = true;
-        key = "D158D40AD633259081FB834628EC14C71D3CFAAF";
-      };
-      aliases = {
-        co = "checkout";
-        ci = "commit";
-        st = "status";
-        br = "branch";
-        branch-clean = "!git branch --merged | grep -v main | xargs -n 1 git branch -d";
-        next = "!git checkout `git rev-list HEAD..demo-end | tail -1`";
-      };
-      delta = {
-        enable = true;
-      };
-      extraConfig = {
+      settings = {
+        user = {
+          name = lib.mkDefault "FaustXVI";
+          email = lib.mkDefault "1016863+FaustXVI@users.noreply.github.com";
+        };
+        alias = {
+          co = "checkout";
+          ci = "commit";
+          st = "status";
+          br = "branch";
+          branch-clean = "!git branch --merged | grep -v main | xargs -n 1 git branch -d";
+          next = "!git checkout `git rev-list HEAD..demo-end | tail -1`";
+        };
         push = {
           default = "current";
+          autoSetupRemote = true;
         };
         pull = {
           rebase = "merges";
@@ -42,6 +38,14 @@ in
           enable = true;
         };
       };
+      signing = {
+        signByDefault = true;
+        key = "D158D40AD633259081FB834628EC14C71D3CFAAF";
+      };
+    };
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
     };
   };
 }
