@@ -1,8 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs = {
     vim = {
       enable = true;
+      packageConfigurable = pkgs.vim;
       extraConfig = ''
             filetype indent on
             " allow backspacing over everything in insert mode
