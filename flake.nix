@@ -34,9 +34,13 @@
       url = "github:FaustXVI/navi-cheatsheets";
       flake = false;
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, sops, nur, home-manager, disko, catppuccin, ... }@inputs:
+  outputs = { self, nixpkgs, sops, nur, home-manager, disko, catppuccin, lanzaboote, ... }@inputs:
     let
       system = "x86_64-linux";
       filterAttr = f: attrs:
@@ -92,6 +96,7 @@
           sops.nixosModules.sops
           nur.modules.nixos.default
           catppuccin.nixosModules.catppuccin
+          lanzaboote.nixosModules.lanzaboote
           nur.legacyPackages."${system}".repos.iopq.modules.xraya
           inputs.nixos-facter-modules.nixosModules.facter
           "${./.}/machines/${configFile}.nix"

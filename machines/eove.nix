@@ -22,6 +22,24 @@ in
 
   system.stateVersion = "24.11";
 
+      boot = {
+      initrd = {
+        # necessary for unlocking disk with the TPM
+        systemd.enable = true;
+      };
+      loader.systemd-boot.enable = pkgs.lib.mkForce (! config.boot.lanzaboote.enable);
+
+      lanzaboote = {
+        enable = true;
+        pkiBundle = "/var/lib/sbctl";
+        autoGenerateKeys.enable = true;
+        autoEnrollKeys = {
+          enable = true;
+          autoReboot = true;
+        };
+      };
+    };
+
   nixpkgs.overlays = [(final: prev: {
         bambu-studio = prev.appimageTools.wrapType2 rec {
           name = "BambuStudio";
