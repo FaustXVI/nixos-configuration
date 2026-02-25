@@ -40,6 +40,9 @@
             syntax on
             set hlsearch
             set number
+            set noeol
+            set noeof
+            set nofixeol
       '';
     };
   };
