@@ -96,16 +96,11 @@
     # https://github.com/hyprwm/hyprland-wiki/issues/409
     xdg.portal = {
       enable = true;
-      configPackages = with pkgs; [ hyprland ];
-      config = {
-        common = {
-          default = [ "hyprland" "gtk" ];
-        };
-      };
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
         xdg-desktop-portal-hyprland
       ];
+ 
       xdgOpenUsePortal = true;
     };
     # Fix xdg-portals opening URLs: https://github.com/NixOS/nixpkgs/issues/189851
