@@ -120,6 +120,7 @@
         "$mainMod, R, exec, ${lib.getExe pkgs.rofi} -show run"
         "$mainMod, L, exec, ${lib.getExe pkgs.hyprlock} --immediate"
         "$mainMod, V, exec, cliphist list |  ${lib.getExe pkgs.rofi} -dmenu | cliphist decode | wl-copy -pc"
+        "$mainMod, C, exec, ${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | wl-copy"
         "$mainMod, left, hy3:movefocus, l"
         "$mainMod, right, hy3:movefocus, r"
         "$mainMod, up, hy3:movefocus, u"
