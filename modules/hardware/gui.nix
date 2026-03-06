@@ -6,6 +6,9 @@
       type = pkgs.lib.types.str;
       default =
         if mylib.computerIs "laptop" then
+         # "monitor = ,preferred,auto,1, mirror, eDP-1"
+         # ''monitor = DP-1,preferred,auto,1, mirror, eDP-1
+         #   monitor = eDP-1,disable''
           "monitor = ,preferred,auto,1, mirror, eDP-1"
         else
           "monitor = ,preferred,auto,1";
