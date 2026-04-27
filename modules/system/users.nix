@@ -12,6 +12,7 @@
       xadet = {
         shell = pkgs.fish;
         isNormalUser = true;
+        description = "Xavier Detant";
         uid = 1000;
         createHome = true;
         extraGroups = [ "networkmanager" "wheel" "docker" "dialout" "lp" "scanner" "video" "wireshark" ];
