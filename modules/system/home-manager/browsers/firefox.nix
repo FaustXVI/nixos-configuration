@@ -43,6 +43,7 @@ let
     "extensions.formautofill.creditCards.enabled" = false;
     "accessibility.typeaheadfind" = true;
     "browser.download.useDownloadDir" = false;
+    "browser.tabs.insertAfterCurrent" = true;
   };
   search = {
     force = true;
