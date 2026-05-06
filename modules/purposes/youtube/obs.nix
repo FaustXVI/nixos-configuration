@@ -28,7 +28,7 @@ in
         DSSI_PATH = "/nix/var/nix/profiles/default/lib/dssi:/var/run/current-system/sw/lib/dssi";
       };
       systemPackages = with pkgs; [
-        openshot-qt
+#        openshot-qt
         gphoto2
         ffmpeg_6-full
         v4l-utils
