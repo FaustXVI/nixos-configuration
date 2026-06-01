@@ -10,8 +10,6 @@
     portalPackage = null;
     plugins = with pkgs.hyprlandPlugins; [ hy3 ];
     settings = {
-      "$terminal" = "${lib.getExe pkgs.kitty}";
-      "$mainMod" = "SUPER";
       monitor = ",preferred,auto,1";
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general = {
@@ -33,12 +31,20 @@
         layout = "hy3";
       };
 
-     # layerrule = [
-     #   "blur, bar"
-     #   "ignorezero, bar"
-     #   "blur, rofi"
-     #   "blur, logout_dialog"
-     # ];
+      layerrule = [
+     {name = "blur waybar";
+      blur = true;
+      "match:namespace" = "waybar";
+      }
+     {name = "blur rofi";
+      blur = true;
+      "match:namespace" = "rofi";
+      }
+     {name = "blur logout";
+      blur = true;
+      "match:namespace" = "logout_dialog";
+      }
+      ];
       decoration = {
         rounding = 0;
 
@@ -118,31 +124,31 @@
         };
       };
       bind = [
-        "$mainMod, Return, exec, $terminal"
-        "$mainMod SHIFT, C, killactive"
-        "$mainMod SHIFT, E, exit"
-        "$mainMod, R, exec, ${lib.getExe pkgs.rofi} -show run"
-        "$mainMod, L, exec, ${lib.getExe pkgs.hyprlock} --grace 0"
-        "$mainMod, V, exec, cliphist list |  ${lib.getExe pkgs.rofi} -dmenu | cliphist decode | wl-copy -pc"
-        "$mainMod, C, exec, ${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | wl-copy"
-        "$mainMod, left, hy3:movefocus, l"
-        "$mainMod, right, hy3:movefocus, r"
-        "$mainMod, up, hy3:movefocus, u"
-        "$mainMod, down, hy3:movefocus, d"
-        "$mainMod SHIFT, left, hy3:movewindow, l"
-        "$mainMod SHIFT, right, hy3:movewindow, r"
-        "$mainMod SHIFT, up, hy3:movewindow, u"
-        "$mainMod SHIFT, down, hy3:movewindow, d"
+        "SUPER, Return, exec, ${lib.getExe pkgs.kitty}"
+        "SUPER SHIFT, C, killactive"
+        "SUPER SHIFT, E, exit"
+        "SUPER, R, exec, ${lib.getExe pkgs.rofi} -show run"
+        "SUPER, L, exec, ${lib.getExe pkgs.hyprlock} --grace 0"
+        "SUPER, V, exec, cliphist list |  ${lib.getExe pkgs.rofi} -dmenu | cliphist decode | wl-copy -pc"
+        "SUPER, C, exec, ${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | wl-copy"
+        "SUPER, left, hy3:movefocus, l"
+        "SUPER, right, hy3:movefocus, r"
+        "SUPER, up, hy3:movefocus, u"
+        "SUPER, down, hy3:movefocus, d"
+        "SUPER SHIFT, left, hy3:movewindow, l"
+        "SUPER SHIFT, right, hy3:movewindow, r"
+        "SUPER SHIFT, up, hy3:movewindow, u"
+        "SUPER SHIFT, down, hy3:movewindow, d"
       ] ++ builtins.foldl'
         (acc: n: acc ++ [
-          "$mainMod, code:1${builtins.toString n}, workspace, ${builtins.toString (n+1)}"
-          "$mainMod SHIFT, code:1${builtins.toString n}, hy3:movetoworkspace, ${builtins.toString (n+1)}"
+          "SUPER, code:1${builtins.toString n}, workspace, ${builtins.toString (n+1)}"
+          "SUPER SHIFT, code:1${builtins.toString n}, hy3:movetoworkspace, ${builtins.toString (n+1)}"
         ]) [ ]
         (lib.range 0 9);
       # Move/resize windows with mainMod + LMB/RMB and dragging
       bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
+        "SUPER, mouse:272, movewindow"
+        "SUPER, mouse:273, resizewindow"
       ];
       # Laptop multimedia keys for volume and LCD brightness
       bindel = [
@@ -163,7 +169,7 @@
         ",switch:on:Lid Switch, exec, systemctl suspend"
       ];
       # Fix some dragging issues with XWayland
-      #windowrulev2 = "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0";
+      #windowrule = "nofocus,match:class ^$,match:title ^$,match:xwayland true,match:floating: true,match:fullscreen false,match:pin false";
       exec-once = [
         "kanshi"
         "systemctl --user enable --now hyprpolkitagent.service"
