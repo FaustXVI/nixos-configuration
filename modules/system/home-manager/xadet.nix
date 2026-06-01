@@ -15,6 +15,7 @@
       autoEnable = true;
     };
     gtk.enable = true;
+    xdg.enable = true;
     home = {
       pointerCursor = {
         x11.enable = true;

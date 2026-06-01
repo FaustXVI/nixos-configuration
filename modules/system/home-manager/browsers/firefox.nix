@@ -1,4 +1,4 @@
-{ pkgs, lib, config, mylib, ... }@args:
+{ pkgs, lib, config, mylib, currentUser, ... }@args:
 let
   buildFirefoxXpiAddon = lib.makeOverridable ({ stdenv ? pkgs.stdenv
                                               , fetchurl ? pkgs.fetchurl
@@ -103,6 +103,8 @@ in
   programs = {
     firefox = {
       enable = true;
+#      configPath = "${config.home-manager.users."${currentUser}".xdg.configHome}/mozilla/firefox";
+      configPath = ".mozilla/firefox";
       package = pkgs.unstable.firefox-bin;
       profiles = lib.mkMerge [
         {
