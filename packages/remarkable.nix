@@ -10,7 +10,7 @@ let
   installDirectory = ''''${HOME}/remarkable'';
   targetDirectory = ''''${HOME}/.remarkable'';
   expectedPath = "${targetDirectory}/${binaryName}";
-  wine = "${pkgs.wineWowPackages.stableFull}/bin/wine";
+  wine = "${pkgs.wineWow64Packages.stableFull}/bin/wine";
 in
 pkgs.writeShellScriptBin "remarkable" ''
   export WINEPREFIX="''${HOME}/.wine-remarkable"

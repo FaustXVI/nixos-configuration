@@ -19,7 +19,7 @@ in
       description = "Lock screen";
       serviceConfig = {
         User = config.users.users.xadet.name;
-        ExecStart = ''${pkgs.hyprland}/bin/hyprctl --instance 0 'dispatch exec hyprlock --immediate' '';
+        ExecStart = ''${pkgs.hyprland}/bin/hyprctl --instance 0 'dispatch exec hyprlock --grace 0' '';
       };
     };
     services = {

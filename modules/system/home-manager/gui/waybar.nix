@@ -199,8 +199,8 @@
           format = "{icon}";
           tooltip-format = "{percent}%";
           format-icons = [ "" "" "" "" "" "" "" "" "" ];
-          on-scroll-up = "${lib.getExe pkgs.light} -A 1";
-          on-scroll-down = "${lib.getExe pkgs.light} -U 1";
+          on-scroll-up = "${lib.getExe pkgs.brightnessctl} set +1%";
+          on-scroll-down = "${lib.getExe pkgs.brightnessctl} set -1%";
         };
         idle_inhibitor = {
           format = "{icon}";

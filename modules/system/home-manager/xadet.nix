@@ -12,6 +12,7 @@
       accent = config.catppuccin.accent;
       flavor = config.catppuccin.flavor;
       enable = true;
+      autoEnable = true;
     };
     gtk.enable = true;
     home = {

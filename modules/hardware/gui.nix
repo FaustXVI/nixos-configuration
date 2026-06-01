@@ -18,6 +18,7 @@
     security.polkit.enable = true;
     boot.plymouth.enable = true;
     catppuccin = {
+      autoEnable = true;
       accent = "sapphire";
       flavor = "mocha";
       enable = true;

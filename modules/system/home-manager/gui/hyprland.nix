@@ -1,8 +1,11 @@
 { pkgs, lib, config, ... }:
 {
+  catppuccin.hyprland.enable = false; # remove when switched to lua
   wayland.windowManager.hyprland = {
     enable = true;
         # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
+#    configType = "lua";
+    configType = "hyprlang";
     package = null;
     portalPackage = null;
     plugins = with pkgs.hyprlandPlugins; [ hy3 ];
@@ -12,13 +15,14 @@
       monitor = ",preferred,auto,1";
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general = {
-        gaps_in = 0;
+        gaps_in = 1;
         gaps_out = 0;
         border_size = 0;
 
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-        "col.active_border" = "$accent";
-        "col.inactive_border" = "$overlay0";
+# uncomment once catppucin is back
+#        "col.active_border" = "${config.catppuccin.accent}";
+#        "col.inactive_border" = "$overlay0";
 
         # Set to true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = false;
@@ -29,12 +33,12 @@
         layout = "hy3";
       };
 
-      layerrule = [
-        "blur, bar"
-        "ignorezero, bar"
-        "blur, rofi"
-        "blur, logout_dialog"
-      ];
+     # layerrule = [
+     #   "blur, bar"
+     #   "ignorezero, bar"
+     #   "blur, rofi"
+     #   "blur, logout_dialog"
+     # ];
       decoration = {
         rounding = 0;
 
@@ -45,7 +49,7 @@
           enabled = false;
           #  range = 4;
           #  render_power = 3;
-          #  color = "$accent";
+          #  color = "${config.catppuccin.accent}";
         };
 
         # https://wiki.hyprland.org/Configuring/Variables/#blur
@@ -118,7 +122,7 @@
         "$mainMod SHIFT, C, killactive"
         "$mainMod SHIFT, E, exit"
         "$mainMod, R, exec, ${lib.getExe pkgs.rofi} -show run"
-        "$mainMod, L, exec, ${lib.getExe pkgs.hyprlock} --immediate"
+        "$mainMod, L, exec, ${lib.getExe pkgs.hyprlock} --grace 0"
         "$mainMod, V, exec, cliphist list |  ${lib.getExe pkgs.rofi} -dmenu | cliphist decode | wl-copy -pc"
         "$mainMod, C, exec, ${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | wl-copy"
         "$mainMod, left, hy3:movefocus, l"
@@ -146,8 +150,8 @@
         ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
         ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        ",XF86MonBrightnessUp, exec, ${lib.getExe pkgs.light} -A 5"
-        ",XF86MonBrightnessDown, exec, ${lib.getExe pkgs.light} -U 5"
+        ",XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} set +5%"
+        ",XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} set -5%"
       ];
 
       # Requires playerctl
@@ -159,7 +163,7 @@
         ",switch:on:Lid Switch, exec, systemctl suspend"
       ];
       # Fix some dragging issues with XWayland
-      windowrulev2 = "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0";
+      #windowrulev2 = "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0";
       exec-once = [
         "kanshi"
         "systemctl --user enable --now hyprpolkitagent.service"

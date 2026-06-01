@@ -2,7 +2,7 @@
   description = "My nixos config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     unstable-pkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     disko = {
@@ -19,7 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin = {

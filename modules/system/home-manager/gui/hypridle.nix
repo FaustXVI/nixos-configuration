@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       general = {
-        lock_cmd = "${lib.getExe pkgs.hyprlock} --immediate";
+        lock_cmd = "${lib.getExe pkgs.hyprlock} --grace 30";
         after_sleep_cmd = "hyprctl dispatch dpms on";
         before_sleep_cmd = "loginctl lock-session";
       };
