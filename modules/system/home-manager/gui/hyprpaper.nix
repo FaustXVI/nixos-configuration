@@ -1,6 +1,7 @@
 { pkgs, lib, config, ... }:
     let
     conf = pkgs.writeText "hyprpaper.conf" ''
+       splash = false
        wallpaper {
          monitor =
          path = ${./background-image}
