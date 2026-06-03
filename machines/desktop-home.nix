@@ -1,8 +1,8 @@
 { config, pkgs, inputs, ... }:
 
 let
-  LG = "HDMI-1";
-  Samsung = "DP-2";
+  LG = "HDMI-A-1";
+  Samsung = "DP-3";
   device = "/dev/nvme1n1";
 in
 {
@@ -57,7 +57,6 @@ in
       gst_all_1.gst-plugins-base
       gst_all_1.gst-plugins-good
       webkitgtk_4_1
-      pkgs.linuxPackages.nvidia_x11
       libglvnd
       fontconfig
       dejavu_fonts
@@ -79,29 +78,18 @@ in
     "llm" 
   ];
   };
-  services.xserver.videoDrivers = [ "nvidia" ];
   #services.ollama.package = pkgs.ollama-cuda;
   hardware = {
     graphics.enable = true;
-    nvidia = {
-      open = false;
-      powerManagement.enable = false;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      modesetting.enable = true;
-    };
   };
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   environment = {
     sessionVariables = {
-      GBM_BACKEND = "nvidia-drm";
-      LIBVA_DRIVER_NAME = "nvidia";
       QT_QPA_PLATFORM = "wayland";
       XDG_SESSION_TYPE = "wayland";
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
       __GL_GSYNC_ALLOWED = "1";
       LIBSEAT_BACKEND = "logind";
-      NVD_BACKEND = "direct";
     };
   };
   services.sunshine = {
