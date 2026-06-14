@@ -78,7 +78,7 @@ in
     "llm" 
   ];
   };
-  #services.ollama.package = pkgs.ollama-cuda;
+  services.ollama.package = pkgs.ollama-rocm;
   hardware = {
     graphics.enable = true;
   };

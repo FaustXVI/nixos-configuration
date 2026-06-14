@@ -64,7 +64,7 @@
           in
           builtins.substring 0 (len - 4) n)
         nix-machine-files;
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs { inherit system; nixpkgs.config.rocmSupport = true;};
       unstable = import inputs.unstable-pkgs { inherit system; config.allowUnfree = true; };
       xadetPackages = import ./packages { inherit pkgs self disko system targets; };
       nixosMachine = configFile: nixpkgs.lib.nixosSystem rec {
