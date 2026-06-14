@@ -92,7 +92,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.lib.getExe pkgs.hyprland} -c /etc/greetd/hyprland.conf";
+          command = "${pkgs.lib.getExe' pkgs.hyprland "start-hyprland"} -- -c /etc/greetd/hyprland.conf";
           user = config.users.users.xadet.name;
         };
       };
