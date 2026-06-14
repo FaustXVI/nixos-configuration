@@ -90,6 +90,7 @@
                 });
               })
             ];
+            system.configurationRevision = self.rev or self.dirtyRev;
           }
           home-manager.nixosModules.home-manager
           disko.nixosModules.disko
