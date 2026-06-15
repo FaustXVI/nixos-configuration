@@ -5,7 +5,7 @@
     networkmanager = {
       enable = true;
     };
-    firewall.allowedTCPPorts = [ 4040 ];
+    firewall.allowedTCPPorts = [ 22 ];
     extraHosts = "127.0.0.1 nixos";
   };
 
