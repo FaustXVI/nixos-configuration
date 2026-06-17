@@ -6,20 +6,27 @@
       llama-cpp = {
         enable = true;
         package = pkgs.llama-cpp-rocm;
-        model = pkgs.requireFile {
-            name =  "Qwen_Qwen3.6-35B-A3B-Q4_K_M.gguf";
+        model = pkgs.fetchurl {
             url = "https://huggingface.co/Abiray/Qwen3.6-35B-A3B-Q4_K_M-GGUF/resolve/main/Qwen3.6-35B-A3B-Q4_K_M.gguf?download=true";
-            hash = "sha256-tG/t0z4L+wyuMIqjwVjQpLLEodIYWh7W8JPNrzkGR3I=";
+            hash = "sha256-BMF1b2BOruCJVW8WBNuzoWpOyZGwKhUS37OJeTtIiz8=";
         };
+        #model = pkgs.fetchurl {
+        #    url = "https://huggingface.co/unsloth/gemma-4-26B-A4B-it-qat-GGUF/resolve/main/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf?download=true";
+        #    hash = "sha256-3PF5qRFT46fs55LkjvhyGA2dbvm3Z38KC9PoPP5iTV4=";
+        #};
         extraFlags = [
         "-c" "65536" "-fa" "on" "-ngl" "999" "--n-cpu-moe" "20" "-t" "12" "-b" "2048" "-ub" "2048" "--no-mmap" "--jinja"
+        #"-c" "262144" "-fa" "on" "-ngl" "999" "--n-cpu-moe" "20" "-t" "12" "-b" "2048" "-ub" "2048" "--no-mmap" "--jinja"
         ];
         openFirewall = true;
         port = 11434;
+        host = "0.0.0.0";
       };
       open-webui = {
         enable = true;
         port = 1337;
+        host = "0.0.0.0";
+        openFirewall = true;
       };
     };
   };
