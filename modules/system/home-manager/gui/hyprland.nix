@@ -10,7 +10,6 @@
     portalPackage = null;
     plugins = with pkgs.hyprlandPlugins; [ hy3 ];
     settings = {
-      monitor = ",preferred,auto,1";
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general = {
         gaps_in = 1;
