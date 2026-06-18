@@ -99,10 +99,15 @@ in
     capSysAdmin = true;
   };
 
-  home-manager.users.xadet.wayland.windowManager.hyprland.settings.monitor = [
-    "HDMI-A-1, preferred, 0x0, 1"
-    "DP-3, preferred, 2560x0, 1"
-  ];
+  home-manager.users.xadet.wayland.windowManager.hyprland.settings = {
+    monitor = [
+      "HDMI-A-1, preferred, 0x0, 1"
+      "DP-3, preferred, 2560x0, 1"
+    ];
+    workspace = [
+      "1, monitor:HDMI-A-1"
+    ];
+  };
 
   system.stateVersion = "24.11";
   time.hardwareClockInLocalTime = true;
