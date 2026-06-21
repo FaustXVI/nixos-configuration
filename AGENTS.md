@@ -3,11 +3,11 @@
 ## Architecture
 
 - **Flake root**: `flake.nix` — discovers machines by scanning `machines/*.nix` (any `.nix` file becomes a flake output)
-- **Machine config**: `machines/<name>.nix` — declares `xadetComputer.type` (`laptop` | `desktop`) and `xadetComputer.purposes` (list from `modules/purposes/*/default.nix` dirs)
+- **Machine config**: `machines/<name>.nix` — declares `xadetComputer.type` (`laptop` | `desktop`) and `xadetComputer.purposes`
 - **Module composition**: `modules/default.nix` auto-imports all subdirs/files via `importAllFilteredWith`; same pattern in `modules/purposes/`, `modules/hardware/`, `modules/system/`
 - **Home-manager**: configs in `modules/system/home-manager/`, per-user files: `xad.nix`, `root.nix`
-- **Purposes**: composable feature sets (e.g. `gaming`, `cnc`, `3dPrinting`, `work`, `youtube`). Add a purpose by creating `modules/purposes/<name>/default.nix` and listing it in a machine's `purposes` array.
-- **Hardware detection**: `nixos-facter-modules` auto-detects hardware via `facter.reportPath` JSON (e.g. `facter-eove.json`). Disk device is auto-detected from facter report; override by passing `device` explicitly.
+- **Purposes**: composable feature sets — create `modules/purposes/<name>/default.nix` and list in a machine's `purposes` array
+- **Hardware detection**: `nixos-facter-modules` auto-detects hardware via `facter.reportPath` JSON. Disk device auto-detected from facter report; override by passing `device` explicitly.
 
 ## Commands
 
@@ -15,38 +15,33 @@
 # Build and switch a machine (requires sudo)
 sudo nixos-rebuild switch --flake .#<machine-name>
 
-# Build a home-manager config for a machine (requires sudo)
-sudo home-manager switch --flake .#<machine-name>
-
-# Dry run / check (no sudo needed)
+# Build only (no sudo needed)
 nixos-rebuild build --flake .#<machine-name>
+
+# List available machines
+nix flake show .
 
 # Enter dev shell (sops + age)
 nix develop --flake .
-
-# Create install USB
-nix run .#create-install-usb /dev/sdX
-
-# List available machines (flake outputs)
-nix flake show .
 ```
 
-> **Agents cannot use sudo.** Use `nixos-rebuild build` (dry run) to verify configurations without switching.
+> **Agents cannot use sudo.** Use `nixos-rebuild build` to verify configurations without switching.
 
 ## Secrets
 
-- SOPS config: `.sops.yaml` — all `secrets/*` encrypted with age key `age149suhqjf8zk8phwuvh7lztw79qxmrajdp5uqfhtrd6p8wnss0sssu2qs58`
-- Age key: `keys/ageKey.txt` (gitignored, GPG-decrypted version at `keys/ageKey.txt.gpg`)
-- Dev shell sets `SOPS_AGE_KEY_FILE` automatically
-- To edit a secret: `sops <secrets-file>`
+- SOPS config: `.sops.yaml` — age key `age149suhqjf8zk8phwuvh7lztw79qxmrajdp5uqfhtrd6p8wnss0sssu2qs58`
+- Age key: `keys/ageKey.txt` (gitignored, GPG-decrypted at `keys/ageKey.txt.gpg`)
+- Dev shell sets `SOPS_AGE_KEY_FILE` automatically via shellHook
+- Encrypted files: `secrets/*` + `modules/purposes/*/secrets/*` (nested secrets not covered by `.sops.yaml` `path_regex`, encrypt manually)
+- To edit a secret: `sops <file>` (from `nix develop`)
 
 ## Machine-specific notes
 
 - **eove**: laptop, TPM + lanzaboote (UEFI secure boot), Hyprland, purposes: work/home-office/gaming/3dPrinting
 - **cnc**: laptop, GNOME (Hyprland/greetd forced off), purposes: cnc
-- **desktop-home**: desktop, ROCm GPU, Hyprland, purposes: perso/gaming/youtube/photo/home-office/3dPrinting/llm
-- All machines use `luks-interactive-login.nix` with disko for disk layout (GPT + ESP + encrypted swap + LUKS/ext4 root)
-- `hardware-configuration.nix` and `configuration.nix` are gitignored (generated per-host)
+- **desktop-home**: desktop, ROCm GPU (pkgs/overlay), Hyprland, Sunshine, purposes: perso/gaming/youtube/photo/home-office/3dPrinting/llm
+- All machines: LUKS + disko (GPT + ESP + encrypted swap + ext4 root), stateVersion `24.11`
+- `hardware-configuration.nix` and `configuration.nix` are gitignored
 
 ## Adding a new machine
 
@@ -64,5 +59,5 @@ nix flake show .
 
 - `mkForce` used to override defaults from other modules (common pattern)
 - `mylib.computerIs` / `mylib.computerHasPurpose` for conditional config
-- `nixpkgs.config.allowUnfree = true` set in unstable pkgs import
-- `nixpkgs.config.rocmSupport = true` set in pkgs import
+- `nixpkgs.config.allowUnfree = true` in unstable pkgs import; `rocmSupport = true` in pkgs import
+- `nixos-26.05` branch locked via flake.lock
