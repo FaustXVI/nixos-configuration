@@ -1,33 +1,50 @@
 { mylib, pkgs, ... }:
+let
+  llama-server = pkgs.lib.getExe' pkgs.llama-cpp-rocm "llama-server";
+in
 {
   config = mylib.mkIfComputerHasPurpose "llm" {
-  environment.systemPackages = with pkgs; [ opencode ];
+    environment.systemPackages = with pkgs; [ opencode ];
     services = {
-      llama-cpp = {
+      llama-swap = {
         enable = true;
-        package = pkgs.llama-cpp-rocm;
-        model = pkgs.fetchurl {
-            url = "https://huggingface.co/Abiray/Qwen3.6-35B-A3B-Q4_K_M-GGUF/resolve/main/Qwen3.6-35B-A3B-Q4_K_M.gguf?download=true";
-            hash = "sha256-BMF1b2BOruCJVW8WBNuzoWpOyZGwKhUS37OJeTtIiz8=";
-        };
-        #model = pkgs.fetchurl {
-        #    url = "https://huggingface.co/unsloth/gemma-4-26B-A4B-it-qat-GGUF/resolve/main/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf?download=true";
-        #    hash = "sha256-3PF5qRFT46fs55LkjvhyGA2dbvm3Z38KC9PoPP5iTV4=";
-        #};
-        #model = pkgs.fetchurl {
-        #    url = "https://huggingface.co/unsloth/Qwen3.5-9B-GGUF/resolve/main/Qwen3.5-9B-UD-Q8_K_XL.gguf?download=true";
-        #    hash = "sha256-LE4I4OcsaNjBg1om9b5AdYlN+epb6cwgokZRev1qDLY=";
-        #};
-        extraFlags = [
-        #"-c" "262144" "-fa" "on" "-ngl" "999" "--n-cpu-moe" "24" "-t" "12" "-b" "2048" "-ub" "2048" "-ctk" "q8_0" "-ctv" "q8_0" "--no-mmap" "--jinja"
-        "-c" "131072" "-fa" "on" "-ngl" "999" "--n-cpu-moe" "24" "-t" "12" "-b" "2048" "-ub" "2048" "-ctk" "q8_0" "-ctv" "q8_0" "--no-mmap" "--jinja"
-        #"-c" "65536" "-fa" "on" "-ngl" "999" "--n-cpu-moe" "24" "-t" "12" "-b" "2048" "-ub" "2048" "-ctk" "q8_0" "-ctv" "q8_0" "--no-mmap" "--jinja"
-        #"-c" "262144" "-fa" "on" "-ngl" "999" "--n-cpu-moe" "20" "-t" "12" "-b" "2048" "-ub" "2048" "--no-mmap" "--jinja"
-        #"-c" "131072" "-fa" "on" "-ngl" "999" "-t" "12" "-b" "2048" "-ub" "2048" "-ctk" "q8_0" "-ctv" "q8_0" "--no-mmap" "--jinja"
-        ];
         openFirewall = true;
         port = 11434;
-        host = "0.0.0.0";
+        listenAddress = "0.0.0.0";
+        settings = {
+          healthCheckTimeout = 60; # Give the server 60s to boot before timing out
+          startPort = 10001; # Ports automatically increment from here for ${PORT}
+
+          models =
+            let
+              qwen3_6 = pkgs.fetchurl {
+                url = "https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/resolve/main/Qwen3.6-35B-A3B-UD-Q4_K_M.gguf?download=true";
+                hash = "sha256-rA4sEYngVfqjbv82FYDnnFvW+Odr/7TOVH8WfVPjGmE=";
+              };
+              qwen3_5 = pkgs.fetchurl {
+                url = "https://huggingface.co/unsloth/Qwen3.5-9B-GGUF/resolve/main/Qwen3.5-9B-UD-Q8_K_XL.gguf?download=true";
+                hash = "sha256-LE4I4OcsaNjBg1om9b5AdYlN+epb6cwgokZRev1qDLY=";
+              };
+              gemma4 = pkgs.fetchurl {
+                url = "https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF/resolve/main/gemma-4-E4B-it-UD-Q8_K_XL.gguf?download=true";
+                hash = "sha256-b4NXjMRnk/PVYpDoPR/Id9CelO59sbS2w5ek8As4yIk=";
+              };
+            in
+            {
+              "qwen3.6" = {
+                cmd = "${llama-server} --port \${PORT} -m ${qwen3_6} -c 131072 -fa on -ngl 999 --n-cpu-moe 24 -t 12 -b 2048 -ub 2048 -ctk q8_0 -ctv q8_0 --no-mmap --jinja";
+                aliases = [ "general" ];
+              };
+              "qwen3.5" = {
+                cmd = "${llama-server} --port \${PORT} -m ${qwen3_5} -c 131072 -fa on -ngl 999 --n-cpu-moe 24 -t 12 -b 2048 -ub 2048 -ctk q8_0 -ctv q8_0 --no-mmap --jinja";
+                aliases = [ "medium" ];
+              };
+              "gemma4" = {
+                cmd = "${llama-server} --port \${PORT} -m ${gemma4} -c 131072 -fa on --no-mmap --jinja";
+                aliases = [ "fast" ];
+              };
+            };
+        };
       };
       open-webui = {
         enable = true;
@@ -36,5 +53,6 @@
         openFirewall = true;
       };
     };
+    systemd.services.llama-swap.serviceConfig.ProcSubset = pkgs.lib.mkForce "all";
   };
 }
