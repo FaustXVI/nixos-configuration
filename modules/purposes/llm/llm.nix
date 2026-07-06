@@ -17,31 +17,35 @@ in
 
           models =
             let
-              qwen3_6 = pkgs.fetchurl {
+              general = pkgs.fetchurl {
                 url = "https://huggingface.co/unsloth/Qwen3.6-35B-A3B-GGUF/resolve/main/Qwen3.6-35B-A3B-UD-Q4_K_M.gguf?download=true";
                 hash = "sha256-rA4sEYngVfqjbv82FYDnnFvW+Odr/7TOVH8WfVPjGmE=";
               };
-              qwen3_5 = pkgs.fetchurl {
+              medium = pkgs.fetchurl {
                 url = "https://huggingface.co/unsloth/Qwen3.5-9B-GGUF/resolve/main/Qwen3.5-9B-UD-Q8_K_XL.gguf?download=true";
                 hash = "sha256-LE4I4OcsaNjBg1om9b5AdYlN+epb6cwgokZRev1qDLY=";
               };
-              gemma4 = pkgs.fetchurl {
+              coder = pkgs.fetchurl {
+                url = "https://huggingface.co/unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF/resolve/main/Qwen3-Coder-30B-A3B-Instruct-UD-Q4_K_XL.gguf?download=true";
+                hash = "sha256-KEGqMU2RZDSGDPuJkDR1KNzf5cNQ28udFGHb7oj/JTM=";
+              };
+              fast = pkgs.fetchurl {
                 url = "https://huggingface.co/unsloth/gemma-4-E4B-it-GGUF/resolve/main/gemma-4-E4B-it-UD-Q8_K_XL.gguf?download=true";
                 hash = "sha256-b4NXjMRnk/PVYpDoPR/Id9CelO59sbS2w5ek8As4yIk=";
               };
             in
             {
-              "qwen3.6" = {
-                cmd = "${llama-server} --port \${PORT} -m ${qwen3_6} -c 131072 -fa on -ngl 999 --n-cpu-moe 24 -t 12 -b 2048 -ub 2048 -ctk q8_0 -ctv q8_0 --no-mmap --jinja";
-                aliases = [ "general" ];
+              "general" = {
+                cmd = "${llama-server} --port \${PORT} -m ${general} -c 131072 -fa on -ngl 999 --n-cpu-moe 24 -t 12 -b 2048 -ub 2048 -ctk q8_0 -ctv q8_0 --no-mmap --jinja";
               };
-              "qwen3.5" = {
-                cmd = "${llama-server} --port \${PORT} -m ${qwen3_5} -c 131072 -fa on -ngl 999 --n-cpu-moe 24 -t 12 -b 2048 -ub 2048 -ctk q8_0 -ctv q8_0 --no-mmap --jinja";
-                aliases = [ "medium" ];
+              "coder" = {
+                cmd = "${llama-server} --port \${PORT} -m ${coder} -c 65536 -fa on -ngl 999 --n-cpu-moe 24 -t 12 -b 2048 -ub 2048 -ctk q8_0 -ctv q8_0 --no-mmap --jinja";
               };
-              "gemma4" = {
-                cmd = "${llama-server} --port \${PORT} -m ${gemma4} -c 131072 -fa on --no-mmap --jinja";
-                aliases = [ "fast" ];
+              "medium" = {
+                cmd = "${llama-server} --port \${PORT} -m ${medium} -c 131072 -fa on -ngl 999 -b 2048 -ub 2048 -ctk q8_0 -ctv q8_0 --no-mmap --jinja";
+              };
+              "fast" = {
+                cmd = "${llama-server} --port \${PORT} -m ${fast} -c 131072 -fa on -ngl 999 --no-mmap --jinja";
               };
             };
         };
