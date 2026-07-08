@@ -53,4 +53,11 @@
       automatic = true;
     };
   };
+  virtualisation.vmVariant = {
+    nix = {
+      optimise.automatic = pkgs.lib.mkForce false;
+      gc.automatic = pkgs.lib.mkForce false;
+      extraOptions = pkgs.lib.mkForce "";
+    };
+  };
 }

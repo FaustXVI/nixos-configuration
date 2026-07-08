@@ -6,9 +6,9 @@
       type = pkgs.lib.types.str;
       default =
         if mylib.computerIs "laptop" then
-         # "monitor = ,preferred,auto,1, mirror, eDP-1"
-         # ''monitor = DP-1,preferred,auto,1, mirror, eDP-1
-         #   monitor = eDP-1,disable''
+        # "monitor = ,preferred,auto,1, mirror, eDP-1"
+        # ''monitor = DP-1,preferred,auto,1, mirror, eDP-1
+        #   monitor = eDP-1,disable''
           "monitor = ,preferred,auto,1, mirror, eDP-1"
         else
           "monitor = ,preferred,auto,1";
@@ -104,8 +104,18 @@
         xdg-desktop-portal-gtk
         xdg-desktop-portal-hyprland
       ];
- 
+
       xdgOpenUsePortal = true;
+    };
+    virtualisation.vmVariant = {
+      environment.etc."wayland/common.conf".text = pkgs.lib.mkForce ''
+        input {
+          kb_layout = fr
+          kb_variant = bepo
+        }
+
+        ${config.default-monitor-config}
+      '';
     };
   };
 }

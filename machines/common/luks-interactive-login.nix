@@ -1,4 +1,4 @@
-{ device, ... }:
+{ device, pkgs, ... }:
 {
   disko.devices = {
     disk = {
@@ -42,6 +42,18 @@
             };
           };
         };
+      };
+    };
+  };
+  virtualisation.vmVariant = {
+    disko.devices.disk.main.content.partitions = {
+      encryptedSwap.content = pkgs.lib.mkForce {
+        type = "swap";
+      };
+      luks.content = pkgs.lib.mkForce {
+        type = "filesystem";
+        format = "ext4";
+        mountpoint = "/";
       };
     };
   };

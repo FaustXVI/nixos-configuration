@@ -23,19 +23,19 @@ let
         install -v -m644 "$src" "$dst/${addonId}.xpi"
       '';
     });
-    extensions = {
-      force = true;
-      packages = with pkgs.nur.repos.rycee.firefox-addons; [
-    bitwarden
-    foxyproxy-standard
-    adblocker-ultimate
-    screenshot-capture-annotate
-    # https://github.com/catppuccin/firefox
-    firefox-color
-    # https://github.com/catppuccin/userstyles/tree/main/styles/gmail
-    stylus
-  ];
-};
+  extensions = {
+    force = true;
+    packages = with pkgs.nur.repos.rycee.firefox-addons; [
+      bitwarden
+      foxyproxy-standard
+      adblocker-ultimate
+      screenshot-capture-annotate
+      # https://github.com/catppuccin/firefox
+      firefox-color
+      # https://github.com/catppuccin/userstyles/tree/main/styles/gmail
+      stylus
+    ];
+  };
   settings = {
     "signon.rememberSignons" = false;
     "browser.startup.page" = 3;
@@ -103,7 +103,7 @@ in
   programs = {
     firefox = {
       enable = true;
-#      configPath = "${config.home-manager.users."${currentUser}".xdg.configHome}/mozilla/firefox";
+      #      configPath = "${config.home-manager.users."${currentUser}".xdg.configHome}/mozilla/firefox";
       configPath = ".mozilla/firefox";
       package = pkgs.unstable.firefox-bin;
       profiles = lib.mkMerge [

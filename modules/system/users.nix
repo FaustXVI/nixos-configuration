@@ -29,8 +29,11 @@
     backupFileExtension = "nixBackup";
     useGlobalPkgs = true;
     users = {
-      xadet = import ./home-manager/xadet.nix (args // {currentUser = "xadet";});
-      root = import ./home-manager/root.nix (args // {currentUser ="root";});
+      xadet = import ./home-manager/xadet.nix (args // { currentUser = "xadet"; });
+      root = import ./home-manager/root.nix (args // { currentUser = "root"; });
     };
+  };
+  virtualisation.vmVariant = {
+    users.users.root.openssh.authorizedKeys = config.users.users.xadet.openssh.authorizedKeys;
   };
 }

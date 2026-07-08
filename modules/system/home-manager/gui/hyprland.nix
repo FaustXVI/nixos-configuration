@@ -3,8 +3,8 @@
   catppuccin.hyprland.enable = false; # remove when switched to lua
   wayland.windowManager.hyprland = {
     enable = true;
-        # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
-#    configType = "lua";
+    # set the Hyprland and XDPH packages to null to use the ones from the NixOS module
+    #    configType = "lua";
     configType = "hyprlang";
     package = null;
     portalPackage = null;
@@ -17,9 +17,9 @@
         border_size = 0;
 
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-# uncomment once catppucin is back
-#        "col.active_border" = "${config.catppuccin.accent}";
-#        "col.inactive_border" = "$overlay0";
+        # uncomment once catppucin is back
+        #        "col.active_border" = "${config.catppuccin.accent}";
+        #        "col.inactive_border" = "$overlay0";
 
         # Set to true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = false;
@@ -31,18 +31,21 @@
       };
 
       layerrule = [
-     {name = "blur waybar";
-      blur = true;
-      "match:namespace" = "waybar";
-      }
-     {name = "blur rofi";
-      blur = true;
-      "match:namespace" = "rofi";
-      }
-     {name = "blur logout";
-      blur = true;
-      "match:namespace" = "logout_dialog";
-      }
+        {
+          name = "blur waybar";
+          blur = true;
+          "match:namespace" = "waybar";
+        }
+        {
+          name = "blur rofi";
+          blur = true;
+          "match:namespace" = "rofi";
+        }
+        {
+          name = "blur logout";
+          blur = true;
+          "match:namespace" = "logout_dialog";
+        }
       ];
       decoration = {
         rounding = 0;

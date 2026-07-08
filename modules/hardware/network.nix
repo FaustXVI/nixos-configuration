@@ -28,4 +28,14 @@
       };
     };
   };
+  virtualisation.vmVariant = {
+
+    services = {
+      openssh = {
+        settings = {
+          PermitRootLogin = pkgs.lib.mkForce "yes";
+        };
+      };
+    };
+  };
 }

@@ -55,5 +55,20 @@ in
       };
     };
 
+    virtualisation.vmVariant = {
+      systemd.services.auto-lock = {
+        enable = pkgs.lib.mkForce false;
+      };
+
+      security = {
+        pam = {
+          services.login.u2fAuth = pkgs.lib.mkForce false;
+          u2f = {
+            enable = pkgs.lib.mkForce false;
+          };
+        };
+      };
+    };
+
   };
 }

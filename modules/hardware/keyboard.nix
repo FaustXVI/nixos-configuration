@@ -58,4 +58,12 @@
     };
   };
   #sound.mediaKeys.enable = true;
+  virtualisation.vmVariant = {
+    services.xserver = {
+      xkb = {
+        layout = pkgs.lib.mkForce "fr";
+        variant = pkgs.lib.mkForce "bepo";
+      };
+    };
+  };
 }

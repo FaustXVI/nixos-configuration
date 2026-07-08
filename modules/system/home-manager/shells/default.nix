@@ -28,8 +28,8 @@
       settings = {
         cheats = {
           paths = with pkgs.lib;
-          map (n: "${pkgs.inputs.${n}}") (
-          filter (strings.hasPrefix "navi-") (attrNames pkgs.inputs));
+            map (n: "${pkgs.inputs.${n}}") (
+              filter (strings.hasPrefix "navi-") (attrNames pkgs.inputs));
         };
       };
     };

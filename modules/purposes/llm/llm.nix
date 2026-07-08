@@ -58,5 +58,15 @@ in
       };
     };
     systemd.services.llama-swap.serviceConfig.ProcSubset = pkgs.lib.mkForce "all";
+    virtualisation.vmVariant = {
+      services = {
+        open-webui = {
+          enable = pkgs.lib.mkForce false;
+        };
+        llama-swap = {
+          enable = pkgs.lib.mkForce false;
+        };
+      };
+    };
   };
 }
