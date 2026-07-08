@@ -79,20 +79,10 @@
 
       ${config.default-monitor-config}
     '';
-    environment.etc."greetd/hyprland.conf".text = ''
-      source = /etc/wayland/common.conf
-      exec-once = ${pkgs.lib.getExe pkgs.regreet}; hyprctl dispatch exit
-      misc {
-        disable_hyprland_logo = true
-        disable_splash_rendering = true
-        #disable_hyprland_qtutils_check = true
-      }
-    '';
     services.greetd = {
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.lib.getExe' pkgs.hyprland "start-hyprland"} -- -c /etc/greetd/hyprland.conf";
           user = config.users.users.xadet.name;
         };
       };
