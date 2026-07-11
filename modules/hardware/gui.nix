@@ -76,7 +76,15 @@
     };
     xdg.portal = {
       enable = true;
-      wlr.enable = true;
+      wlr ={ 
+      enable = true;
+            settings = {
+        screencast = {
+          chooser_type = "simple";
+          chooser_cmd = "${pkgs.lib.getExe pkgs.slurp} -f 'Monitor: %o' -or";
+        };
+      };
+      };
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
       ];
