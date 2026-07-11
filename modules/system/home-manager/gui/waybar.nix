@@ -115,6 +115,7 @@
         ];
         modules-center = [
           "hyprland/workspaces"
+          "sway/workspaces"
         ];
 
         modules-right = [
