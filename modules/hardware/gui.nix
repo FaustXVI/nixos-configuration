@@ -26,7 +26,6 @@
       };
       systemPackages = with pkgs; [
         kitty
-        #hyprcursor
         rofi
         wl-clipboard
         dmenu
