@@ -1,19 +1,6 @@
 { config, pkgs, mylib, ... }:
 
 {
-  options = {
-    default-monitor-config = pkgs.lib.mkOption {
-      type = pkgs.lib.types.str;
-      default =
-        if mylib.computerIs "laptop" then
-        # "monitor = ,preferred,auto,1, mirror, eDP-1"
-        # ''monitor = DP-1,preferred,auto,1, mirror, eDP-1
-        #   monitor = eDP-1,disable''
-          "monitor = ,preferred,auto,1, mirror, eDP-1"
-        else
-          "monitor = ,preferred,auto,1";
-    };
-  };
   config = {
     security.polkit.enable = true;
     boot.plymouth.enable = true;
@@ -61,24 +48,7 @@
       };
     };
     services.pipewire.wireplumber.enable = true;
-    programs.hyprland = {
-      enable = true;
-      withUWSM = true;
-      xwayland.enable = true;
-    };
     security.pam.services.hyprlock = { };
-    environment.etc."wayland/common.conf".text = ''
-      input {
-        kb_layout = fr
-      }
-
-      device {
-        name = zsa-technology-labs-ergodox-ez
-        kb_variant = bepo
-      }
-
-      ${config.default-monitor-config}
-    '';
     services.greetd = {
       enable = true;
       settings = {
@@ -87,25 +57,13 @@
         };
       };
     };
-    # https://github.com/hyprwm/hyprland-wiki/issues/409
     xdg.portal = {
       enable = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
-        xdg-desktop-portal-hyprland
       ];
 
       xdgOpenUsePortal = true;
-    };
-    virtualisation.vmVariant = {
-      environment.etc."wayland/common.conf".text = pkgs.lib.mkForce ''
-        input {
-          kb_layout = fr
-          kb_variant = bepo
-        }
-
-        ${config.default-monitor-config}
-      '';
     };
   };
 }

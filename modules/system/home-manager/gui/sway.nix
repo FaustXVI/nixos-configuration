@@ -44,6 +44,10 @@
         input = {
           "*" = {
             xkb_layout = "fr";
+            xkb_variant = "\"\"";
+          };
+          "12951:18804:ZSA_Technology_Labs_ErgoDox_EZ_Keyboard" = {
+            xkb_layout = "fr";
             xkb_variant = "bepo";
           };
         };
@@ -62,6 +66,9 @@
             indicator = "#2e9ef4";
             text = "\$crust";
           };
+        };
+        focus = {
+            followMouse = false;
         };
         output = {
           "*" = {

@@ -100,15 +100,25 @@ in
     capSysAdmin = true;
   };
 
-  home-manager.users.xadet.wayland.windowManager.hyprland.settings = {
-    monitor = [
-      "HDMI-A-1, preferred, 0x0, 1"
-      "DP-3, preferred, 2560x0, 1"
-    ];
-    workspace = [
-      "1, monitor:HDMI-A-1"
-    ];
+  home-manager.users.xadet.wayland.windowManager.sway.config = {
+
+  output = {
+    "HDMI-A-1" = {
+      position = "0,0";
+      mode = "2560x1080@60Hz";
+    };
+
+    "DP-3" = {
+      position = "2560,0";
+      mode = "1920x1080@60Hz";
+    };
   };
+
+  workspaceOutputAssign = [
+    { workspace = "1"; output = "HDMI-A-1"; }
+    { workspace = "0"; output = "DP-3"; }
+  ];
+};
 
   system.stateVersion = "24.11";
   time.hardwareClockInLocalTime = true;
