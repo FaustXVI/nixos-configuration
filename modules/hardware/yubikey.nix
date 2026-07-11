@@ -34,9 +34,15 @@ in
     };
     security = {
       pam = {
-        services.login.u2fAuth = true;
-        sshAgentAuth = {
+        services = {
+          login.u2fAuth = true;
+          sudo.rssh = true;
+        };
+        rssh = {
           enable = true;
+        };
+        sshAgentAuth = {
+          enable = lib.mkForce false;
         };
         u2f = {
           enable = true;
