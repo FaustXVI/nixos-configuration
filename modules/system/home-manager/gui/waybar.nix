@@ -3,10 +3,6 @@
   services.playerctld.enable = true;
   programs.waybar = {
     enable = true;
-    systemd = {
-      enable = true;
-      target = "hyprland-session.target";
-    };
     style = ''
       * {
         font-size: 14px;
@@ -114,7 +110,6 @@
           "mpris"
         ];
         modules-center = [
-          "hyprland/workspaces"
           "sway/workspaces"
         ];
 
