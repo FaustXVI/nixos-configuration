@@ -52,8 +52,25 @@
     services.greetd = {
       enable = true;
       settings = {
-        default_session = {
+        default_session = let
+  regreetSwayConfig = pkgs.writeText "sway-regreet-config" ''
+    output * bg #222222 solid_color
+    
+    # Your AZERTY keyboard
+    input "*" {
+        xkb_layout fr
+    }
+    
+    input "12951:18804:ZSA_Technology_Labs_ErgoDox_EZ" {
+        xkb_layout fr
+        xkb_variant bepo
+    }
+
+    exec "${pkgs.lib.getExe pkgs.regreet}; ${pkgs.lib.getExe' pkgs.sway "swaymsg"} exit"
+  '';
+        in {
           user = config.users.users.xadet.name;
+          command = "${pkgs.lib.getExe' pkgs.dbus "dbus-run-session"} ${pkgs.lib.getExe pkgs.sway} --config ${regreetSwayConfig}";
         };
       };
     };

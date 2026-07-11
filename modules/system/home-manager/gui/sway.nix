@@ -44,9 +44,8 @@
         input = {
           "*" = {
             xkb_layout = "fr";
-            xkb_variant = "\"\"";
           };
-          "12951:18804:ZSA_Technology_Labs_ErgoDox_EZ_Keyboard" = {
+          "12951:18804:ZSA_Technology_Labs_ErgoDox_EZ" = {
             xkb_layout = "fr";
             xkb_variant = "bepo";
           };
