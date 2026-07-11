@@ -6,7 +6,6 @@
     in
     {
       enable = true;
-      checkConfig = false;
       config = {
         inherit modifier;
 

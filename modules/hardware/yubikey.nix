@@ -18,8 +18,13 @@ in
       enable = true;
       description = "Lock screen";
       serviceConfig = {
+        Type = "oneshot";
         User = config.users.users.xadet.name;
-        ExecStart = ''${pkgs.hyprland}/bin/hyprctl --instance 0 'dispatch exec hyprlock --grace 0' '';
+        Environment = [
+        "XDG_RUNTIME_DIR=/run/user/${builtins.toString config.users.users.xadet.uid}"
+        "WAYLAND_DISPLAY=wayland-1"
+        ];
+        ExecStart = ''${pkgs.lib.getExe pkgs.hyprlock} --grace 0 '';
       };
     };
     services = {
