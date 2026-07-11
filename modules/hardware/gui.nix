@@ -76,9 +76,19 @@
     };
     xdg.portal = {
       enable = true;
+      wlr.enable = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
       ];
+
+    config.common = {
+      # By default, use the GTK portal for things like file pickers
+      default = [ "gtk" ];
+
+      # Use the wlroots portal specifically for screen sharing/casting if requested
+      "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+      "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+    };
 
       xdgOpenUsePortal = true;
     };

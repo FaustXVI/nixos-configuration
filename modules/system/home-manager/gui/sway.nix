@@ -65,9 +65,19 @@
             indicator = "#2e9ef4";
             text = "\$crust";
           };
+          urgent = {
+            background = "\$red";
+            border = "\$red";
+            childBorder = "\$red";
+            indicator = "#2e9ef4";
+            text = "\$crust";
+          };
         };
         focus = {
             followMouse = false;
+        };
+        window = {
+            titlebar = false;
         };
         output = {
           "*" = {

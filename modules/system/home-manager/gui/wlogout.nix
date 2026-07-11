@@ -21,14 +21,8 @@
     button:focus:hover {
         background-color: @surface0;
     }
-    window {
-        background: transparent;
-    }
         button {
         border-radius: 10px;
-        }
-        window {
-        background: transparent;
         }
   '';
 }
