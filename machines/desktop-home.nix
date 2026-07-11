@@ -116,7 +116,7 @@ in
 
   workspaceOutputAssign = [
     { workspace = "1"; output = "HDMI-A-1"; }
-    { workspace = "0"; output = "DP-3"; }
+    { workspace = "10"; output = "DP-3"; }
   ];
 };
 
