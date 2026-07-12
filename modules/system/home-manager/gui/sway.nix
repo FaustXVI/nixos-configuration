@@ -14,7 +14,7 @@
         keybindings = lib.mkOptionDefault {
           "${modifier}+Return" = "exec ${lib.getExe pkgs.kitty}";
           "${modifier}+r" = "exec ${lib.getExe pkgs.rofi} -show run";
-          "${modifier}+l" = "exec ${lib.getExe pkgs.hyprlock}";
+          "${modifier}+l" = "exec ${lib.getExe pkgs.swaylock}";
           "${modifier}+Shift+c" = "kill";
           "${modifier}+c" = "exec sh -c '${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}'";
           "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";

@@ -24,7 +24,7 @@ in
         "XDG_RUNTIME_DIR=/run/user/${builtins.toString config.users.users.xadet.uid}"
         "WAYLAND_DISPLAY=wayland-1"
         ];
-        ExecStart = ''${pkgs.lib.getExe pkgs.hyprlock} --grace 0 '';
+        ExecStart = ''${pkgs.lib.getExe pkgs.swaylock} '';
       };
     };
     services = {

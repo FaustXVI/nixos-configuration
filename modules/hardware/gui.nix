@@ -46,7 +46,7 @@
       };
     };
     services.pipewire.wireplumber.enable = true;
-    security.pam.services.hyprlock = { };
+    security.pam.services.swaylock = { };
     services.greetd = {
       enable = true;
       settings = {

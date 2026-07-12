@@ -4,8 +4,8 @@
     enable = true;
     timeouts = [
       {
-        timeout = 1 * 60;
-        command = "${lib.getExe pkgs.hyprlock} --grace 30";
+        timeout = 5 * 60;
+        command = "${lib.getExe pkgs.swaylock}";
       }
     ];
   };
