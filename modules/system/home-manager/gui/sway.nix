@@ -85,5 +85,8 @@
           };
         };
       };
+      extraConfig = ''
+        for_window [all] inhibit_idle fullscreen
+      '';
     };
 }

@@ -84,6 +84,7 @@
       #battery,
       #cpu,
       #memory,
+      #idle_inhibitor,
       #disk,
       #pulseaudio,
       #backlight,
@@ -116,7 +117,6 @@
         modules-right = [
           "group/status"
           "group/monitoring"
-          #"idle_inhibitor"
           "group/datetime"
           "custom/poweroff"
         ];
@@ -189,6 +189,7 @@
             "network"
             "pulseaudio"
             "tray"
+            "idle_inhibitor"
           ];
         };
         backlight = {
