@@ -1,3 +1,8 @@
+## Technical context
+
+- This is a NixOS machine, no tool should be assumed to be available
+- If a tool is needed, create or update a Nix flake to make it available
+
 ## Honesty
 - Tell me something I need to know even if I don't want to hear it.
 - If you don't know something, say "I don't know" instead of making things up
