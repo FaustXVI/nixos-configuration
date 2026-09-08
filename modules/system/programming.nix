@@ -11,7 +11,7 @@
       unstable.jetbrains.rust-rover
       docker-compose
       meld
-      nono
+      pkgs.inputs.nono.packages."${config.nixpkgs.localSystem.system}".nono
     ];
   };
 }

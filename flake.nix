@@ -38,6 +38,12 @@
       url = "github:nix-community/lanzaboote/v1.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nono = {
+      url = "github:nolabs-ai/nono";
+    };
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+    };
   };
 
   outputs = { self, nixpkgs, sops, nur, home-manager, disko, catppuccin, lanzaboote, ... }@inputs:
