@@ -6,6 +6,10 @@ in
   programs.opencode = {
     enable = true;
     context = ./AGENTS.md;
+    skills = ./skills;
+    commands = ./commands;
+    agents = ./agents;
+    package = pkgs.inputs.llm-agents.packages."${config.nixpkgs.localSystem.system}".opencode;
     settings = {
       model = pkgs.lib.mkDefault "llama-cpp/general";
       provider = {
