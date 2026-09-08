@@ -7,9 +7,11 @@
         model = "scaleway/qwen3.6-35b-a3b";
         provider = {
           scaleway = {
-            apiKey = ''''${FILE:${config.sops.secrets."scaleway.token".path}}'';
             name = "Scaleway";
-            apiUrl = "https://api.scaleway.ai/v1";
+            options = {
+                apiKey = ''{file:${config.sops.secrets."scaleway.token".path}}'';
+                baseURL = "https://api.scaleway.ai/v1";
+            };
             models = {
               "qwen3.6-35b-a3b" = {
                 name = "qwen3.6-35b-a3b";
