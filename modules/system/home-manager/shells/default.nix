@@ -3,7 +3,6 @@
   imports = mylib.importAllWith args ./.;
   xdg.configFile."direnv/direnvrc".source = ./direnvrc;
   programs = {
-    yazi.shellWrapperName = "y";
     direnv = {
       enable = true;
       nix-direnv = {
@@ -48,6 +47,7 @@
     };
     yazi = {
       enable = true;
+      shellWrapperName = "y";
     };
     atuin = {
       enable = true;

@@ -9,8 +9,8 @@
           src = fetchFromGitHub {
             owner = "oh-my-fish";
             repo = "plugin-bang-bang";
-            rev = "816c66df34e1cb94a476fa6418d46206ef84e8d3";
-            sha256 = "35xXBWCciXl4jJrFUUN5NhnHdzk6+gAxetPxXCv4pDc=";
+            rev = "ec991b80ba7d4dda7a962167b036efc5c2d79419";
+            sha256 = "sha256-oPPCtFN2DPuM//c48SXb4TrFRjJtccg0YPXcAo0Lxq0=";
           };
         }
       ];
