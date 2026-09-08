@@ -51,7 +51,7 @@
     };
     atuin = {
       enable = true;
-      flags = [ "--disable-up-arrow" ];
+      flags = [ "--disable-up-arrow" "--disable-ai" ];
       settings = {
         search_mode = "skim";
       };
