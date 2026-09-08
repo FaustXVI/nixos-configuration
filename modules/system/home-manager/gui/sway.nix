@@ -74,10 +74,10 @@
           };
         };
         focus = {
-            followMouse = false;
+          followMouse = false;
         };
         window = {
-            titlebar = false;
+          titlebar = false;
         };
         output = {
           "*" = {

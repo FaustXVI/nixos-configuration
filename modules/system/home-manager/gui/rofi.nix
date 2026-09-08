@@ -29,9 +29,9 @@
         inherit (config.home-manager.users.xadet.lib.formats.rasi) mkLiteral;
       in
       {
-#        "window, mainbox, inputbar, listview, entry, element, element selected, button, button selected, textbox" = {
-#          background-color = mkLiteral "transparent";
-#        };
+        #        "window, mainbox, inputbar, listview, entry, element, element selected, button, button selected, textbox" = {
+        #          background-color = mkLiteral "transparent";
+        #        };
         "*" = {
           accent = mkLiteral "#74c7ec";
           blue = mkLiteral "@accent";

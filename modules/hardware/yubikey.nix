@@ -21,8 +21,8 @@ in
         Type = "oneshot";
         User = config.users.users.xadet.name;
         Environment = [
-        "XDG_RUNTIME_DIR=/run/user/${builtins.toString config.users.users.xadet.uid}"
-        "WAYLAND_DISPLAY=wayland-1"
+          "XDG_RUNTIME_DIR=/run/user/${builtins.toString config.users.users.xadet.uid}"
+          "WAYLAND_DISPLAY=wayland-1"
         ];
         ExecStart = ''${pkgs.lib.getExe pkgs.swaylock} '';
       };

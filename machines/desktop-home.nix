@@ -62,23 +62,23 @@ in
 
   home-manager.users.xadet.wayland.windowManager.sway.config = {
 
-  output = {
-    "HDMI-A-1" = {
-      position = "0,0";
-      mode = "2560x1080@60Hz";
+    output = {
+      "HDMI-A-1" = {
+        position = "0,0";
+        mode = "2560x1080@60Hz";
+      };
+
+      "DP-3" = {
+        position = "2560,0";
+        mode = "1920x1080@60Hz";
+      };
     };
 
-    "DP-3" = {
-      position = "2560,0";
-      mode = "1920x1080@60Hz";
-    };
+    workspaceOutputAssign = [
+      { workspace = "1"; output = "HDMI-A-1"; }
+      { workspace = "10"; output = "DP-3"; }
+    ];
   };
-
-  workspaceOutputAssign = [
-    { workspace = "1"; output = "HDMI-A-1"; }
-    { workspace = "10"; output = "DP-3"; }
-  ];
-};
 
   system.stateVersion = "24.11";
   time.hardwareClockInLocalTime = true;
