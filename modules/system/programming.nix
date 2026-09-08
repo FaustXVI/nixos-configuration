@@ -11,6 +11,7 @@
       unstable.jetbrains.rust-rover
       docker-compose
       meld
+      nono
     ];
   };
 }
