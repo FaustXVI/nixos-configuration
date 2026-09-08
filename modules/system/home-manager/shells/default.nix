@@ -51,9 +51,13 @@
     };
     atuin = {
       enable = true;
-      flags = [ "--disable-up-arrow" "--disable-ai" ];
+      flags = [ "--disable-ai" ];
       settings = {
-        search_mode = "skim";
+        search_mode = "fuzzy";
+        filter_mode_shell_up_key_binding = "session";
+        search = {
+            filters = ["global" "directory" "session" ];
+        };
       };
     };
   };
