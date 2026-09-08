@@ -4,7 +4,6 @@ let
 in
 {
   config = mylib.mkIfComputerHasPurpose "llm" {
-    environment.systemPackages = with pkgs; [ opencode ];
     services = {
       llama-swap = {
         enable = true;
