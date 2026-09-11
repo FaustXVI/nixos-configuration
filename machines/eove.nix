@@ -21,7 +21,7 @@ in
       "work"
       "home-office"
       "gaming"
-      # "3dPrinting" 
+      "3dPrinting" 
     ];
   };
 
