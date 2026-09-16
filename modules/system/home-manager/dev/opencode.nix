@@ -12,6 +12,7 @@ in
     package = pkgs.inputs.llm-agents.packages."${config.nixpkgs.localSystem.system}".opencode;
     settings = {
       model = pkgs.lib.mkDefault "llama-cpp/general";
+      default_agent = "typist";
       provider = {
         llama-cpp = {
           npm = "@ai-sdk/openai-compatible";

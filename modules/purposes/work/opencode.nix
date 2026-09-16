@@ -4,7 +4,7 @@
   home-manager.users.xadet = {
     programs.opencode = {
       settings = {
-        model = "scaleway/qwen3.6-35b-a3b";
+        model = "scaleway/deepseek-v4-flash-0731";
         provider = {
           scaleway = {
             name = "Scaleway";
@@ -13,8 +13,8 @@
                 baseURL = "https://api.scaleway.ai/v1";
             };
             models = {
-              "qwen3.6-35b-a3b" = {
-                name = "qwen3.6-35b-a3b";
+              "deepseek-v4-flash-0731" = {
+                name = "deepseek-v4-flash-0731";
                 tool_call = true;
               };
             };
