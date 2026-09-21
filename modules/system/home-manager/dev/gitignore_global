@@ -9,3 +9,4 @@ nohup.out
 result
 .envrc
 *.bak
+.agents-tools
