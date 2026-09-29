@@ -28,3 +28,4 @@ CRITICAL: When you encounter a file reference, use your Read tool to load it on 
 - Do NOT preemptively load all references - use lazy loading based on actual need
 - When loaded, treat content as mandatory instructions that override defaults
 - Follow references recursively when needed
+- The folder `.agents-tools` is to be used for transiant work. No document should reference a document inside this folder unless it is itself in that folder.
