@@ -6,19 +6,19 @@
   sops.templates."nix-github-token.conf" = {
     owner = config.users.users.xadet.name;
     content = ''
-      access-tokens = github.com=${config.sops.placeholder.githubToken-readonly}
+      access-tokens = github.com=${config.sops.placeholder.githubToken}
     '';
   };
   sops.templates."nix.env" = {
     content = ''
-      GITHUB_TOKEN=${config.sops.placeholder.githubToken-readonly}
-      NIX_NPM_TOKENS={"npm.pkg.github.com":"${config.sops.placeholder.githubToken-readonly}"}
+      GITHUB_TOKEN=${config.sops.placeholder.githubToken}
+      NIX_NPM_TOKENS={"npm.pkg.github.com":"${config.sops.placeholder.githubToken}"}
     '';
   };
   sops.templates."github-token_git.conf" = {
     owner = config.users.users.xadet.name;
     content = ''
-      [url "https://${config.sops.placeholder.githubToken-readonly}@github.com"]
+      [url "https://${config.sops.placeholder.githubToken}@github.com"]
           insteadOf = git+ssh://github.com
     '';
   };
