@@ -7,6 +7,7 @@
       size = 18;
     };
     settings = {
+      term = "xterm-256color";
       enable_audio_bell = false;
       scrollback_lines = 20000;
     };
