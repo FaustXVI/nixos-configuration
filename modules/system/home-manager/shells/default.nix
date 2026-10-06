@@ -51,7 +51,7 @@
     };
     atuin = {
       enable = true;
-      flags = [ "--disable-ai" ];
+      flags = [ "--disable-ai" "--disable-up-arrow" ];
       settings = {
         search_mode = "fuzzy";
         filter_mode_shell_up_key_binding = "session";
