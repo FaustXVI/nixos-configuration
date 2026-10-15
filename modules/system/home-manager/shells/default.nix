@@ -16,7 +16,7 @@
     btop = {
       enable = true;
     };
-    eza = {
+    lsd = {
       enable = true;
     };
     fzf = {
@@ -63,16 +63,16 @@
   };
 
   home = {
-    shellAliases = let exa = "exa --git --header --icons"; in {
+    shellAliases = {
       cat = "bat";
       top = "btop";
       diff = "delta";
       ".." = "cd ..";
       "..." = "cd ../..";
-      ls = "${exa}";
-      ll = "${exa} -l";
-      la = "${exa} -a";
-      lla = "${exa} -la";
+      ls = "lsd";
+      ll = "lsd -l";
+      la = "lsd -a";
+      lla = "lsd -la";
       man = "batman";
       grep = "rg";
       bgrep = "batgrep";
