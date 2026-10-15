@@ -37,8 +37,8 @@
     ],
     "read": [
       "~/.config/nono",
-      ${config.sops.templates."github-token_git.conf".path},
-      ${config.sops.templates."nix-github-token.conf".path}
+      "${config.sops.templates."github-token_git.conf".path}",
+      "${config.sops.templates."nix-github-token.conf".path}"
     ],
     "write": [],
     "allow_file": [],
