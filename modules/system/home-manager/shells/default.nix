@@ -38,6 +38,9 @@
     ripgrep = {
       enable = true;
     };
+    ripgrep-all = {
+      enable = true;
+    };
     fd = {
       enable = true;
     };
@@ -74,7 +77,7 @@
       la = "lsd -a";
       lla = "lsd -la";
       man = "batman";
-      grep = "rg";
+      grep = "rga";
       bgrep = "batgrep";
     };
     packages = with pkgs; [

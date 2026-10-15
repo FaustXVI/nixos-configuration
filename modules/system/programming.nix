@@ -12,6 +12,8 @@
       docker-compose
       meld
       pkgs.inputs.nono.packages."${config.nixpkgs.localSystem.system}".nono
+      jq
+      gron
     ];
   };
 }
