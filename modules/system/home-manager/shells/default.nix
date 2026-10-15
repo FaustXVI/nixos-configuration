@@ -74,7 +74,8 @@
       la = "${exa} -a";
       lla = "${exa} -la";
       man = "batman";
-      grep = "batgrep";
+      grep = "rg";
+      bgrep = "batgrep";
     };
     packages = with pkgs; [
       entr
