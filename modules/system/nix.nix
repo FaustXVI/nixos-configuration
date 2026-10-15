@@ -12,7 +12,7 @@
   sops.templates."nix.env" = {
     content = ''
       GITHUB_TOKEN=${config.sops.placeholder.githubToken}
-      NIX_NPM_TOKENS={"npm.pkg.github.com":"${config.sops.placeholder.githubToken}"}
+      NIX_NPM_TOKENS={"npm.pkg.github.com":"${config.sops.placeholder.package_reader_pat}"}
     '';
   };
   sops.templates."github-token_git.conf" = {
