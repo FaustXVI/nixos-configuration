@@ -72,10 +72,10 @@
       diff = "delta";
       ".." = "cd ..";
       "..." = "cd ../..";
-      ls = "lsd";
-      ll = "lsd -l";
-      la = "lsd -a";
-      lla = "lsd -la";
+#      ls = "lsd";
+#      ll = "lsd -l";
+#      la = "lsd -a";
+#      lla = "lsd -la";
       man = "batman";
       grep = "rga";
       bgrep = "batgrep";
