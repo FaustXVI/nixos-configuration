@@ -1,10 +1,10 @@
 { pkgs, ... }:
 let
-  version = "3.20.0.922";
+  version = "3.29.0.1804";
   installerUrl = "https://downloads.remarkable.com/desktop/production/win/reMarkable-${version}-win64.exe";
   installer = pkgs.fetchurl {
     url = installerUrl;
-    hash = "sha256-bzd2Wa4oz5p6HaTVu66ynP5wlAn/JHvog7mCG0BO+Og=";
+    hash = "sha256-jqK17mgATwwC7lLKKtK+0nhombQMUUQloAPH2asDWKo=";
   };
   binaryName = "reMarkable.exe";
   installDirectory = ''''${HOME}/remarkable'';
