@@ -18,11 +18,13 @@ pkgs.writeShellScriptBin "remarkable" ''
   export WINE="${wine}"
   if [ ! -f ${expectedPath} ]
   then
-  mkdir -p ${installDirectory}
-  ${pkgs.winetricks}/bin/winetricks --force --unattended vcrun2022
-  echo "Please install the app in ${installDirectory}, it will later be renamed ${targetDirectory}"
-  ${wine} ${installer} 2>/dev/null >/dev/null
-  mv ${installDirectory} ${targetDirectory}
+    mkdir -p "${installDirectory}"
+    ${pkgs.winetricks}/bin/winetricks --force --unattended vcrun2022 corefonts wininet dxvk d3dcompiler_47
+    echo "Please install the app in ${installDirectory}, it will later be renamed ${targetDirectory}"
+    ${wine} "${installer}" >/dev/null 2>&1
+    mv "${installDirectory}" "${targetDirectory}"
   fi
-  ${wine} ${expectedPath}  2>/dev/null >/dev/null
+
+  # --no-sandbox is required for Qt WebEngine to render inside Wine
+  ${wine} "${expectedPath}" --no-sandbox --disable-gpu
 ''
