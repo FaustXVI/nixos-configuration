@@ -10,13 +10,19 @@ let
   installDirectory = ''''${HOME}/remarkable'';
   targetDirectory = ''''${HOME}/.remarkable'';
   expectedPath = "${targetDirectory}/${binaryName}";
-  wine = "${pkgs.wineWow64Packages.stableFull}/bin/wine";
+
+  # Switch to the Wayland-enabled Wine build
+  wine = "${pkgs.wineWow64Packages.waylandFull}/bin/wine";
 in
 pkgs.writeShellScriptBin "remarkable" ''
   export WINEPREFIX="''${HOME}/.wine-remarkable"
   export WINEARCH="win64"
   export WINE="${wine}"
-  if [ ! -f ${expectedPath} ]
+
+  # Force Wine to use the native Wayland driver instead of Xwayland
+  ${wine} reg add "HKCU\Software\Wine\Drivers" /v Graphics /t REG_SZ /d "wayland" /f >/dev/null 2>&1
+
+  if [ ! -f "${expectedPath}" ]
   then
     mkdir -p "${installDirectory}"
     ${pkgs.winetricks}/bin/winetricks --force --unattended vcrun2022 corefonts wininet dxvk d3dcompiler_47
