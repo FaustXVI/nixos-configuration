@@ -42,6 +42,7 @@ pkgs.writeShellScriptBin "remarkable" ''
 
   # --- EXECUTION PHASE ---
   echo "Launching reMarkable natively with DXVK..."
+  echo "Get a connection code to https://my.remarkable.com/device/browser"
   ${wine} "${expectedPath}"
 
 ''
