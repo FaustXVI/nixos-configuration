@@ -59,7 +59,7 @@
         search_mode = "fuzzy";
         filter_mode_shell_up_key_binding = "session";
         search = {
-            filters = ["global" "directory" "session" ];
+          filters = [ "global" "directory" "session" ];
         };
       };
     };
@@ -72,10 +72,10 @@
       diff = "delta";
       ".." = "cd ..";
       "..." = "cd ../..";
-#      ls = "lsd";
-#      ll = "lsd -l";
-#      la = "lsd -a";
-#      lla = "lsd -la";
+      #      ls = "lsd";
+      #      ll = "lsd -l";
+      #      la = "lsd -a";
+      #      lla = "lsd -la";
       man = "batman";
       grep = "rga";
       bgrep = "batgrep";

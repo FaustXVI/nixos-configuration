@@ -3,8 +3,8 @@
 {
   environment = {
     systemPackages = with pkgs; [
-        dysk
-        zellij
+      dysk
+      zellij
     ];
   };
   programs = {

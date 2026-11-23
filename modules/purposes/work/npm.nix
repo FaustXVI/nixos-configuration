@@ -6,7 +6,7 @@ in
 {
   config = mylib.mkIfComputerHasPurpose "work" {
     sops.templates.".npmrc" = {
-      content = ''//npm.pkg.github.com/:_authToken=${config.sops.placeholder.package_reader_pat}'';
+      content = ''//npm.pkg.github.com/:_authToken=${config.sops.placeholder."github/auth_and_packages"}'';
       path = "${home}/.npmrc";
       owner = config.users.users.xadet.name;
     };

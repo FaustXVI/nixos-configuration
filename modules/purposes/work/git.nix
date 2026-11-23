@@ -12,7 +12,7 @@ in
     };
 
     sops.templates."githubToken.txt" = {
-      content = ''${config.sops.placeholder.package_reader_pat}'';
+      content = ''${config.sops.placeholder."github/auth_and_packages"}'';
       path = "${home}/.githubToken";
       owner = config.users.users.xadet.name;
     };
